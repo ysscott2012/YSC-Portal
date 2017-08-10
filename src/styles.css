@@ -1,1 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
+.row-eq-height {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    width: 100%;
+}

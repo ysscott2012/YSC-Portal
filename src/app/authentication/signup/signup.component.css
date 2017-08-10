@@ -1,0 +1,55 @@
+.section {
+    /* background-image:url(../../../assets/blockchain.jpg); */
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: calc(100vh - 83px);
+    box-shadow: inset 1000px 1000px 1000px rgba(255,255,255,0.8);
+    overflow: auto;
+    position: relative
+}
+
+ul.register {
+    padding: 0px;
+    margin: 0px;
+    list-style: none;
+    width: 100%;
+}
+
+ul.register li {
+    float: left;
+    font-size: 20px;
+    width: 50%;
+    text-align: center;
+    cursor: pointer;
+    padding: 10px;
+    border-bottom: 1px solid #dadada;
+    background: #112e51;
+}
+
+ul.register li.active {
+    background: #fff;
+    color: #112e51;
+    font-weight: 700;
+    border: none;
+}
+
+ul.register li.active a {
+    color: #112e51;
+}
+
+ul.register li a{
+    color: white;
+}
+
+.row-eq-height {
+    padding: 60px 0px
+}
+
+.description {
+    padding: 40px;
+}
+
+.description h1 {
+    font-weight: 700;
+}
