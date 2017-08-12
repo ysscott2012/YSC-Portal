@@ -6,3 +6,20 @@
     display: flex;
     width: 100%;
 }
+
+.ys-table {
+    display: table;
+    width: 100%;
+}
+
+.ys-table .ys-table-cell {
+    display: table-cell;
+}
+
+.ys-table .vm {
+    vertical-align: middle;
+}
+
+button {
+    cursor: pointer;
+}

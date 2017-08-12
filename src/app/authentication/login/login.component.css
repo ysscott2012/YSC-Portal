@@ -1,55 +1,102 @@
-.section {
-    /* background-image:url(../../../assets/blockchain.jpg); */
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    height: calc(100vh - 83px);
-    box-shadow: inset 1000px 1000px 1000px rgba(255,255,255,0.8);
-    overflow: auto;
-    position: relative
+.login-div {
+    position: relative;
+     -webkit-filter: blur(0px);
+    -moz-filter: blur(0px);
+    -o-filter: blur(0px);
+    -ms-filter: blur(0px);
+    filter: blur(0px);
 }
 
-ul.register {
-    padding: 0px;
-    margin: 0px;
-    list-style: none;
+.login-header-div {
+    position: absolute;
+    top: 25px;
+    right: -5px;
+    left: -10px;
+    height: 40px;
+    background-color: #5d84b3;
+}
+
+.login-header {
+    display: table;
     width: 100%;
+    height: 100%;
 }
 
-ul.register li {
-    float: left;
-    font-size: 20px;
-    width: 50%;
+.login-header > div {
+    display: table-cell;
+    width: 100%;
+    vertical-align: middle;
+    padding-left: 20px;
+    color: #f7f7f7;
+}
+
+.login-header-triangle-top {
+    position: absolute;
+    left: -10px;
+    top: 18px;
+    width: 0;
+    height: 0;
+    border-top: 7px solid transparent;
+    border-bottom: 0px solid transparent;
+    border-right: 9px solid #5c6c80;
+}
+/* 
+.login-header-triangle-bottom {
+    position: absolute;
+    left: -10px;
+    top: 65px;
+    width: 0;
+    height: 0;
+    border-top: 0px solid transparent;
+    border-bottom: 7px solid transparent;
+    border-right: 9px solid #5c6c80;
+} */
+
+.login-header-triangle-bottom-right {
+    position: absolute;
+    right: -5px;
+    top: 65px;
+    width: 0;
+    height: 0;
+    border-top: 0px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-left: 4px solid #5c6c80;
+}
+
+.login-content {
+    position: absolute;
+    top: 100px;
+    width: 100%;
+    height: 200px;
+    padding: 20px 40px;
+}
+
+.login-input {
+    position: relative;
+    padding-bottom: 25px;
+}
+
+.login-input input{
+    width: 100%;
+    padding: 2.5px 40px 2.5px 10px;
+    height: 40px;
+}
+
+.login-input-icon {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    width: 40px;
     text-align: center;
-    cursor: pointer;
-    padding: 10px;
-    border-bottom: 1px solid #dadada;
-    background: #112e51;
+    font-size: 22px;
+    line-height: 40px;
+    border-left: 1px solid #dadada;
 }
 
-ul.register li.active {
-    background: #fff;
-    color: #112e51;
-    font-weight: 700;
-    border: none;
+#rememberme {
+    width: 30px; 
 }
 
-ul.register li.active a {
-    color: #112e51;
-}
-
-ul.register li a{
-    color: white;
-}
-
-.row-eq-height {
-    padding: 60px 0px
-}
-
-.description {
-    padding: 40px;
-}
-
-.description h1 {
-    font-weight: 700;
+.btn-primary {
+    background-color: #5d84b3;
 }

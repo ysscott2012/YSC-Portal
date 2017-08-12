@@ -1,39 +1,54 @@
-<div class="section">  
-    <div class="row nopadding">
-        <div class="row-eq-height">
-            <div class="col-lg-5 col-lg-offset-1 col-md-6 col-sm-12" >
-                <div class="description">           
-                    <h1></h1>
-                    <h3></h3>                
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 col-sm-12">
-                <div style="border: 1px solid #dadada; box-shadow: 1px 1px 10px 0px #dadada; background-color: white">
-                    <ul class="register clearfix">
-                       <li class="active" [routerLink]="['/auth/login']"><a >Sign In</a></li>
-                        <li [routerLink]="['/auth/signup']"><a>Sign Up</a></li>
-                    </ul>
-                    <div style="padding: 40px;" class="clearfix">
-                        
-                        <!-- log in div  -->
-                        <form [formGroup]="loginForm" (ngSubmit)="login()">
-                          <div class="form-group">
-                            <label for="email">Email Address </label>
-                            <input type="email" id="email" class="form-control" formControlName="email">
-                          </div>
-                          <div class="form-group" style="margin-bottom: 40px;">
-                            <label for="password">Password </label>
-                            <input type="password" id="password" class="form-control" formControlName="password">
-                          </div>
-
-                          <button type="submit" class="srt-button">Log In</button>
-
-                        </form>
-
-
-                    </div>
-                </div>
-            </div>
-        </div>
+<!-- <form [formGroup]="loginForm" (ngSubmit)="login()">
+    <div class="form-group">
+        <label for="email">Email Address </label>
+        <input type="email" id="email" class="form-control" formControlName="email">
     </div>
+    <div class="form-group" style="margin-bottom: 40px;">
+        <label for="password">Password </label>
+        <input type="password" id="password" class="form-control" formControlName="password">
+    </div>
+
+    <button type="submit" class="srt-button">Log In</button>
+
+</form> -->
+
+<div class="login-div">
+
+
+    <div class="login-header-triangle-top"></div>
+    <div class="login-header-triangle-bottom"></div>
+    <div class="login-header-triangle-bottom-right"></div>
+    <div class="login-header-div">
+        <div class="login-header"><div>Please Login</div></div>
+    </div>
+
+    <div class="login-content">
+
+        <form [formGroup]="loginForm" (ngSubmit)="login()">
+
+            <div class="login-input">
+                <input type="email" id="email" formControlName="email" placeholder="Username"/>
+                <div class="login-input-icon">
+                    <i class="fa fa-user" aria-hidden="true" ></i>
+                </div>
+            </div>
+
+            <div class="login-input">
+                <input type="password" id="password" formControlName="password" placeholder="Password"/>
+                <div class="login-input-icon">
+                    <i class="fa fa-lock" aria-hidden="true"></i>
+                </div>
+            </div>
+
+            <div class="login-input clearfix">
+                <input id="rememberme" for="rememberMe" type="checkbox" style="float: left" />
+                <div style="float: left; line-height: 40px">Remember me</div>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="float: right">Login</button>
+
+        </form>
+    </div>
+    
+
 </div>

@@ -1,0 +1,40 @@
+.box {
+    height: 400px;
+    width: 400px;
+    margin: 0px auto;
+    border: 1px solid #dadada; 
+    box-shadow: 1px 1px 10px 0px #dadada; 
+    background-color: white;   
+}
+
+.authentication-div {
+    background-image:url(../../assets/beach.jpg); 
+    background-repeat: repeat;
+    background-size: cover;
+    /* background-position: center; */
+    background-position: 0 0;
+    box-shadow: inset 1000px 1000px 1000px rgba(255,255,255,0.3);
+    overflow: auto;
+    position: fixed;
+    top: 0px; right: 0px; bottom: 0px; left: 0px;
+
+    animation-name: backgroundAutoScroll;
+    animation-duration: 120s;
+    animation-iteration-count: infinite;
+
+    -webkit-filter: blur(5px);
+    -moz-filter: blur(5px);
+    -o-filter: blur(5px);
+    -ms-filter: blur(5px);
+    filter: blur(5px);
+}
+
+.authentication {
+    height: 100vh;
+    padding: calc(50vh - 200px) 0px;
+}
+
+@keyframes backgroundAutoScroll {
+    from {background-position: 0 0;}
+    to {background-position: -100% 0;}
+}

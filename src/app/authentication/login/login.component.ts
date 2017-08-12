@@ -36,6 +36,7 @@ export class LoginComponent implements OnInit {
     this.authenticationService.login(user)
       .subscribe(
       data => {
+        console.log(data);
       },
       error => {
       }
