@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Headers, Http, Response } from '@angular/http';
 
+import { environment } from '../../../environments/environment'
+
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
@@ -10,9 +12,8 @@ import { User } from '../../classes/user';
 @Injectable()
 export class AuthenticationService {
 
-  private URL = "http://localhost:3000";
-  signupURL = this.URL + "/user/signup";
-  loginURL = this.URL + "/user/login";
+  signupURL = environment.API_URL + '/auth/signup';
+  loginURL = environment.API_URL + '/auth/login';
 
   constructor(
     private http: Http

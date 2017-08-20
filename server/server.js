@@ -1,36 +1,51 @@
 require('./config/config');
 
 var express = require('express');
+var cors = require('cors')
 var bodyParser = require('body-parser');
+
+const path = require('path');
+const http = require('http');
 
 // Set up mongoDB connection
 var mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 mongoose.connect(process.env.MONGODB_URI, { useMongoClient: true});
 
-const port = process.env.PORT;
-
 // declare routers
+var authRoutes = require('./routes/auth.routes');
 var userRoutes = require('./routes/user.routes');
 
 var app = express();
 app.use(bodyParser.json());
-
-// The headers must be sent to allow Cross Origin Resource Sharing
-// Requests to connect will be denied without this
-app.use(function (req, res, next) {
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST');
-    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With, content-type, Authorization, x-auth');
-    res.setHeader('Access-Control-Expose-Headers', 'x-auth');
-    next();
-});
+app.use(cors());
 
 // define routers
+app.use('/auth', authRoutes);
 app.use('/user', userRoutes);
 
-app.listen(port, () => {
-    console.log(`Started up with at port ${port}`);
-})
+// Point static path to dist
+app.use(express.static(path.join(__dirname, '../dist')));
+
+// link to static website
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../dist/index.html'));
+});
+
+/**
+ * Get port from environment and store in Express.
+ */
+const port = process.env.PORT || '3000';
+app.set('port', port);
+
+/**
+ * Create HTTP server.
+ */
+const server = http.createServer(app);
+
+/**
+ * Listen on provided port, on all network interfaces.
+ */
+server.listen(port, () => console.log(`API running on localhost:${port}`));
 
 module.exports = {app};

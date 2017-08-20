@@ -3,13 +3,15 @@ export class User {
     lastName: String = "";
     email: String = "";
     password: String = "";
-    userRole: String = "";
+    userRole: Number = 0;
+    verified: Boolean = false;
 
     constructor () {
         this.firstName = "";
         this.lastName = "";
         this.email = "";
         this.password = "";
-        this.userRole = "";
+        this.userRole = 0;
+        this.verified = false;
     }
 }

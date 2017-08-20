@@ -1,31 +1,48 @@
-<!-- Register Form  -->
-<form [formGroup]="registerForm" (ngSubmit)="register()">
+
+<div class="register-div">
 
 
-  <!-- firstName -->
-  <div class="form-group">
-    <label for="firstName">First Name</label>
-    <input type="text" id="firstName" class="form-control" formControlName="firstName">
+      <div class="register-header-triangle-top"></div>
+      <div class="register-header-triangle-bottom"></div>
+      <div class="register-header-triangle-bottom-right"></div>
+      <div class="register-header-div">
+          <div class="register-header section-title"><div>Join us</div></div>
+      </div>
+
+      <div class="register-content ys-button-div">
+
+          <form [formGroup]="registerForm" (ngSubmit)="register()">
+
+              <!-- firstName -->
+
+              <div class="register-input">
+                <input type="text" id="firstName" class="form-control" formControlName="firstName" placeholder="First Name">
+              </div>
+
+              <!-- lastName -->
+              <div class="register-input">
+                <input type="text" id="lastName" class="form-control" formControlName="lastName" placeholder="Last Name">
+              </div>
+
+              <!-- email -->
+              <div class="register-input">
+                <input type="email" id="email" class="form-control" formControlName="email" placeholder="Email">
+              </div>
+
+              <!-- password -->
+              <div class="register-input">
+                <input type="password" id="password" class="form-control" formControlName="password" placeholder="password">
+              </div>
+
+              <div class="register-input clearfix">
+                <input id="terms" for="terms" type="checkbox" style="float: left" />
+                <div style="float: left; line-height: 40px">Terms and Conditions</div>
+              </div>
+
+              <button type="submit" class="btn btn-primary ys-button auth" style="float: right">Sign up</button>
+              <a [routerLink]="['/auth/login']" class="link">Already have account? login here</a>
+          </form>
+      </div>
+
+
   </div>
-
-  <!-- lastName -->
-  <div class="form-group">
-    <label for="lastName">Last Name </label>
-    <input type="text" id="lastName" class="form-control" formControlName="lastName">
-  </div>
-
-  <!-- email -->
-  <div class="form-group">
-    <label for="email">Email Address </label>
-    <input type="email" id="email" class="form-control" formControlName="email">
-  </div>
-
-  <!-- password -->
-  <div class="form-group" style="margin-bottom: 40px;">
-    <label for="password">Password </label>
-    <input type="password" id="password" class="form-control" formControlName="password">
-  </div>
-
-  <button type="submit" class="srt-button">Sign up</button>
-
-</form>

@@ -5,13 +5,15 @@ import { HttpModule } from '@angular/http';
 
 // Modules
 import { AuthenticationModule } from './authentication/authentication.module';
+import { PageModule } from './page/page.module'
 
 // Component
 import { AppComponent } from './app.component';
 
 // Routes
 import { AppRoutes } from './app.route';
-import { AuthenticationRoutes } from './authentication/authentication.route'
+import { AuthenticationRoutes } from './authentication/authentication.route';
+import { PageRoutes } from './page/page.route';
 
 @NgModule({
   declarations: [
@@ -22,8 +24,10 @@ import { AuthenticationRoutes } from './authentication/authentication.route'
     FormsModule,
     HttpModule,
     AuthenticationModule,
+    PageModule,
     AppRoutes,
-    AuthenticationRoutes
+    AuthenticationRoutes,
+    PageRoutes
   ],
   providers: [],
   bootstrap: [AppComponent]

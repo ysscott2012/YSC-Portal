@@ -9,10 +9,10 @@
 
 .login-header-div {
     position: absolute;
-    top: 25px;
+    top: 40px;
     right: -5px;
     left: -10px;
-    height: 40px;
+    height: 60px;
     background-color: #5d84b3;
 }
 
@@ -26,36 +26,25 @@
     display: table-cell;
     width: 100%;
     vertical-align: middle;
-    padding-left: 20px;
+    padding-left: 40px;
     color: #f7f7f7;
 }
 
 .login-header-triangle-top {
     position: absolute;
     left: -10px;
-    top: 18px;
+    top: 33px;
     width: 0;
     height: 0;
     border-top: 7px solid transparent;
     border-bottom: 0px solid transparent;
     border-right: 9px solid #5c6c80;
 }
-/* 
-.login-header-triangle-bottom {
-    position: absolute;
-    left: -10px;
-    top: 65px;
-    width: 0;
-    height: 0;
-    border-top: 0px solid transparent;
-    border-bottom: 7px solid transparent;
-    border-right: 9px solid #5c6c80;
-} */
 
 .login-header-triangle-bottom-right {
     position: absolute;
     right: -5px;
-    top: 65px;
+    top: 100px;
     width: 0;
     height: 0;
     border-top: 0px solid transparent;
@@ -64,11 +53,14 @@
 }
 
 .login-content {
-    position: absolute;
-    top: 100px;
+    top: 140px;
     width: 100%;
-    height: 200px;
+    height: 460px;
     padding: 20px 40px;
+}
+
+.login-content form {
+  height: 100%;
 }
 
 .login-input {
@@ -94,9 +86,14 @@
 }
 
 #rememberme {
-    width: 30px; 
+    width: 30px;
 }
 
-.btn-primary {
-    background-color: #5d84b3;
+.link {
+  font-size: 12px;
+  position: absolute;
+  bottom: 40px;
+  right: 40px;
 }
+
+

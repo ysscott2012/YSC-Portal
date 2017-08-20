@@ -1,14 +1,21 @@
 .box {
-    height: 400px;
-    width: 400px;
+    height: 600px;
+    width: 800px;
     margin: 0px auto;
-    border: 1px solid #dadada; 
-    box-shadow: 1px 1px 10px 0px #dadada; 
-    background-color: white;   
+    border: 1px solid #dadada;
+    box-shadow: 1px 1px 10px 0px #dadada;
+    background-color: white;
+}
+
+@media (max-width: 992px) {
+  .box {
+    height: 100%;
+    width: calc(100% - 20px);
+  }
 }
 
 .authentication-div {
-    background-image:url(../../assets/beach.jpg); 
+    background-image:url(../../assets/beach.jpg);
     background-repeat: repeat;
     background-size: cover;
     /* background-position: center; */
@@ -31,7 +38,7 @@
 
 .authentication {
     height: 100vh;
-    padding: calc(50vh - 200px) 0px;
+    padding: calc(50vh - 300px) 0px;
 }
 
 @keyframes backgroundAutoScroll {

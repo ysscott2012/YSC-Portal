@@ -46,9 +46,9 @@ export class SignupComponent implements OnInit {
         alert(data.message);
       },
       error => {
+        alert(error.message);
       }
-      );
-
+    );
   }
 
 }
