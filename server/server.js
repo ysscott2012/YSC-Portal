@@ -17,6 +17,7 @@ var authRoutes = require('./routes/auth.routes');
 var userRoutes = require('./routes/user.routes');
 
 var app = express();
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cors());
 

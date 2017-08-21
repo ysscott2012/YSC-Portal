@@ -6,8 +6,11 @@ import { environment } from '../../../environments/environment'
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
+
 // import user class
 import { User } from '../../classes/user';
+
+import { HttpService } from '../../services/http.service';
 
 @Injectable()
 export class AuthenticationService {
@@ -16,7 +19,7 @@ export class AuthenticationService {
   loginURL = environment.API_URL + '/auth/login';
 
   constructor(
-    private http: Http
+    private http: HttpService
   ) { }
 
   // Register a new user.

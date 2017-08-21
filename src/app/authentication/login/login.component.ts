@@ -39,7 +39,9 @@ export class LoginComponent implements OnInit {
       data => {
         alert(data.message);
         if (data.success) {
-          this.router.navigate(['/page']);
+          localStorage.setItem('token', data.token);
+          localStorage.setItem('current', JSON.stringify(data.user));
+          this.router.navigate(['/user']);
         }
       },
       error => {
