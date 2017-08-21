@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 // Open Sources
-// import { DataTableModule, SharedModule, ButtonModule, DropdownModule, CalendarModule } from 'primeng/primeng';
+import { DataTableModule, SharedModule, ButtonModule, DropdownModule, CalendarModule } from 'primeng/primeng';
 
 // Routes
 import { UserRoutes } from './user.route';
@@ -18,11 +18,11 @@ import { HeaderComponent } from '../header/header.component';
   imports: [
     CommonModule,
     UserRoutes,
-    // DataTableModule,
-    // SharedModule,
-    // ButtonModule,
-    // DropdownModule,
-    // CalendarModule
+    DataTableModule,
+    SharedModule,
+    ButtonModule,
+    DropdownModule,
+    CalendarModule
   ],
   declarations: [
     ProfileComponent,
