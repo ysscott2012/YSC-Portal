@@ -38,6 +38,7 @@ export class LoginComponent implements OnInit {
       .subscribe(
       data => {
         alert(data.message);
+        debugger
         if (data.success) {
           localStorage.setItem('token', data.token);
           localStorage.setItem('current', JSON.stringify(data.user));
@@ -45,6 +46,7 @@ export class LoginComponent implements OnInit {
         }
       },
       error => {
+        debugger
         alert(error.message);
       }
     );

@@ -4,6 +4,9 @@ import { CommonModule } from '@angular/common';
 // Open Sources
 import { DataTableModule, SharedModule, ButtonModule, DropdownModule, CalendarModule } from 'primeng/primeng';
 
+// Services
+import { UserService } from './services/user.service';
+
 // Routes
 import { UserRoutes } from './user.route';
 
@@ -29,6 +32,9 @@ import { HeaderComponent } from '../header/header.component';
     TableComponent,
     HeaderComponent,
     UserComponent
+  ],
+  providers: [
+    UserService
   ],
   exports: [
     UserComponent
