@@ -7,6 +7,8 @@ var userSchema = mongoose.Schema({
     password: String,
     level: String,
     verified: Boolean,
+    isApproved: Boolean,
+    isRejected: Boolean,
     since: String
 });
 

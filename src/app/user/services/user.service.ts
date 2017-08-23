@@ -31,8 +31,8 @@ export class UserService {
    * Ger Users.
    * @param
    */
-  GetUsers() {
-    const body = JSON.stringify({});
+  GetUsers(params) {
+    const body = JSON.stringify(params);
     const headers = new Headers({ 'Content-Type': 'application/json' });
     return this.http.post(this.URL_GET_USERS, body, { headers: headers })
       .map((response: Response) => response.json())

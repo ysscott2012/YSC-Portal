@@ -26,18 +26,19 @@ app.use('/auth', authRoutes);
 app.use('/user', userRoutes);
 
 // Point static path to dist
-// app.use(express.static(path.join(__dirname, '../dist')));
+app.use(express.static(path.join(__dirname, '../dist')));
 
 // link to static website
-// app.get('*', (req, res) => {
-//     res.sendFile(path.join(__dirname, '../dist/index.html'));
-// });
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../dist/index.html'));
+});
 
 /**
  * Get port from environment and store in Express.
  */
 const port = process.env.PORT || '3000';
 app.set('port', port);
+
 
 /**
  * Create HTTP server.

@@ -5,6 +5,8 @@ export class User {
     password: String = '';
     level: String = '0';
     verified: Boolean = false;
+    isApproved: Boolean = false;
+    isRejected: Boolean = false;
     since: String = new Date().toJSON();
 
     constructor () {
@@ -14,6 +16,8 @@ export class User {
         this.password = '';
         this.level = '0';
         this.verified = false;
+        this.isApproved = false;
+        this.isRejected = false;
         this.since = new Date().toJSON();
     }
 }

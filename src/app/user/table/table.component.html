@@ -1,3 +1,16 @@
-<p>
-  table works!
-</p>
+<div class="section-title">
+  {{title}}
+</div>
+
+<p-dataTable [value]="users">
+  <p-column field="firstName" header="First Name" [sortable]="true"></p-column>
+  <p-column field="lastName" header="Last Name" [sortable]="true"></p-column>
+  <p-column field="email" header="Email" [sortable]="true"></p-column>
+  <p-column field="level" header="Level" [sortable]="true"></p-column>
+  <p-column [style]="{'text-align':'center'}">
+    <ng-template let-user="rowData" pTemplate="body">
+        <button type="button" class="btn btn-success" *ngIf='!user.isApproved'>Approve</button>
+        <button type="button" class="btn btn-danger"  *ngIf='!user.isRejected'>Reject</button>
+    </ng-template>
+  </p-column>
+</p-dataTable>
