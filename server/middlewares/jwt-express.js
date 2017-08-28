@@ -17,7 +17,7 @@ module.exports = function(options) {
             return
           }
           var decoded = jwt.decode(token)
-          console.log(decoded.user)
+          //console.log(decoded.user)
           next()
         });
       } else {

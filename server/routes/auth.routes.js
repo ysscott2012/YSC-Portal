@@ -4,21 +4,21 @@ var bcrypt = require('bcryptjs');
 var jwt = require('jsonwebtoken');
 var securit = require('../middlewares/securit')
 
-var User = require('../models/user.js');
-var History = require('../models/history.js')
+var UserSchema = require('../models/user.js');
+var HistorySchema = require('../models/history.js')
 
 /**
 *  Login
 */
 router.post('/login', function(req, res) {
   var model = { message: "", user: "", success: false, error: "", token: "" }
-  var newhistory = new History();
+  var newhistory = new HistorySchema();
   // console.log(req.headers)
   // console.log(Object.keys(req.body).length);
   if (Object.keys(req.body).length != 0)
   {
     var SQL = {email: req.body.email};
-    User.findOne(SQL, function(err, user){
+    UserSchema.findOne(SQL, function(err, user){
         if (err)
         {
             model.message = "Login Failed, An error occurred.";
@@ -73,14 +73,14 @@ router.post('/login', function(req, res) {
 */
 router.post('/signup', function(req, res) {
     var model = { message: "", user: "", success: false, error: "", token: "" }
-    var newUser = new User(req.body);
-    var newhistory = new History();
+    var newUser = new UserSchema(req.body);
+    var newhistory = new HistorySchema();
 
     if (Object.keys(req.body).length != 0)
     {
       var SQL = { email: req.body.email };
       newUser.password = bcrypt.hashSync(req.body.password, 10);
-      User.findOne(SQL, function(err, user){
+      UserSchema.findOne(SQL, function(err, user){
           if (err)
           {
               model.message = "Sign up Failed, An error occurred.";

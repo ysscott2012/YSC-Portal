@@ -2,13 +2,13 @@ var mongoose = require('mongoose');
 var User = require('./user');
 
 var historySchema = mongoose.Schema({
-  date: String,
+  date: {type: String, default: new Date().toJSON()},
   user: {
-    firstName: String,
-    lastName: String,
-    email: String
+    firstName: {type: String, default: ""},
+    lastName: {type: String, default: ""},
+    email: {type: String, default: ""}
   },
-  action: String
+  action: {type: String, default: ""}
 });
 
 module.exports = mongoose.model('History', historySchema);

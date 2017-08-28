@@ -1,16 +1,33 @@
-<div class="section-title">
+<!-- <div class="section-title">
   {{title}}
+</div> -->
+
+<div class="sub-section">
+  <ul class="nav nav-pills">
+    <li class="nav-item">
+      <a class="nav-link" [routerLink]="['/user/table']" >All</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" [routerLink]="['/user/pending']" >Pending</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" [routerLink]="['/user/approved']" >Approved</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" [routerLink]="['/user/rejected']" >Rejected</a>
+    </li>
+  </ul>
 </div>
 
 <p-dataTable [value]="users">
   <p-column field="firstName" header="First Name" [sortable]="true"></p-column>
   <p-column field="lastName" header="Last Name" [sortable]="true"></p-column>
-  <p-column field="email" header="Email" [sortable]="true"></p-column>
+  <p-column field="email" header="Email" [sortable]="true" [style]="{'text-overflow':'ellipsis', 'overflow':'hidden'}"></p-column>
   <p-column field="level" header="Level" [sortable]="true"></p-column>
   <p-column [style]="{'text-align':'center'}">
     <ng-template let-user="rowData" pTemplate="body">
-        <button type="button" class="btn btn-success" *ngIf='!user.isApproved'>Approve</button>
-        <button type="button" class="btn btn-danger"  *ngIf='!user.isRejected'>Reject</button>
+        <button type="button" class="btn btn-success" *ngIf='!user.isApproved && current.email!=user.email'>Approve</button>
+        <button type="button" class="btn btn-danger"  *ngIf='!user.isRejected && current.email!=user.email'>Reject</button>
     </ng-template>
   </p-column>
 </p-dataTable>

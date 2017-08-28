@@ -39,4 +39,16 @@ export class UserService {
       .catch((error: Response) => Observable.throw(error.json()));
   }
 
+  /**
+   * Get Current User
+   */
+  GetCurrent(): User {
+    let current: User = null;
+    const str = localStorage.getItem('current');
+    if (str != null && str !== '') {
+      current = JSON.parse(str);
+    }
+    return current;
+  }
+
 }

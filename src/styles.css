@@ -14,9 +14,14 @@
 }
 
 .section-title {
-  font-size: 24px;
-  padding-bottom: 20px;
+  font-size: 22px;
 }
+
+.section-sub-title {
+  font-size: 18px
+}
+
+
 
 .ys-table {
     display: table;
@@ -71,10 +76,3 @@ button {
   font-size: 24px;
 }
 
-.section-title {
-  font-size: 22px;
-}
-
-.section-sub-title {
-  font-size: 18px
-}

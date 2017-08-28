@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-
+// import {} from '../../global/global'
 // services
 import { UserService } from '../services/user.service';
 
@@ -16,6 +16,8 @@ import { User } from '../../classes/user';
 export class TableComponent implements OnInit {
   users: User[];
   title: String = '';
+  current: User;
+
   constructor(
     private route: ActivatedRoute,
     private userService: UserService
@@ -30,13 +32,17 @@ export class TableComponent implements OnInit {
       };
     }
     this.title = this.route.snapshot.data['title'];
-
+    this.current = this.userService.GetCurrent();
     this.GerUsers(params);
   }
 
+  /**
+   * Get Users
+   * @param params
+   */
   GerUsers(params) {
     this.userService.GetUsers(params).subscribe(
-      data => this.users = data,
+      data => { this.users = data.objects; console.log(data) },
       error => console.log(error)
     );
   }
