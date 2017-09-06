@@ -42,7 +42,29 @@ export class TableComponent implements OnInit {
    */
   GerUsers(params) {
     this.userService.GetUsers(params).subscribe(
-      data => { this.users = data.objects; console.log(data) },
+      data => { this.users = data.data; console.log(data); },
+      error => console.log(error)
+    );
+  }
+
+  /**
+   * Approve user
+   * @param user selected user
+   */
+  Approve(user: User) {
+    this.userService.FindOneAndUpdate({email: user.email}, {isApproved: true, isRejected: false}, null).subscribe(
+      data => { this.users = this.users.filter(d => d.email !== data.data.email); },
+      error => console.log(error)
+    );
+  }
+
+  /**
+   * Reject User
+   * @param user selected user
+   */
+  Reject(user: User) {
+    this.userService.FindOneAndUpdate({email: user.email}, {isApproved: false, isRejected: true}, null).subscribe(
+      data => { this.users = this.users.filter(d => d.email !== data.data.email); },
       error => console.log(error)
     );
   }

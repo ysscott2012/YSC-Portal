@@ -26,8 +26,8 @@
   <p-column field="level" header="Level" [sortable]="true"></p-column>
   <p-column [style]="{'text-align':'center'}">
     <ng-template let-user="rowData" pTemplate="body">
-        <button type="button" class="btn btn-success" *ngIf='!user.isApproved && current.email!=user.email'>Approve</button>
-        <button type="button" class="btn btn-danger"  *ngIf='!user.isRejected && current.email!=user.email'>Reject</button>
+        <button type="button" class="btn btn-success" *ngIf='!user.isApproved && current.email!=user.email' (click)="Approve(user)">Approve</button>
+        <button type="button" class="btn btn-danger"  *ngIf='!user.isRejected && current.email!=user.email' (click)="Reject(user)">Reject</button>
     </ng-template>
   </p-column>
 </p-dataTable>
