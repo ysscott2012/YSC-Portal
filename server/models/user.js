@@ -9,8 +9,7 @@ var userSchema = mongoose.Schema({
     verified: {type: Boolean, default: false},
     isApproved: {type: Boolean, default: false},
     isRejected: {type: Boolean, default: false},
-    since: {type: String, default: ""},
-    referenceType: {type: String, default: "user"}
+    since: {type: String, default: ""}
 });
 
 module.exports = mongoose.model('User', userSchema);

@@ -7,9 +7,10 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule, RequestOptions, XHRBackend } from '@angular/http';
 import { HttpService } from './services/http.service';
 
-// Modules
+// Moduless
 import { AuthenticationModule } from './authentication/authentication.module';
 import { UserModule } from './user/user.module';
+import { ChatModule } from './chat/chat.module';
 
 // Component
 import { AppComponent } from './app.component';
@@ -18,20 +19,26 @@ import { AppComponent } from './app.component';
 import { AppRoutes } from './app.route';
 import { AuthenticationRoutes } from './authentication/authentication.route';
 import { UserRoutes } from './user/user.route';
+import { ChatRoutes } from './chat/chat.route';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-    AuthenticationModule,
-    UserModule,
     AppRoutes,
+    // Authentication
+    AuthenticationModule,
     AuthenticationRoutes,
-    UserRoutes
+    // User
+    UserModule,
+    UserRoutes,
+    // Chat
+    ChatModule,
+    ChatRoutes
   ],
   providers: [
     HttpService,

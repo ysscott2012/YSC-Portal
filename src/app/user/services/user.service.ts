@@ -54,11 +54,31 @@ export class UserService {
     return current;
   }
 
+  /**
+   * Find one user and update
+   * @param conditions (condition matches to the database)
+   * @param update ()
+   * @param options ()
+   */
   FindOneAndUpdate(conditions, update, options) {
     const params = {conditions: conditions, update: update, options: options};
     const body = JSON.stringify(params);
     const headers = new Headers({ 'Content-Type': 'application/json' });
     return this.http.post(this.URL_UPDATE_USER, body, { headers: headers })
+      .map((response: Response) => response.json())
+      .catch((error: Response) => Observable.throw(error.json()));
+  }
+
+
+  /**
+   * Remove user
+   * @param conditions
+   */
+  Remove(conditions) {
+    const params = {conditions: conditions};
+    const body = JSON.stringify(params);
+    const headers = new Headers({ 'Content-Type': 'application/json' });
+    return this.http.post(this.URL_REMOVE_USER, body, { headers: headers })
       .map((response: Response) => response.json())
       .catch((error: Response) => Observable.throw(error.json()));
   }

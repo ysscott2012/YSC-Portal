@@ -42,7 +42,12 @@ export class TableComponent implements OnInit {
    */
   GerUsers(params) {
     this.userService.GetUsers(params).subscribe(
-      data => { this.users = data.data; console.log(data); },
+      data => {
+        this.users = [];
+        data.data.forEach(element => {
+          this.users.push(new User(element));
+        });
+      },
       error => console.log(error)
     );
   }

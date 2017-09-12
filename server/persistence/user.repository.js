@@ -60,7 +60,10 @@ class UserRepository extends irepository {
    * remove document from DB
    */
   remove(condition, callback) {
-
+    UserSchema.remove(condition, function(err){
+      if (err) callback({ message: 'remove user error', success: false, data: null });
+      else callback({ message: 'remove user successfully', success: true, data: null })
+    })
   };
 
   /**
