@@ -1,33 +1,50 @@
-<!-- <div class="section-title">
-  {{title}}
-</div> -->
-
 <div class="sub-section">
   <ul class="nav nav-pills">
-    <li class="nav-item">
-      <a class="nav-link" [routerLink]="['/user/table']" >All</a>
+    <li class="nav-item" [ngClass]="{ 'active': title === 'All' }">
+      <a class="nav-link" [routerLink]="['/user/table']">All</a>
     </li>
-    <li class="nav-item">
-      <a class="nav-link" [routerLink]="['/user/pending']" >Pending</a>
+    <li class="nav-item" [ngClass]="{ 'active': title === 'Pending' }">
+      <a class="nav-link" [routerLink]="['/user/pending']">Pending</a>
     </li>
-    <li class="nav-item">
-      <a class="nav-link" [routerLink]="['/user/approved']" >Approved</a>
+    <li class="nav-item" [ngClass]="{ 'active': title === 'Approved' }">
+      <a class="nav-link" [routerLink]="['/user/approved']">Approved</a>
     </li>
-    <li class="nav-item">
-      <a class="nav-link" [routerLink]="['/user/rejected']" >Rejected</a>
+    <li class="nav-item" [ngClass]="{ 'active': title === 'Rejected' }">
+      <a class="nav-link" [routerLink]="['/user/rejected']">Rejected</a>
     </li>
   </ul>
 </div>
 
-<p-dataTable [value]="users">
+
+<!-- <p-dataTable [value]="users">
   <p-column field="firstName" header="First Name" [sortable]="true"></p-column>
   <p-column field="lastName" header="Last Name" [sortable]="true"></p-column>
   <p-column field="email" header="Email" [sortable]="true" [style]="{'text-overflow':'ellipsis', 'overflow':'hidden'}"></p-column>
   <p-column field="level" header="Level" [sortable]="true"></p-column>
   <p-column [style]="{'text-align':'center'}">
     <ng-template let-user="rowData" pTemplate="body">
-        <button type="button" class="btn btn-success" *ngIf='!user.isApproved && current.email!=user.email' (click)="Approve(user)">Approve</button>
-        <button type="button" class="btn btn-danger"  *ngIf='!user.isRejected && current.email!=user.email' (click)="Reject(user)">Reject</button>
+        <button type="button" class="btn btn-success" *ngIf='!user.isApproved && current.email!=user.email' (click)="approve(user)">Approve</button>
+        <button type="button" class="btn btn-danger"  *ngIf='!user.isRejected && current.email!=user.email' (click)="reject(user)">Reject</button>
     </ng-template>
   </p-column>
-</p-dataTable>
+</p-dataTable> -->
+
+<table class="table table-bordered">
+  <tr>
+    <th scope="col">User Name</th>
+    <th scope="col">Email</th>
+    <th scope="col">Level</th>
+    <th scope="col">Date</th>
+    <th scope="col">Action</th>
+  </tr>
+  <tr *ngFor="let user of users">
+    <td>{{user.getFullName()}}</td>
+    <td>{{user.email}}</td>
+    <td>{{user.getLevelName()}}</td>
+    <td>{{user.getSinceDateString()}}</td>
+    <td>
+      <button type="button" class="btn btn-success" *ngIf='!user.isApproved && current.email!=user.email' (click)="approve(user)">Approve</button>
+      <button type="button" class="btn btn-danger" *ngIf='!user.isRejected && current.email!=user.email' (click)="reject(user)">Reject</button>
+    </td>
+  </tr>
+</table>

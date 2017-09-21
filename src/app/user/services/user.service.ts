@@ -43,13 +43,25 @@ export class UserService {
   }
 
   /**
+   * get user
+   * @param params
+   */
+  getUser(params) {
+    const body = JSON.stringify(params);
+    const headers = new Headers({ 'Content-Type': 'application/json' });
+    return this.http.post(this.URL_FIND_USER, body, { headers: headers })
+      .map((response: Response) => response.json())
+      .catch((error: Response) => Observable.throw(error.json()));
+  }
+
+  /**
    * Get Current User
    */
-  GetCurrent(): User {
+  getCurrent(): User {
     let current: User = null;
     const str = localStorage.getItem('current');
     if (str != null && str !== '') {
-      current = JSON.parse(str);
+      current = new User(JSON.parse(str));
     }
     return current;
   }
@@ -60,7 +72,7 @@ export class UserService {
    * @param update ()
    * @param options ()
    */
-  FindOneAndUpdate(conditions, update, options) {
+  findOneAndUpdate(conditions, update, options) {
     const params = {conditions: conditions, update: update, options: options};
     const body = JSON.stringify(params);
     const headers = new Headers({ 'Content-Type': 'application/json' });
@@ -74,7 +86,7 @@ export class UserService {
    * Remove user
    * @param conditions
    */
-  Remove(conditions) {
+  remove(conditions) {
     const params = {conditions: conditions};
     const body = JSON.stringify(params);
     const headers = new Headers({ 'Content-Type': 'application/json' });

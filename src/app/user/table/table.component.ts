@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-// import {} from '../../global/global'
+
 // services
 import { UserService } from '../services/user.service';
 
@@ -15,9 +15,8 @@ import { User } from '../../classes/user';
 })
 export class TableComponent implements OnInit {
   users: User[];
-  title: String = '';
   current: User;
-
+  title: String = '';
   constructor(
     private route: ActivatedRoute,
     private userService: UserService
@@ -32,21 +31,22 @@ export class TableComponent implements OnInit {
       };
     }
     this.title = this.route.snapshot.data['title'];
-    this.current = this.userService.GetCurrent();
-    this.GerUsers(params);
+    this.current = this.userService.getCurrent();
+    this.gerUsers(params);
   }
 
   /**
    * Get Users
    * @param params
    */
-  GerUsers(params) {
+  gerUsers(params) {
     this.userService.GetUsers(params).subscribe(
       data => {
         this.users = [];
-        data.data.forEach(element => {
+        data.payload.forEach(element => {
           this.users.push(new User(element));
         });
+        console.log(data);
       },
       error => console.log(error)
     );
@@ -56,9 +56,9 @@ export class TableComponent implements OnInit {
    * Approve user
    * @param user selected user
    */
-  Approve(user: User) {
-    this.userService.FindOneAndUpdate({email: user.email}, {isApproved: true, isRejected: false}, null).subscribe(
-      data => { this.users = this.users.filter(d => d.email !== data.data.email); },
+  approve(user: User) {
+    this.userService.findOneAndUpdate({email: user.email}, {isApproved: true, isRejected: false}, null).subscribe(
+      data => { this.users = this.users.filter(d => d.email !== data.payload.email); },
       error => console.log(error)
     );
   }
@@ -67,9 +67,9 @@ export class TableComponent implements OnInit {
    * Reject User
    * @param user selected user
    */
-  Reject(user: User) {
-    this.userService.FindOneAndUpdate({email: user.email}, {isApproved: false, isRejected: true}, null).subscribe(
-      data => { this.users = this.users.filter(d => d.email !== data.data.email); },
+  reject(user: User) {
+    this.userService.findOneAndUpdate({email: user.email}, {isApproved: false, isRejected: true}, null).subscribe(
+      data => { this.users = this.users.filter(d => d.email !== data.payload.email); },
       error => console.log(error)
     );
   }

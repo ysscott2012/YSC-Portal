@@ -1,8 +1,10 @@
 const baseService = require('./base.service');
-const userRepository = require('../persistence/user.repository');
+const repository = require('../persistence/user.repository');
 
 class UserService extends baseService {
     constructor() {
-        super(userRepository);
+        super(repository);
     }
 }
+
+module.exports = new UserService();

@@ -10,11 +10,8 @@
           {{current.firstName}}
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <!--
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          -->
-          <a class="dropdown-item" href="#" (click)="Logout()">Log out</a>
+          <a class="dropdown-item" [routerLink]="['/user/profile', current.id]">Profile</a>
+          <a class="dropdown-item" href="#" (click)="logout()">Log out</a>
         </div>
       </li>
     </ul>

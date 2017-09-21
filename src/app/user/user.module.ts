@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 // Open Sources
-import { DataTableModule, SharedModule, ButtonModule, DropdownModule, CalendarModule } from 'primeng/primeng';
+// import { DataTableModule, SharedModule, ButtonModule, DropdownModule, CalendarModule } from 'primeng/primeng';
 
 // Services
 import { UserService } from './services/user.service';
@@ -21,11 +22,13 @@ import { HeaderComponent } from '../header/header.component';
   imports: [
     CommonModule,
     UserRoutes,
-    DataTableModule,
-    SharedModule,
-    ButtonModule,
-    DropdownModule,
-    CalendarModule
+    FormsModule,
+    ReactiveFormsModule
+    // DataTableModule,
+    // SharedModule,
+    // ButtonModule,
+    // DropdownModule,
+    // CalendarModule
   ],
   declarations: [
     ProfileComponent,

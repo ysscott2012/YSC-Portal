@@ -10,11 +10,11 @@ const route: Routes = [
     path: 'user',
     component: UserComponent,
     children: [
-      { path: 'approved', component: TableComponent, data: { title: 'Approved Users', isApproved: true, isRejected: false} },
-      { path: 'rejected', component: TableComponent, data: { title: 'Rejected Users', isApproved: false, isRejected: true} },
-      { path: 'pending', component: TableComponent, data: { title: 'Pending Users', isApproved: false, isRejected: false} },
-      { path: 'table', component: TableComponent, data: {title: 'All Users'}},
-      { path: 'profile', component: ProfileComponent }
+      { path: 'approved', component: TableComponent, data: { title: 'Approved', isApproved: true, isRejected: false} },
+      { path: 'rejected', component: TableComponent, data: { title: 'Rejected', isApproved: false, isRejected: true} },
+      { path: 'pending', component: TableComponent, data: { title: 'Pending', isApproved: false, isRejected: false} },
+      { path: 'table', component: TableComponent, data: {title: 'All'}},
+      { path: 'profile/:id', component: ProfileComponent }
     ]
   }
 ];

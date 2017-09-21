@@ -1,17 +1,21 @@
 
 var UserSchema = require('../models/user');
-var irepository = require('../persistence/irepository');
+var message = require('../models/message');
+var error = require('../models/error');
 
-class UserRepository extends irepository {
+class UserRepository {
 
   /**
    * find documents from DB
    */
   find(condition, callback) {
     UserSchema.find(condition).then((objects) => {
-      callback({ message: 'get users successfully', success: true, data: objects })
+      message.setMessage( true, "Get users successfully", objects, []);
+      callback(message)
     }, (e) => {
-      callback({ message: 'get users error', success: false, data: [] })
+      error.setError(200);
+      message.setMessage( false, "Get users failed", [], [error]);
+      callback(message);
     });
   };
 
@@ -21,7 +25,8 @@ class UserRepository extends irepository {
   findOne(condition, createIfNull, callback) {
     UserSchema.findOne(condition, function (err, object) {
       if (object) {
-        callback({ message: 'Get user successfully', success: true, data: object });
+        message.setMessage( true, "Get user successfully", object, []);
+        callback(message);
       }
       else {
         if (createIfNull) {
@@ -30,7 +35,9 @@ class UserRepository extends irepository {
           })
         }
         else {
-          callback({ message: 'Get user error', success: false, data: null });
+          error.setError(200);
+          message.setMessage( false, "Get user failed", null, [error]);
+          callback(message);
         }
       }
     })
@@ -43,14 +50,19 @@ class UserRepository extends irepository {
     UserSchema.findOneAndUpdate(conditions, update, options, function(err, doc, res) {
       //console.log(doc)
       if (err) {
-        callback({ message: 'Update user error in MongoDB', success: false, data: null });
+        error.setError(101);
+        message.setMessage(false, "Update user error in MongoDB", null, [error] )
+        callback(message);
       }
       else {
         if (doc) {
-          callback({ message: 'Update user successfully', success: true, data: doc });
+          message.setMessage(true, "Update user successfully", doc,  [])
+          callback(message);
         }
         else {
-          callback({ message: 'Update user error; can\'t find user', success: false, data: null });
+          error.setError(101);
+          message.setMessage(false, "Update user error; can\'t find user", null, [error])
+          callback(message);
         }
       }
     })
@@ -61,8 +73,14 @@ class UserRepository extends irepository {
    */
   remove(condition, callback) {
     UserSchema.remove(condition, function(err){
-      if (err) callback({ message: 'remove user error', success: false, data: null });
-      else callback({ message: 'remove user successfully', success: true, data: null })
+      if (err) {
+        message.setMessage(false, "remove user error", null, []);
+        callback(message);
+      }
+      else {
+        message.setMessage(true, "remove user successfully", null, []);
+        callback(message);
+      }
     })
   };
 
@@ -73,10 +91,12 @@ class UserRepository extends irepository {
     var newObject = new UserSchema(condition);
     newObject.save(function (err, UserSchema) {
       if (err) {
-        callback({ message: 'Create user error in MongoDB', success: false, data: null });
+        message.setMessage(false, "Create user error in MongoDB", null, []);
+        callback(message);
       }
       else {
-        callback({ message: 'Create user successfully', success: true, data: newObject });
+        message.setMessage(true, "Create user successfully", newObject, []);
+        callback(message);
       }
     })
   };

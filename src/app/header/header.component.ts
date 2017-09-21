@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { User } from '../classes/user';
+import { UserService } from '../user/services/user.service';
 
 @Component({
   selector: 'app-header',
@@ -10,17 +11,18 @@ import { User } from '../classes/user';
 })
 export class HeaderComponent implements OnInit {
 
-  current: User = new User();
+  current: User = null;
   constructor(
-    private router: Router
+    private router: Router,
+    private userService: UserService
   ) {
-    this.current = JSON.parse(localStorage.getItem('current')) == null ? new User() : JSON.parse(localStorage.getItem('current'));
+    this.current = this.userService.getCurrent();
   }
 
   ngOnInit() {
   }
 
-  Logout() {
+  logout() {
     localStorage.clear();
     alert('Logout sucessfully');
     this.router.navigate(['/auth/login']);

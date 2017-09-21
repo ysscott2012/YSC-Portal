@@ -1,7 +1,22 @@
+.nav-item.active {
+  font-weight: 700;
+}
+
 .section-title {
   padding-bottom: 20px;
 }
 
 .sub-section {
   padding-bottom: 20px;
+}
+
+table {
+  width: 100%;
+  table-layout: fixed;
+}
+
+td {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  vertical-align: middle;
 }

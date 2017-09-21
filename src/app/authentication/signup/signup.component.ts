@@ -43,6 +43,7 @@ export class SignupComponent implements OnInit {
       .subscribe(
       data => {
         alert(data.message);
+        console.log(data);
       },
       error => {
         alert(error.message);
