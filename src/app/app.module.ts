@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 // https://stackoverflow.com/questions/35375530/how-do-i-add-a-json-web-token-to-each-header
 import { HttpModule, RequestOptions, XHRBackend } from '@angular/http';
 import { HttpService } from './services/http.service';
+import { SharedService } from './services/shared.service';
 
 // Moduless
 import { AuthenticationModule } from './authentication/authentication.module';
@@ -42,6 +43,7 @@ import { ChatRoutes } from './chat/chat.route';
   ],
   providers: [
     HttpService,
+    SharedService
   ],
   bootstrap: [AppComponent]
 })

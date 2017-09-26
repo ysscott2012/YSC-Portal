@@ -9,6 +9,7 @@ import 'rxjs/add/operator/map';
 
 // classes
 import { User } from '../../classes/user';
+import { Params } from '../../classes/params';
 
 // Services
 import { HttpService } from '../../services/http.service';
@@ -16,12 +17,16 @@ import { HttpService } from '../../services/http.service';
 @Injectable()
 export class UserService {
 
+  /**
+   * constants
+   */
   private URL_FIND_USERS = environment.API_URL + '/user/find';
   private URL_FIND_USER = environment.API_URL + '/user/findOne';
   private URL_REMOVE_USER = environment.API_URL + '/user/remove';
   private URL_SAVE_USER = environment.API_URL + '/user/save';
   private URL_UPDATE_USERS = environment.API_URL + '/user/update';
   private URL_UPDATE_USER = environment.API_URL + '/user/updateOne';
+
   /**
    * Contructor.
    * @param http
@@ -34,8 +39,8 @@ export class UserService {
    * Ger Users.
    * @param
    */
-  GetUsers(params) {
-    const body = JSON.stringify(params);
+  GetUsers(params: Params) {
+    const body = JSON.stringify(params.conditions);
     const headers = new Headers({ 'Content-Type': 'application/json' });
     return this.http.post(this.URL_FIND_USERS, body, { headers: headers })
       .map((response: Response) => response.json())

@@ -10,6 +10,7 @@ router.use(jwtExpress());
 
 
 router.post('/find', function(req, res) {
+  console.log('user route find method called');
   service.find(req.body, function(result){
     res.send(result);
   })

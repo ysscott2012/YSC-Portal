@@ -6,6 +6,7 @@ import { UserService } from '../services/user.service';
 
 // classes
 import { User } from '../../classes/user';
+import { Params } from '../../classes/params';
 
 
 @Component({
@@ -14,42 +15,53 @@ import { User } from '../../classes/user';
   styleUrls: ['./table.component.css']
 })
 export class TableComponent implements OnInit {
-  users: User[];
-  current: User;
+
+  /**
+   * Variables
+   */
+  users: User[] = [];
+  current: User = new User();
   title: String = '';
+
+  /**
+   * constructor
+   * @param route
+   * @param userService
+   */
   constructor(
     private route: ActivatedRoute,
     private userService: UserService
   ) { }
 
   ngOnInit() {
-    let params = {};
-    if (this.route.snapshot.data.hasOwnProperty('isApproved') && this.route.snapshot.data.hasOwnProperty('isRejected')) {
-      params = {
-        isApproved: this.route.snapshot.data['isApproved'],
-        isRejected: this.route.snapshot.data['isRejected']
-      };
-    }
     this.title = this.route.snapshot.data['title'];
     this.current = this.userService.getCurrent();
-    this.gerUsers(params);
+    this.getUsers();
   }
 
   /**
    * Get Users
    * @param params
    */
-  gerUsers(params) {
-    this.userService.GetUsers(params).subscribe(
-      data => {
-        this.users = [];
-        data.payload.forEach(element => {
-          this.users.push(new User(element));
-        });
-        console.log(data);
-      },
-      error => console.log(error)
-    );
+  getUsers() {
+    const params: Params = new Params();
+
+    if (this.route.snapshot.data.hasOwnProperty('isApproved') && this.route.snapshot.data.hasOwnProperty('isRejected')) {
+
+      params.conditions = {
+        isApproved: this.route.snapshot.data['isApproved'],
+        isRejected: this.route.snapshot.data['isRejected']
+      };
+
+      this.userService.GetUsers(params).subscribe(
+        data => {
+          data.payload.forEach(element => {
+            this.users.push(new User(element));
+          });
+        },
+        error => console.log(error)
+      );
+    }
   }
 
   /**
@@ -57,10 +69,11 @@ export class TableComponent implements OnInit {
    * @param user selected user
    */
   approve(user: User) {
-    this.userService.findOneAndUpdate({email: user.email}, {isApproved: true, isRejected: false}, null).subscribe(
-      data => { this.users = this.users.filter(d => d.email !== data.payload.email); },
-      error => console.log(error)
-    );
+    const params: Params = new Params();
+    params.conditions = {email: user.email};
+    params.update = {isApproved: true, isRejected: false};
+    params.options = null;
+    this.updateUser(params);
   }
 
   /**
@@ -68,8 +81,26 @@ export class TableComponent implements OnInit {
    * @param user selected user
    */
   reject(user: User) {
-    this.userService.findOneAndUpdate({email: user.email}, {isApproved: false, isRejected: true}, null).subscribe(
-      data => { this.users = this.users.filter(d => d.email !== data.payload.email); },
+    const params: Params = new Params();
+    params.conditions = {email: user.email};
+    params.update = {isApproved: false, isRejected: true};
+    params.options = null;
+    this.updateUser(params);
+  }
+
+  /**
+   * update user
+   * @param params
+   */
+  updateUser(params: Params) {
+    this.userService.findOneAndUpdate(
+      params.conditions,
+      params.update,
+      params.options
+    ).subscribe(
+      data => {
+        this.users = this.users.filter(d => d.email !== data.payload.email);
+      },
       error => console.log(error)
     );
   }
