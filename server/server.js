@@ -25,13 +25,15 @@ app.use(cors());
 app.use('/auth', authRoutes);
 app.use('/user', userRoutes);
 
+
+// Uncomment following method when you are using server.js serves static website.
 // Point static path to dist
-app.use(express.static(path.join(__dirname, '../dist')));
+// app.use(express.static(path.join(__dirname, '../dist')));
 
 // link to static website
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../dist/index.html'));
-});
+// app.get('*', (req, res) => {
+//     res.sendFile(path.join(__dirname, '../dist/index.html'));
+// });
 
 /**
  * Get port from environment and store in Express.
