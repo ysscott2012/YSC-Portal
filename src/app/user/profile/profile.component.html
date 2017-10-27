@@ -1,3 +1,28 @@
-<p>
-  profile works!
-</p>
+<div class="container-fluid">
+  <div class="row">
+      <div>
+
+      </div>
+      <div>
+        <!-- profile image -->
+        <app-circle-photo
+          *ngIf="user"
+          [path]="user.profileImage"
+          [board]="'1000'">
+        </app-circle-photo>
+
+        <!-- only allow current user to upload photo -->
+        <app-upload
+          *ngIf="isCurrent"
+          [id]="id"
+          [activity]="activity"
+          [uploadDirectly]="uploadDirectly"
+          [fileType]="fileType"
+          [fileFolder]="fileFolder"
+          [title]="'Upload Profile Image'">
+        </app-upload>
+      </div>
+  </div>
+</div>
+
+

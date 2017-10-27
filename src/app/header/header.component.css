@@ -1,3 +1,44 @@
+.navbar-brand {
+  text-align: center;
+}
+
+#userHeader {
+  border: none;
+  padding: 0px;
+}
+
+#menuHeader {
+  border: none;
+  padding: 7.5px;
+}
+
+#menuHeader > span {
+  background-image: url('/assets/menu.png');
+  height: 25px;
+  width: 25px;
+}
+
 #header.navbar {
   background-color: #5d84b3;
 }
+
+#navbarDropdownMenuLink {
+  float: right
+}
+
+#navbarUserImage {
+  float: right;
+  cursor: pointer;
+}
+
+.dropdown-toggle-no-arrow {
+  padding: 0px 0.5rem;
+  line-height: 40px;
+  font-size: 1.5em;
+}
+
+.dropdown-toggle-no-arrow::after {
+    display: inline-block;
+    content: "";
+}
+

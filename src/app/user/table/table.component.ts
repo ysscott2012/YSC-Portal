@@ -33,6 +33,9 @@ export class TableComponent implements OnInit {
     private userService: UserService
   ) { }
 
+  /**
+   * lifecycle
+   */
   ngOnInit() {
     this.title = this.route.snapshot.data['title'];
     this.current = this.userService.getCurrent();
@@ -53,7 +56,7 @@ export class TableComponent implements OnInit {
         isRejected: this.route.snapshot.data['isRejected']
       };
 
-      this.userService.GetUsers(params).subscribe(
+      this.userService.getUsers(params).subscribe(
         data => {
           data.payload.forEach(element => {
             this.users.push(new User(element));

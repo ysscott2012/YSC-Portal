@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, NavigationEnd } from '@angular/router';
 
 import { User } from '../classes/user';
+import { Navigation } from "../classes/navigation";
 import { UserService } from '../user/services/user.service';
+import { AuthenticationService } from "../authentication/services/authentication.service";
 
 @Component({
   selector: 'app-header',
@@ -11,20 +13,68 @@ import { UserService } from '../user/services/user.service';
 })
 export class HeaderComponent implements OnInit {
 
-  current: User = null;
+  /**
+   * Attributes
+   */
+  public current: User = null;
+  public navigation: Navigation = null;
+
+
+  /**
+   * constructor
+   * @param router
+   * @param userService
+   */
   constructor(
     private router: Router,
+    private authenticationService: AuthenticationService,
     private userService: UserService
   ) {
     this.current = this.userService.getCurrent();
+    if (this.current) {
+      this.navigation = this.current.getHeaderDropdown();
+    }
+    console.log(this.navigation)
+    console.log(this.current)
+
+    this.router.events.subscribe((event) =>{
+      if(event instanceof NavigationEnd) {
+        if (event.url === '/' && event.urlAfterRedirects === '/auth/login') {
+          this.authenticationService.logout();
+          this.current = null;
+        }
+      }
+      this.closeMenu();
+    })
+
   }
 
+  /**
+   * lifecycle
+   */
   ngOnInit() {
+
   }
 
-  logout() {
-    localStorage.clear();
-    alert('Logout sucessfully');
-    this.router.navigate(['/auth/login']);
+  /**
+   * force to close menu
+   */
+  closeMenu() {
+    var element = document.getElementsByClassName('main-page');
+    if (element[0].classList.contains('active')) {
+      element[0].classList.remove('active');
+    }
+  }
+
+  /**
+   * toggle mobile menu
+   */
+  toggleMenu() {
+    var element = document.getElementsByClassName('main-page');
+    if (element[0].classList.contains('active')) {
+      element[0].classList.remove('active');
+    } else {
+      element[0].classList.add('active');
+    }
   }
 }

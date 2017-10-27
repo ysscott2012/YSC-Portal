@@ -7,8 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AuthenticationComponent implements OnInit {
 
+  /**
+   * constructor
+   */
   constructor() { }
 
+  /**
+   * lifecycle
+   */
   ngOnInit() {
 
   }

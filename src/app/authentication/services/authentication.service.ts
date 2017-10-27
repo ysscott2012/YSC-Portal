@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Headers, Http, Response } from '@angular/http';
+import { Router } from '@angular/router';
 
 import { environment } from '../../../environments/environment';
 
@@ -16,15 +17,22 @@ import { HttpService } from '../../services/http.service';
 @Injectable()
 export class AuthenticationService {
 
-  signupURL = environment.API_URL + '/auth/signup';
-  loginURL = environment.API_URL + '/auth/login';
+  /**
+   * Attributes
+   */
+  public static TOKEN = 'token';
+  public static CURRENT_USER = 'current';
+
+  private URL_SIGN_UP = environment.API_URL + '/auth/signup';
+  private URL_LOGIN = environment.API_URL + '/auth/login';
 
   /**
-   * Contructor.
+   * contructor.
    * @param http
    */
   constructor(
-    private http: HttpService
+    private http: HttpService,
+    private router: Router
   ) { }
 
   /**
@@ -34,7 +42,7 @@ export class AuthenticationService {
   register(user: User) {
     const body = JSON.stringify(user);
     const headers = new Headers({ 'Content-Type': 'application/json' });
-    return this.http.post(this.signupURL, body, { headers: headers })
+    return this.http.post(this.URL_SIGN_UP, body, { headers: headers })
       .map((response: Response) => response.json())
       .catch((error: Response) => Observable.throw(error.json()));
   }
@@ -46,9 +54,25 @@ export class AuthenticationService {
   login(user: User) {
     const body = JSON.stringify(user);
     const headers = new Headers({ 'Content-Type': 'application/json' });
-    return this.http.post(this.loginURL, body, { headers: headers })
+    return this.http.post(this.URL_LOGIN, body, { headers: headers })
       .map((response: Response) => response.json())
       .catch((error: Response) => Observable.throw(error.json()));
+  }
+
+  /**
+   * log out
+   */
+  logout() {
+    localStorage.clear();
+    alert('Logout sucessfully');
+    this.router.navigate(['/auth/login']);
+  }
+
+  /**
+   * GetToken.
+   */
+  getToken() {
+    return localStorage.getItem(AuthenticationService.TOKEN);
   }
 
 }

@@ -36,25 +36,16 @@ export class UserService {
   ) { }
 
   /**
-   * Ger Users.
-   * @param
+   * Find one user and update
+   * @param conditions (condition matches to the database)
+   * @param update ()
+   * @param options ()
    */
-  GetUsers(params: Params) {
-    const body = JSON.stringify(params.conditions);
-    const headers = new Headers({ 'Content-Type': 'application/json' });
-    return this.http.post(this.URL_FIND_USERS, body, { headers: headers })
-      .map((response: Response) => response.json())
-      .catch((error: Response) => Observable.throw(error.json()));
-  }
-
-  /**
-   * get user
-   * @param params
-   */
-  getUser(params) {
+  findOneAndUpdate(conditions, update, options) {
+    const params = {conditions: conditions, update: update, options: options};
     const body = JSON.stringify(params);
     const headers = new Headers({ 'Content-Type': 'application/json' });
-    return this.http.post(this.URL_FIND_USER, body, { headers: headers })
+    return this.http.post(this.URL_UPDATE_USER, body, { headers: headers })
       .map((response: Response) => response.json())
       .catch((error: Response) => Observable.throw(error.json()));
   }
@@ -72,20 +63,36 @@ export class UserService {
   }
 
   /**
-   * Find one user and update
-   * @param conditions (condition matches to the database)
-   * @param update ()
-   * @param options ()
+   * Get user
+   * @param params
    */
-  findOneAndUpdate(conditions, update, options) {
-    const params = {conditions: conditions, update: update, options: options};
+  getUser(params) {
     const body = JSON.stringify(params);
     const headers = new Headers({ 'Content-Type': 'application/json' });
-    return this.http.post(this.URL_UPDATE_USER, body, { headers: headers })
+    return this.http.post(this.URL_FIND_USER, body, { headers: headers })
       .map((response: Response) => response.json())
       .catch((error: Response) => Observable.throw(error.json()));
   }
 
+  /**
+   * Get users.
+   * @param
+   */
+  getUsers(params: Params) {
+    const body = JSON.stringify(params.conditions);
+    const headers = new Headers({ 'Content-Type': 'application/json' });
+    return this.http.post(this.URL_FIND_USERS, body, { headers: headers })
+      .map((response: Response) => response.json())
+      .catch((error: Response) => Observable.throw(error.json()));
+  }
+
+  /**
+   * check if selected user is current user
+   * @param id
+   */
+  isCurrent(id: String) {
+    return id === this.getCurrent().id;
+  }
 
   /**
    * Remove user

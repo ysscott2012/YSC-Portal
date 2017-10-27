@@ -1,0 +1,94 @@
+
+/**
+ * ratio responsive box
+ * height and width is ratio responsive
+ * naming convension: ys-width-height.
+ * example: ys-3-4 -> width : height = 3 : 4
+ */
+
+/* General css grid style */
+
+.ys-1-1::before,
+.ys-1-2::before,
+.ys-2-1::before,
+.ys-3-4::before,
+.ys-4-5::before {
+  content: "";
+  display: block
+}
+
+.ys-1-1,
+.ys-1-2,
+.ys-2-1,
+.ys-3-4,
+.ys-4-5 {
+  position: relative;
+  width: 100%;
+  overflow: hidden
+}
+
+.ys-1-1 > div,
+.ys-1-2 > div,
+.ys-2-1 > div,
+.ys-3-4 > div,
+.ys-4-5 > div  {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+}
+
+.ys-1-1 > div > div,
+.ys-1-2 > div > div,
+.ys-2-1 > div > div,
+.ys-3-4 > div > div,
+.ys-4-5 > div > div {
+  height: 100%;
+  width: 100%;
+}
+
+/* Individaul grid style */
+
+.ys-1-1::before {
+  padding-top: 100%;
+}
+
+.ys-1-2::before {
+  padding-top: 50%;
+}
+
+.ys-2-1::before {
+  padding-top: 200%;
+}
+
+.ys-3-4::before {
+  padding-top: 75%;
+}
+
+.ys-3-4::before {
+  padding-top: 80%;
+}
+
+/* xs min-width: 0px */
+
+/* sm */
+@media ( min-width: 576px ) {
+
+}
+
+/* md */
+@media ( min-width: 768px ) {
+
+}
+
+/* lg */
+@media ( min-width: 992px ) {
+
+}
+
+/* xl */
+@media ( min-width: 1200px ) {
+
+}
+

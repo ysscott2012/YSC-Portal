@@ -1,6 +1,12 @@
 import { Address } from './address';
+import { Navigation } from './navigation';
+
 
 export class User {
+
+    /**
+     * attributes
+     */
     id: String = '';
     firstName: String = '';
     lastName: String = '';
@@ -11,7 +17,10 @@ export class User {
     isApproved: Boolean = false;
     isRejected: Boolean = false;
     since: String = new Date().toJSON();
+
+    profileImage: String = '';
     address: Address = new Address();
+
 
     /**
      *  constructor
@@ -26,8 +35,25 @@ export class User {
         this.isApproved = user.isApproved;
         this.isRejected = user.isRejected;
         this.since = user.since;
+
+        this.profileImage = user.profileImage;
         this.address = new Address(user.address);
       }
+    }
+
+    /**
+     * Get mobile Navigation bar
+     * @param user
+     */
+    getMobileNavigation(): Navigation {
+      return new Navigation(this, 'Mobile');;
+    }
+
+    /**
+     * Ger Header Dropdown list
+     */
+    getHeaderDropdown(): Navigation {
+      return new Navigation(this, 'HeaderDropdown');
     }
 
     /**

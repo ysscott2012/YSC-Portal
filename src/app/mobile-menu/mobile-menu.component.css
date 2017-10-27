@@ -1,0 +1,28 @@
+
+
+.main-page-menu-content {
+  position: relative;
+  left: 24%;
+  right: 0px;
+  width: 76%;
+}
+
+.menu-close {
+  position: absolute;
+  top: 15px;
+  right: 25px;
+  font-size: 24px;
+  color: white;
+}
+
+.menu-content {
+  height: 100vh;
+  display: table;
+  width: 100%;
+}
+
+.menu-content-items {
+  display: table-cell;
+  vertical-align: middle;
+}
+

@@ -15,14 +15,24 @@ import { User } from '../../classes/user';
 })
 export class LoginComponent implements OnInit {
 
-  loginForm: FormGroup;
+  /**
+   * Attributes
+   */
+  public loginForm: FormGroup;
 
-
+  /**
+   * constructor
+   * @param authenticationService
+   * @param router
+   */
   constructor(
     private authenticationService: AuthenticationService,
     private router: Router
   ) { }
 
+  /**
+   * lifecycle
+   */
   ngOnInit() {
     this.loginForm = new FormGroup({
       email: new FormControl(null, Validators.required),
@@ -30,6 +40,9 @@ export class LoginComponent implements OnInit {
     });
   }
 
+  /**
+   * login
+   */
   login() {
     const user = new User();
     user.password = this.loginForm.value.password;
@@ -37,8 +50,6 @@ export class LoginComponent implements OnInit {
     this.authenticationService.login(user)
       .subscribe(
       data => {
-        alert(data.message);
-        debugger
         if (data.success) {
           localStorage.setItem('token', data.token);
           localStorage.setItem('current', JSON.stringify(data.user));
@@ -46,7 +57,6 @@ export class LoginComponent implements OnInit {
         }
       },
       error => {
-        debugger
         alert(error.message);
       }
     );

@@ -1,11 +1,76 @@
 /* You can add global styles to this file, and also import other style files */
-.row-eq-height {
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    width: 100%;
+
+.root {
+  height: 100vh;
+  position: fixed;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
 }
+
+body {
+  height: 100vh;
+  font-size: 16px;
+}
+
+.main-page {
+  height: 100vh;
+  background-color: white;
+  -webkit-transition: all 200ms linear;
+  -moz-transition: all 200ms  linear;
+  transition: all 200ms linear;
+}
+
+.main-page.active {
+  transform: perspective( 2000px ) rotateY( 45deg ) translateX(-80%) scale(0.9)
+}
+
+.main-page-menu {
+  height: 100vh;
+  background-color: black;
+  position: fixed;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  z-index: -1;
+}
+
+.menu-content-items ul {
+  list-style: none;
+  padding: 0px 10%;
+  margin: 0px;
+}
+
+.menu-content-items li {
+  height: 40px;
+}
+
+.menu-content-items a.white {
+  color: white !important;
+  line-height: 40px;
+  cursor: pointer;
+}
+
+.menu-content-items a.black {
+  color: black !important;
+  line-height: 40px;
+  cursor: pointer;
+}
+
+.menu-content-items i {
+  width: 30px;
+  text-align: center;
+  font-size: 1.3em;
+}
+
+.menu-content-items span {
+  padding-left: 10px;
+}
+
+
+
 
 /* Section */
 
@@ -20,8 +85,6 @@
 .section-sub-title {
   font-size: 18px
 }
-
-
 
 .ys-table {
     display: table;
@@ -75,4 +138,5 @@ button {
 .page-title {
   font-size: 24px;
 }
+
 

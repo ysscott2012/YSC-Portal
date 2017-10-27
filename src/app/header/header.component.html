@@ -1,17 +1,58 @@
 <nav id="header" class="navbar navbar-toggleable-md navbar-light sticky-top" *ngIf="current">
-  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+
+  <!-- Mobile right menu header -->
+  <button id="menuHeader" class="navbar-toggler navbar-toggler-right" type="button" aria-controls="navbarNavDropdown" aria-expanded="false"
+    aria-label="Toggle navigation" (click)="toggleMenu()">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <a class="navbar-brand" href="#">Navbar</a>
-  <div class="collapse navbar-collapse" id="navbarNavDropdown">
-    <ul class="navbar-nav">
+
+  <a class="navbar-brand" [routerLink]="['/user']">YS</a>
+
+  <!-- Mobile left menu header -->
+  <button id="userHeader" class="navbar-toggler navbar-toggler-left" type="button" aria-controls="navbarNavDropdown" aria-expanded="false"
+    aria-label="Toggle navigation">
+    <app-circle-photo
+      *ngIf="current"
+      id="navbarUserImage"
+      [routerLink]="['/user/profile/' + current.id]"
+      [board]="'40'"
+      [path]="current.profileImage">
+    </app-circle-photo>
+  </button>
+
+  <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+    <ul class="nav navbar-nav navbar-right">
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          {{current.firstName}}
+        <a class="nav-link dropdown-toggle-no-arrow" href="#" id="alertDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="fa fa-bell-o" aria-hidden="true"></i>
+            </a>
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="alertDropdown">
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle-no-arrow" href="#" id="messageDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="fa fa-commenting-o" aria-hidden="true"></i>
+            </a>
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="messageDropdown">
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <!-- <a class="nav-link dropdown-toggle-no-arrow" href="#" aria-haspopup="true" aria-expanded="false">
+          <app-circle-photo
+              *ngIf="current"
+              id="navbarUserImage"
+              [routerLink]="['/user/profile/' + current.id]"
+              [board]="'40'"
+              [path]="current.profileImage">
+          </app-circle-photo>
+        </a> -->
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            {{current.firstName}}
         </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" [routerLink]="['/user/profile', current.id]">Profile</a>
-          <a class="dropdown-item" href="#" (click)="logout()">Log out</a>
+        <div class="dropdown-menu dropdown-menu-right menu-content-items" aria-labelledby="navbarDropdownMenuLink" >
+          <ul *ngIf="navigation">
+            <li *ngFor="let link of navigation.links" [ngClass]="{'admin' : link.admin}"><a [routerLink]="[link.url]" [innerHTML]="link.name" class="black"></a></li>
+          </ul>
         </div>
       </li>
     </ul>

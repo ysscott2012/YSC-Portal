@@ -18,7 +18,9 @@ var userSchema = mongoose.Schema({
     isRejected: {type: Boolean, default: false},
     since: {type: String, default: ""},
     className: {type: String, defualt: "User"},
-    address: {type: addressSchema.schema, default: new addressSchema()}
+    address: {type: addressSchema.schema, default: new addressSchema()},
+    routes: { type: [String], default: ["auth", "user"]},
+    profileImage: {type: String, defualt: "/assets/files/default/user.jpg"}
 });
 
 module.exports = mongoose.model('User', userSchema);

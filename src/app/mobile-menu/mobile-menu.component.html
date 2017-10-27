@@ -1,0 +1,12 @@
+<div class="main-page-menu">
+  <div class="main-page-menu-content">
+    <div class="menu-close" (click)="toggleMenu()">X</div>
+    <div class="menu-content">
+      <div class="menu-content-items">
+        <ul *ngIf="navigation">
+          <li *ngFor="let link of navigation.links" [ngClass]="{'admin' : link.admin}"><a [routerLink]="[link.url]" [innerHTML]="link.name" class="white"></a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
