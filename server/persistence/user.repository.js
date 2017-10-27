@@ -5,7 +5,6 @@ var error = require('../models/error');
 
 class UserRepository {
 
-
   /**
    * find documents from DB
    */
