@@ -63,7 +63,6 @@ router.post('/user/profile/upload', function (req, res) {
             var file = req.files[0];
             user.profileImage = '/assets/files/' + filePath + '/' + file.filename;
             user.save();
-            console.log(user);
             console.log('File is uploaded')
             res.send(result);
           });

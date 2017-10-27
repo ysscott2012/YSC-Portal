@@ -34,8 +34,6 @@ export class HeaderComponent implements OnInit {
     if (this.current) {
       this.navigation = this.current.getHeaderDropdown();
     }
-    console.log(this.navigation)
-    console.log(this.current)
 
     this.router.events.subscribe((event) =>{
       if(event instanceof NavigationEnd) {

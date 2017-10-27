@@ -38,12 +38,6 @@ export class UploadComponent implements OnInit {
 
   ngOnChanges() {
 
-    console.log('id: ' + this.id);
-    console.log('activity: ' + this.activity);
-    console.log('uploadDirectly: ' + this.uploadDirectly);
-    console.log('fileType: ' + this.fileType);
-    console.log('fileFolder: ' + this.fileFolder);
-
     const url = this.getUploadAPI();
 
     this.uploader.setOptions({

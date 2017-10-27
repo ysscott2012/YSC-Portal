@@ -1,5 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 
+/* Menu  */
+
 .root {
   height: 100vh;
   position: fixed;
@@ -68,8 +70,6 @@ body {
 .menu-content-items span {
   padding-left: 10px;
 }
-
-
 
 
 /* Section */

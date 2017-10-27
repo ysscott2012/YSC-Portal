@@ -8,17 +8,29 @@ import { AdminService } from '../services/admin.service';
 })
 export class DatabaseMenuComponent implements OnInit {
 
+  /**
+   * Attributes
+   */
   collections:[String];
 
+  /**
+   * constructor
+   * @param adminService
+   */
   constructor(
     private adminService: AdminService
   ) { }
 
+  /**
+   * lifecycle
+   */
   ngOnInit() {
     this.GetCollectionList();
   }
 
-
+ /**
+  * get collection list
+  */
   GetCollectionList () {
     this.adminService.GetCollectionList().subscribe(
       data => {
