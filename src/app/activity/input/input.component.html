@@ -1,0 +1,32 @@
+<div class="activity-input-section">
+  <!-- top section -->
+  <div class="top">
+
+  </div>
+  <!-- middle section -->
+  <div class="middle">
+    <div class="user">
+      <app-circle-photo
+        *ngIf="current"
+        id="navbarUserImage"
+        [board]="'40'"
+        [path]="current.profileImage">
+      </app-circle-photo>
+    </div>
+    <div class="text-area">
+      <textarea
+        id="activityInput"
+        placeholder="What's on your mind?"
+        (focus)="onFocus()"
+        (blur)="onBlur()"
+      ></textarea>
+    </div>
+  </div>
+  <!-- bottom section -->
+  <div class="bottom clearfix">
+    <div class="left"></div>
+    <div class="right">
+        <button class="post" (click)="post()">Post</button>
+    </div>
+  </div>
+</div>

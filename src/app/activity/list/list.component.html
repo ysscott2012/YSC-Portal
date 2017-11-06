@@ -1,0 +1,16 @@
+<ul class="activity-list-section">
+  <li *ngFor="let activity of activities">
+    <div class="list">
+        <div class="user">
+          <app-circle-photo
+            *ngIf="activity.owner"
+            [board]="'40'"
+            [path]="activity.owner.profileImage">
+          </app-circle-photo>
+        </div>
+        <div class="content">
+          {{activity.content}}
+        </div>
+    </div>
+  </li>
+</ul>

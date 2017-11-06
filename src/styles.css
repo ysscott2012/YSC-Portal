@@ -1,6 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 
-/* Menu  */
+/* General */
 
 .root {
   height: 100vh;
@@ -13,8 +13,10 @@
 
 body {
   height: 100vh;
-  font-size: 16px;
+  font-size: 14px;
 }
+
+/* Menu  */
 
 .main-page {
   height: 100vh;
@@ -76,6 +78,7 @@ body {
 
 .section {
   padding: 40px;
+  height: calc(100% - 54px);
 }
 
 .section-title {
@@ -99,11 +102,18 @@ body {
     vertical-align: middle;
 }
 
-button {
-    cursor: pointer;
+@media screen and (max-width: 768px) {
+  .section {
+    padding: 10px 0px;
+    background-color: #e9ebee;
+  }
 }
 
 /* BUTTON */
+
+button {
+  cursor: pointer;
+}
 
 .ys-button-div {
   position: relative;

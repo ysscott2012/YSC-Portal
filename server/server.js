@@ -13,6 +13,7 @@ mongoose.Promise = global.Promise;
 mongoose.connect(process.env.MONGODB_URI, { useMongoClient: true});
 
 // declare routers
+var activityRoutes = require('./routes/activity.routes');
 var adminRoutes = require('./routes/admin.routes');
 var authRoutes = require('./routes/auth.routes');
 var userRoutes = require('./routes/user.routes');
@@ -24,6 +25,7 @@ app.use(bodyParser.json());
 app.use(cors());
 
 // define routers
+app.use('/activity', activityRoutes);
 app.use('/admin', adminRoutes);
 app.use('/auth', authRoutes);
 app.use('/user', userRoutes);

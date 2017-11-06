@@ -1,14 +1,22 @@
-var ActivitySchema = require('../models/activity');
+var moment = require('moment');
+var _ = require('lodash');
+
+var activity = require('../models/activity');
+var ActivitySchema = activity.schema;
 
 var message = require('../models/message');
 var error = require('../models/error');
+
+
 
 class ActivityRepository {
   /**
    * find documents from DB
    */
   find(condition, callback) {
+    console.log(condition);
     ActivitySchema.find(condition).then((objects) => {
+      objects = _.sortBy(objects, function(o) { return new moment(o.date); }).reverse();
       message.setMessage( true, "Get activitys successfully", objects, []);
       callback(message)
     }, (e) => {
@@ -43,6 +51,7 @@ class ActivityRepository {
    * save document into DB
    */
   save(condition, callback) {
+    condition.owner = activity.setOwner(condition.owner);
     var newObject = new ActivitySchema(condition);
     newObject.save(function (err, ActivitySchema) {
       if (err) {

@@ -30,10 +30,6 @@ export class HeaderComponent implements OnInit {
     private authenticationService: AuthenticationService,
     private userService: UserService
   ) {
-    this.current = this.userService.getCurrent();
-    if (this.current) {
-      this.navigation = this.current.getHeaderDropdown();
-    }
 
     this.router.events.subscribe((event) =>{
       if(event instanceof NavigationEnd) {
@@ -43,6 +39,11 @@ export class HeaderComponent implements OnInit {
         }
       }
       this.closeMenu();
+
+      this.current = this.current || this.userService.getCurrent();
+      if (this.current) {
+        this.navigation = this.current.getHeaderDropdown();
+      }
     })
 
   }
