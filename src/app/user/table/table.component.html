@@ -15,20 +15,6 @@
   </ul>
 </div>
 
-
-<!-- <p-dataTable [value]="users">
-  <p-column field="firstName" header="First Name" [sortable]="true"></p-column>
-  <p-column field="lastName" header="Last Name" [sortable]="true"></p-column>
-  <p-column field="email" header="Email" [sortable]="true" [style]="{'text-overflow':'ellipsis', 'overflow':'hidden'}"></p-column>
-  <p-column field="level" header="Level" [sortable]="true"></p-column>
-  <p-column [style]="{'text-align':'center'}">
-    <ng-template let-user="rowData" pTemplate="body">
-        <button type="button" class="btn btn-success" *ngIf='!user.isApproved && current.email!=user.email' (click)="approve(user)">Approve</button>
-        <button type="button" class="btn btn-danger"  *ngIf='!user.isRejected && current.email!=user.email' (click)="reject(user)">Reject</button>
-    </ng-template>
-  </p-column>
-</p-dataTable> -->
-
 <table class="table table-bordered">
   <tr>
     <th scope="col">User Name</th>

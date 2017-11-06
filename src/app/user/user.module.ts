@@ -1,6 +1,10 @@
-import { NgModule } from '@angular/core';
+
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgModule } from '@angular/core';
+
+
+import { ActivityModule } from '../activity/activity.module';
 import { FilesModule } from '../files/files.module';
 import { SharedModule } from '../shared/shared.module';
 
@@ -14,21 +18,24 @@ import { UserRoutes } from './user.route';
 import { UserComponent } from './user.component';
 import { ProfileComponent } from './profile/profile.component';
 import { TableComponent } from './table/table.component';
+import { UserHomeComponent } from './home/home.component';
 
 
 @NgModule({
   imports: [
+    ActivityModule,
     CommonModule,
-    UserRoutes,
+    FilesModule,
     FormsModule,
     ReactiveFormsModule,
-    FilesModule,
-    SharedModule
+    SharedModule,
+    UserRoutes
   ],
   declarations: [
     ProfileComponent,
     TableComponent,
     UserComponent,
+    UserHomeComponent,
   ],
   providers: [
     UserService
