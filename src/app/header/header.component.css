@@ -1,5 +1,6 @@
-.navbar-brand {
+#header .navbar-brand {
   text-align: center;
+  margin: 0px;
 }
 
 #userHeader {

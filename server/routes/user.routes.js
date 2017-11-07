@@ -4,7 +4,6 @@ var bcrypt = require('bcryptjs');
 var jwtExpress = require('../middlewares/jwt-express');
 var service = require('../services/user.service');
 
-
 router.use(jwtExpress());
 
 /**

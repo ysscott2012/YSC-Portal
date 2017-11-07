@@ -11,24 +11,55 @@ li {
 
 .list {
   width: 100%;
-  min-height: 71px;
-  padding: 12px;
+  min-height: 51px;
   display: table;
   table-layout: fixed;
-  background-color: white;
 }
 
 .user {
   display: table-cell;
   vertical-align: top;
   width: 40px;
-  min-height: 71px;
+  min-height: 51px;
 }
 
-.content {
+.user-info {
   display: table-cell;
   vertical-align: top;
   width: calc(100% - 40px);
-  min-height: 71px;
-  padding: 10px 0px 0px 12px;
+  min-height: 51px;
+  padding: 5px 0px 0px 12px;
+}
+
+.user-name {
+  width: 100%;
+  font-size: 12px;
+  font-weight: 700;
+  height: 20px;
+  line-height: 20px;
+  color: #365899;
+}
+
+.date {
+  width: 100%;
+  font-size: 12px;
+  height: 20px;
+  line-height: 20px;
+  color: #90949c;
+  font-weight: 300;
+}
+
+.activity-div {
+  background-color: white;
+  border: 1px solid #dddfe2;
+  padding: 12px 12px 0px 12px;
+}
+
+.content {
+  padding-bottom: 12px;
+}
+
+.buttons {
+  border-top: 1px solid #e5e5e5;
+  padding: 4px 0px;
 }

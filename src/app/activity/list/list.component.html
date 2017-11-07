@@ -1,16 +1,23 @@
 <ul class="activity-list-section">
   <li *ngFor="let activity of activities">
-    <div class="list">
-        <div class="user">
-          <app-circle-photo
-            *ngIf="activity.owner"
-            [board]="'40'"
-            [path]="activity.owner.profileImage">
-          </app-circle-photo>
-        </div>
-        <div class="content">
-          {{activity.content}}
-        </div>
+    <div class="activity-div">
+      <div class="list">
+          <div class="user">
+            <app-circle-photo
+              *ngIf="activity.owner"
+              [board]="'40'"
+              [path]="activity.owner.profileImage">
+            </app-circle-photo>
+          </div>
+          <div class="user-info" >
+            <div class="user-name">{{activity.owner.firstName}}</div>
+            <div class="date">{{activity.creationDate | date}}</div>
+          </div>
+      </div>
+      <div class="content" [innerHTML]="activity.content"></div>
+      <div class="buttons">
+
+      </div>
     </div>
   </li>
 </ul>

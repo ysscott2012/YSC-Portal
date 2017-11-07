@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { Activity } from '../../classes/activity';
@@ -7,6 +7,8 @@ import { User } from '../../classes/user';
 
 import { ActivityService } from '../services/activity.service';
 import { UserService } from '../../user/services/user.service';
+
+import { YS_REFERENCE } from '../../global';
 
 import * as $ from 'jquery';
 
@@ -22,6 +24,7 @@ export class ActivityInputComponent implements OnInit {
    */
   public current: User;
   public params: Params = new Params();
+  @Output() activityPosted = new EventEmitter<any>();
 
   /**
    * constructor
@@ -58,8 +61,7 @@ export class ActivityInputComponent implements OnInit {
    * post new activity
    */
   post() {
-    const value = $('#activityInput').val();
-
+    const value = $('#activityInput').val().replace(/\n/g, '<br>');
     this.params.conditions = {
       content: value,
       creationDate: new Date().toJSON(),
@@ -69,6 +71,8 @@ export class ActivityInputComponent implements OnInit {
       data => {
         if (data.success) {
           var activity = new Activity(data.payload);
+          this.activityPosted.emit(activity);
+          $('#activityInput').val('');
         }
       },
       error => console.log(error)

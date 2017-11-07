@@ -79,6 +79,8 @@ body {
 .section {
   padding: 40px;
   height: calc(100% - 54px);
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 .section-title {

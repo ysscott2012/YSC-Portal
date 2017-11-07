@@ -1,6 +1,5 @@
 <div id="userHome">
-  <app-activity-input></app-activity-input>
-
-  <app-activity-list></app-activity-list>
+  <app-activity-input (activityPosted)="activityPosted($event)"></app-activity-input>
+  <app-activity-list [newPostedActivity]="newPostedActivity"></app-activity-list>
 </div>
 

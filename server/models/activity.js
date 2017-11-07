@@ -7,7 +7,8 @@ var activitySchema = mongoose.Schema({
   date: {type: String, default: ""},
   owner: {type: Object, default: {}},
   privacy: {type: String, default: ""},
-  type: {type: String, default: ""}
+  type: {type: String, default: ""},
+  className: {type: String, default: "Activity"}
 });
 
 var activity = {

@@ -5,10 +5,10 @@ var jwtExpress = require('../middlewares/jwt-express');
 var service = require('../services/activity.service');
 
 var activity = require('../models/activity');
+var _ = require('lodash');
 
 // Token Check before using API
 router.use(jwtExpress());
-
 
 /**
  * find documents based on the filter
@@ -26,8 +26,13 @@ router.post('/find', function(req, res) {
 router.post('/findByOwner', function(req, res) {
   console.log("find activities by owner");
   const query = activity.query.getOwnerQuery(req.body.owner);
-  console.log(query);
+  const currentIndex = req.body.currentIndex;
+  const amount = req.body.amount;
   service.find(query, function(result){
+    var objects = result.payload;
+    var end = currentIndex + amount > objects.length ? currentIndex + amount : objects.length;
+    objects = _.slice(objects, currentIndex, currentIndex + amount);
+    result.payload = objects;
     res.send(result);
   })
 });

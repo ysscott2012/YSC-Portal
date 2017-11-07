@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { Activity } from '../../classes/activity';
@@ -7,6 +7,8 @@ import { User } from '../../classes/user';
 
 import { ActivityService } from '../services/activity.service';
 import { UserService } from '../../user/services/user.service';
+
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-activity-list',
@@ -21,8 +23,11 @@ export class ActivityListComponent implements OnInit {
   public current: User;
   public activities: Activity[] = [];
   public params: Params = new Params();
-
   public end: Boolean = false;
+  public currentIndex: number = 0;
+  public amount: number = 10;
+
+  @Input() newPostedActivity: Activity;
 
   /**
    * constructor
@@ -32,7 +37,7 @@ export class ActivityListComponent implements OnInit {
     private userService: UserService
   ) {
     this.current = userService.getCurrent();
-    this.getActivitiesByOwner();
+    this.getActivitiesByOwner(true);
 
   }
 
@@ -40,15 +45,40 @@ export class ActivityListComponent implements OnInit {
    * lifecycle
    */
   ngOnInit() {
+    var section = $('.section');
+    var activityDiv = $('#userHome');
+    console.log(section)
+    section.scroll(function() {
+      if (activityDiv.height() - section.height() === section.scrollTop()) {
+        if (!this.end) {
+          this.getActivitiesByOwner(false);
+        }
+      }
+    }.bind(this));
+  }
+
+  /**
+   * lifecycle
+   */
+  ngOnChanges() {
+    if (this.newPostedActivity) {
+      this.activities.unshift(this.newPostedActivity);
+    }
   }
 
   /**
    * get total activities
    */
-  getActivitiesByOwner() {
+  getActivitiesByOwner(reload) {
+
+    console.log("get activities");
+    var currentIndex = reload ? 0 : this.currentIndex;
     this.params.filter = {
-      owner: this.current
+      owner: this.current,
+      currentIndex: currentIndex,
+      amount: this.amount
     }
+
     this.activityService.getActivitiesByOwner(this.params).subscribe(
       data => {
         if (data.success) {
@@ -57,15 +87,17 @@ export class ActivityListComponent implements OnInit {
           this.end = data.payload.length === 0;
 
           if (!this.end) {
+            this.currentIndex = this.currentIndex + this.amount;
             // serialize
             data.payload.forEach(element => {
               this.activities.push(new Activity(element));
             });
           }
-          console.log(this.activities);
         }
       },
       error => console.log(error)
     )
   }
+
+
 }
