@@ -1,0 +1,26 @@
+<div *ngIf="!this.commentEnd"
+    class="link"
+    (click)="getComments(false)">load more comments
+</div>
+<div *ngFor="let comment of comments" class="comment-input-div">
+  <div class="user">
+    <app-circle-photo
+      *ngIf="comment"
+      [board]="'35'"
+      [path]="comment.owner.profileImage">
+    </app-circle-photo>
+  </div>
+  <div>
+    {{comment.content}}
+  </div>
+</div>
+<div class="comment-input-div">
+    <div class="user">
+      <app-circle-photo
+        *ngIf="current"
+        [board]="'35'"
+        [path]="current.profileImage">
+      </app-circle-photo>
+    </div>
+    <input class="comment-input" (keydown)="comment($event, activity)" placeholder="Write a comment..." />
+</div>

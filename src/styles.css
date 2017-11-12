@@ -16,6 +16,14 @@ body {
   font-size: 14px;
 }
 
+div.link {
+  color: #4267b2;
+  cursor: pointer;
+}
+div.link:hover {
+  text-decoration: underline;
+}
+
 /* Menu  */
 
 .main-page {

@@ -6,6 +6,7 @@ import { SharedModule } from '../shared/shared.module';
 import { ActivityComponent } from './activity.component';
 import { ActivityInputComponent } from './input/input.component';
 import { ActivityListComponent } from './list/list.component';
+import { ActivityCommentComponent } from './comment/comment.component';
 
 // Services
 import { ActivityService } from './services/activity.service';
@@ -19,7 +20,8 @@ import { CommentService } from '../services/comment.service';
   declarations: [
     ActivityComponent,
     ActivityInputComponent,
-    ActivityListComponent
+    ActivityListComponent,
+    ActivityCommentComponent
   ],
   providers: [
     ActivityService,
@@ -28,7 +30,8 @@ import { CommentService } from '../services/comment.service';
   exports: [
     ActivityComponent,
     ActivityInputComponent,
-    ActivityListComponent
+    ActivityListComponent,
+    ActivityCommentComponent
   ]
 })
 export class ActivityModule { }

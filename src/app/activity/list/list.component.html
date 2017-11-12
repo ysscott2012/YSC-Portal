@@ -17,35 +17,13 @@
       <div class="content" [innerHTML]="activity.content"></div>
       <div class="buttons">
         <div (click)="like()" ><i class="fa fa-thumbs-o-up" aria-hidden="true"></i><span>Like</span></div>
-        <div (click)="getComments(true, activity)" ><i class="fa fa-commenting-o" aria-hidden="true"></i><span>Comment</span></div>
+        <div (click)="getComments(activity)" ><i class="fa fa-commenting-o" aria-hidden="true"></i><span>Comment</span></div>
       </div>
     </div>
 
     <div id="comment{{activity.id}}" class="comment-div" >
 
-      <div *ngFor="let comment of comments" class="comment-input-div">
-        <div class="user">
-          <app-circle-photo
-            *ngIf="comment"
-            [board]="'35'"
-            [path]="comment.owner.profileImage">
-          </app-circle-photo>
-        </div>
-        <div>
-          {{comment.content}}
-        </div>
-      </div>
-
-      <div class="comment-input-div">
-        <div class="user">
-          <app-circle-photo
-            *ngIf="current"
-            [board]="'35'"
-            [path]="current.profileImage">
-          </app-circle-photo>
-        </div>
-        <input class="comment-input" (keydown)="comment($event, activity)" placeholder="Write a comment..." />
-      </div>
+      <app-activity-comment [activity]="activity" ></app-activity-comment>
     </div>
 
 

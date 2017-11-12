@@ -1,0 +1,33 @@
+
+.comment-div {
+  background-color: #f6f7f9;
+  padding: 12px 12px 12px 12px;
+  border: 1px solid #dddfe2;
+  border-top: none;
+  display: none;
+}
+
+.user {
+  min-height: 0px;
+  display: table-cell;
+  vertical-align: top;
+  width: 40px;
+}
+
+.comment-input-div {
+  width: 100%;
+  display: table;
+  table-layout: fixed;
+}
+
+.comment-input {
+  display: table-cell;
+  vertical-align: top;
+  width: calc(100% - 40px);
+  min-height: 35px;
+  padding: 6px 12px 5px 12px;
+  border-radius: 25px;
+  box-shadow: none;
+  border: 1px solid #dddfe2;
+}
+
