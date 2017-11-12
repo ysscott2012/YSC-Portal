@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+var Owner = require('./owner');
 
 var activitySchema = mongoose.Schema({
   browseLink: {type: String, default: ""},
@@ -12,17 +13,6 @@ var activitySchema = mongoose.Schema({
 });
 
 var activity = {
-  getOwner: function() {
-    return this.owner;
-  },
-  owner: {
-    id: '',
-    email: '',
-    firstName: '',
-    lastName: '',
-    level: '',
-    profileImage: ''
-  },
   query: {
     getOwnerQuery: function(user) {
       return {'owner.id': user.id}
@@ -30,13 +20,7 @@ var activity = {
   },
   schema: mongoose.model('Activity', activitySchema),
   setOwner: function (user) {
-    this.owner.id = user.id;
-    this.owner.email = user.email;
-    this.owner.firstName = user.firstName;
-    this.owner.lastName = user.lastName;
-    this.owner.level = user.level;
-    this.owner.profileImage = user.profileImage;
-    return this.owner;
+    return new Owner(user);
   }
 }
 

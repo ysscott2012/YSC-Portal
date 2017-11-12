@@ -9,6 +9,7 @@ import { ActivityListComponent } from './list/list.component';
 
 // Services
 import { ActivityService } from './services/activity.service';
+import { CommentService } from '../services/comment.service';
 
 @NgModule({
   imports: [
@@ -21,7 +22,8 @@ import { ActivityService } from './services/activity.service';
     ActivityListComponent
   ],
   providers: [
-    ActivityService
+    ActivityService,
+    CommentService
   ],
   exports: [
     ActivityComponent,

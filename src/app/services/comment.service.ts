@@ -1,24 +1,29 @@
 import { Injectable } from '@angular/core';
 import { Headers, Http, Response } from '@angular/http';
 
-import { environment } from '../../../environments/environment';
+import { environment } from '../../environments/environment';
 
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 
+// classes
+import { Params } from '../classes/params';
+import { Comment } from '../classes/comment';
+
 // Services
-import { HttpService } from '../../services/http.service';
+import { HttpService } from '../services/http.service';
 
 @Injectable()
-export class ActivityService {
+export class CommentService {
 
   /**
    * constants
    */
-  private URL_SAVE_ACTIVITY = environment.API_URL + '/activity/save';
-  private URL_FIND_ACTIVITIES = environment.API_URL + '/activity/find';
-  private URL_FIND_ACTIVITIES_BY_OWNER = environment.API_URL + '/activity/findByOwner';
+  private URL_SAVE_COMMENT = environment.API_URL + '/comment/save';
+  private URL_FIND_COMMENTS = environment.API_URL + '/comment/find';
+  private URL_FIND_COMMENTS_BY_ACTIVITY = environment.API_URL + '/comment/findByActivity';
+  private URL_FIND_COMMENT = environment.API_URL + '/comment/findOne';
 
   /**
    * Contructor.
@@ -29,37 +34,37 @@ export class ActivityService {
   ) { }
 
   /**
-   * Get activities.
-   * @param params
+   * Get comments.
+   * @param
    */
-  getActivities(params) {
+  getComments(params) {
     const body = JSON.stringify(params);
     const headers = new Headers({ 'Content-Type': 'application/json' });
-    return this.http.post(this.URL_FIND_ACTIVITIES, body, { headers: headers })
+    return this.http.post(this.URL_FIND_COMMENTS, body, { headers: headers })
       .map((response: Response) => response.json())
       .catch((error: Response) => Observable.throw(error.json()));
   }
 
   /**
-   * Get activities by owner
+   * Get comments by activity.
    * @param params
    */
-  getActivitiesByOwner(params) {
+  getCommentsByActivity(params) {
     const body = JSON.stringify(params);
     const headers = new Headers({ 'Content-Type': 'application/json' });
-    return this.http.post(this.URL_FIND_ACTIVITIES_BY_OWNER, body, { headers: headers })
+    return this.http.post(this.URL_FIND_COMMENTS_BY_ACTIVITY, body, { headers: headers })
       .map((response: Response) => response.json())
       .catch((error: Response) => Observable.throw(error.json()));
   }
 
   /**
-   * Save a new record
+   * save comments
    * @param params
    */
-  save(params) {
+  saveComment(params) {
     const body = JSON.stringify(params);
     const headers = new Headers({ 'Content-Type': 'application/json' });
-    return this.http.post(this.URL_SAVE_ACTIVITY, body, { headers: headers })
+    return this.http.post(this.URL_SAVE_COMMENT, body, { headers: headers })
       .map((response: Response) => response.json())
       .catch((error: Response) => Observable.throw(error.json()));
   }

@@ -41,8 +41,7 @@ router.post('/findByOwner', function(req, res) {
  * Save a new record
  */
 router.post('/save', function(req, res) {
-  console.log(req.body)
-
+  req.body.owner = activity.setOwner(req.body.owner);
   service.save(req.body, function(result) {
     res.send(result);
   })

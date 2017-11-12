@@ -16,6 +16,7 @@ mongoose.connect(process.env.MONGODB_URI, { useMongoClient: true});
 var activityRoutes = require('./routes/activity.routes');
 var adminRoutes = require('./routes/admin.routes');
 var authRoutes = require('./routes/auth.routes');
+var commentRoutes = require('./routes/comment.routes');
 var userRoutes = require('./routes/user.routes');
 var fileRoutes = require('./routes/file.routes');
 
@@ -28,6 +29,7 @@ app.use(cors());
 app.use('/activity', activityRoutes);
 app.use('/admin', adminRoutes);
 app.use('/auth', authRoutes);
+app.use('/comment', commentRoutes);
 app.use('/user', userRoutes);
 app.use('/file', fileRoutes);
 

@@ -1,27 +1,27 @@
 var moment = require('moment');
 var _ = require('lodash');
 
-var activity = require('../models/activity');
-var ActivitySchema = activity.schema;
+var comment = require('../models/comment');
+var CommentSchema = comment.schema;
 
 var message = require('../models/message');
 var error = require('../models/error');
 
 
 
-class ActivityRepository {
+class CommentRepository {
   /**
    * find documents from DB
    */
   find(condition, callback) {
     console.log(condition);
-    ActivitySchema.find(condition).then((objects) => {
+    CommentSchema.find(condition).then((objects) => {
       objects = _.sortBy(objects, function(o) { return new moment(o.date); }).reverse();
-      message.setMessage( true, "Get activitys successfully", objects, []);
+      message.setMessage( true, "Get comments successfully", objects, []);
       callback(message)
     }, (e) => {
       error.setError(200);
-      message.setMessage( false, "Get activitys failed", [], [error]);
+      message.setMessage( false, "Get comments failed", [], [error]);
       callback(message);
     });
   };
@@ -51,14 +51,14 @@ class ActivityRepository {
    * save document into DB
    */
   save(condition, callback) {
-    var newObject = new ActivitySchema(condition);
-    newObject.save(function (err, ActivitySchema) {
+    var newObject = new CommentSchema(condition);
+    newObject.save(function (err, CommentSchema) {
       if (err) {
-        message.setMessage(false, "Create activity error in MongoDB", null, []);
+        message.setMessage(false, "Create comment error in MongoDB", null, []);
         callback(message);
       }
       else {
-        message.setMessage(true, "Create activity successfully", newObject, []);
+        message.setMessage(true, "Create comment successfully", newObject, []);
         callback(message);
       }
     })
@@ -71,4 +71,4 @@ class ActivityRepository {
   };
 }
 
-module.exports = new ActivityRepository();
+module.exports = new CommentRepository();

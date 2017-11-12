@@ -10,6 +10,7 @@ export class Activity {
   creationDate: String = new Date().toJSON();
   date: String = '';
   id: String = '';
+  className: String = '';
 
   owner = {
     id: '',
@@ -42,6 +43,7 @@ export class Activity {
     this.owner = activity ? activity.owner : {};
     this.privacy = activity ? activity.privacy : '';
     this.type = activity ? activity.type : '';
+    this.className = activity ? activity.className : '';
   }
 
 }

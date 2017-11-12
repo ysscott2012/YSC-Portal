@@ -9,6 +9,7 @@ li {
   padding: 10px 0px 0px 0px;
 }
 
+
 .list {
   width: 100%;
   min-height: 51px;
@@ -63,3 +64,48 @@ li {
   border-top: 1px solid #e5e5e5;
   padding: 4px 0px;
 }
+
+.buttons span {
+  line-height: 30px;
+}
+
+.buttons i {
+  font-size: 20px;
+  padding: 8px 5px 10px 0px
+}
+
+.buttons div {
+  margin-right: 30px;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.comment-div {
+  background-color: #f6f7f9;
+  padding: 12px 12px 12px 12px;
+  border: 1px solid #dddfe2;
+  border-top: none;
+  display: none;
+}
+
+.comment-div .user {
+  min-height: 0px;
+}
+
+.comment-input-div {
+  width: 100%;
+  display: table;
+  table-layout: fixed;
+}
+
+.comment-input {
+  display: table-cell;
+  vertical-align: top;
+  width: calc(100% - 40px);
+  min-height: 35px;
+  padding: 6px 12px 5px 12px;
+  border-radius: 25px;
+  box-shadow: none;
+  border: 1px solid #dddfe2;
+}
+

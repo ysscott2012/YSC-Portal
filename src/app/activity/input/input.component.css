@@ -55,6 +55,7 @@
 .text-area textarea {
   width: 100%;
   border: 1px solid white;
+  resize: none;
 }
 
 .bottom .left {

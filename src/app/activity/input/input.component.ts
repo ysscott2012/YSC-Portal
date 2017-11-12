@@ -2,7 +2,6 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { Activity } from '../../classes/activity';
-import { Params } from '../../classes/params';
 import { User } from '../../classes/user';
 
 import { ActivityService } from '../services/activity.service';
@@ -23,7 +22,6 @@ export class ActivityInputComponent implements OnInit {
    * Attributes
    */
   public current: User;
-  public params: Params = new Params();
   @Output() activityPosted = new EventEmitter<any>();
 
   /**
@@ -62,20 +60,22 @@ export class ActivityInputComponent implements OnInit {
    */
   post() {
     const value = $('#activityInput').val().replace(/\n/g, '<br>');
-    this.params.conditions = {
+    var params = {
       content: value,
       creationDate: new Date().toJSON(),
       owner: this.current
     }
-    this.activityService.save(this.params).subscribe(
-      data => {
-        if (data.success) {
-          var activity = new Activity(data.payload);
-          this.activityPosted.emit(activity);
-          $('#activityInput').val('');
-        }
-      },
-      error => console.log(error)
-    )
+    if (value) {
+      this.activityService.save(params).subscribe(
+        data => {
+          if (data.success) {
+            var activity = new Activity(data.payload);
+            this.activityPosted.emit(activity);
+            $('#activityInput').val('');
+          }
+        },
+        error => console.log(error)
+      )
+    }
   }
 }
