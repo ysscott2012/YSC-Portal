@@ -62,4 +62,47 @@ export class LoginComponent implements OnInit {
     );
   }
 
+  /**
+   * login as guest
+   */
+  loginAsAdmin() {
+    const user = new User();
+    user.password = 'admin';
+    user.email = 'admin@ys.com';
+    this.authenticationService.login(user)
+      .subscribe(
+      data => {
+        if (data.success) {
+          localStorage.setItem('token', data.token);
+          localStorage.setItem('current', JSON.stringify(data.user));
+          this.router.navigate(['/user']);
+        }
+      },
+      error => {
+        alert(error.message);
+      }
+    );
+  }
+  /**
+   * login as guest
+   */
+  loginAsGuest() {
+    const user = new User();
+    user.password = 'guest';
+    user.email = 'guest@ys.com';
+    this.authenticationService.login(user)
+      .subscribe(
+      data => {
+        if (data.success) {
+          localStorage.setItem('token', data.token);
+          localStorage.setItem('current', JSON.stringify(data.user));
+          this.router.navigate(['/user']);
+        }
+      },
+      error => {
+        alert(error.message);
+      }
+    );
+  }
+
 }

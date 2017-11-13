@@ -14,7 +14,6 @@ li {
   width: 100%;
   min-height: 51px;
   display: table;
-  table-layout: fixed;
 }
 
 .user {
@@ -95,7 +94,6 @@ li {
 .comment-input-div {
   width: 100%;
   display: table;
-  table-layout: fixed;
 }
 
 .comment-input {

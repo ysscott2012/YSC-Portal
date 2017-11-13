@@ -18,7 +18,7 @@ export class User {
     isRejected: Boolean = false;
     since: String = new Date().toJSON();
 
-    profileImage: String = '';
+    profileImage: String = '/assets/files/default/user.png';
     address: Address = new Address();
 
 

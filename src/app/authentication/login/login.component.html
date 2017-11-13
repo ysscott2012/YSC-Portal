@@ -26,11 +26,14 @@
                     <i class="fa fa-lock" aria-hidden="true"></i>
                 </div>
             </div>
-
             <div class="login-input clearfix">
+              <div class="ys-link" (click)="loginAsGuest()">Login as Guest</div>
+              <div class="ys-link" (click)="loginAsAdmin()">Login as Admin</div>
+            </div>
+            <!-- <div class="login-input clearfix">
                 <input id="rememberme" for="rememberMe" type="checkbox" style="float: left" />
                 <div style="float: left; line-height: 40px">Remember me</div>
-            </div>
+            </div> -->
 
             <button type="submit" class="btn btn-primary ys-button auth" style="float: right">Login</button>
             <a [routerLink]="['/auth/signup']" class="link">Doesn't have account yet? sign up here</a>

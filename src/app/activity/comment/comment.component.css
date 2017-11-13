@@ -17,7 +17,6 @@
 .comment-input-div {
   width: 100%;
   display: table;
-  table-layout: fixed;
 }
 
 .comment-input {
@@ -31,3 +30,7 @@
   border: 1px solid #dddfe2;
 }
 
+.load-more {
+  font-size: 12px;
+  padding-bottom: 12px;
+}

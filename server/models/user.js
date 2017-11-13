@@ -20,7 +20,7 @@ var userSchema = mongoose.Schema({
     className: {type: String, defualt: "User"},
     address: {type: addressSchema.schema, default: new addressSchema()},
     routes: { type: [String], default: ["auth", "user"]},
-    profileImage: {type: String, defualt: "/assets/files/default/user.jpg"}
+    profileImage: {type: String, defualt: "/assets/files/default/user.png"}
 });
 
 module.exports = mongoose.model('User', userSchema);

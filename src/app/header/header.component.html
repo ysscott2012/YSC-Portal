@@ -1,7 +1,12 @@
 <nav id="header" class="navbar navbar-toggleable-md navbar-light sticky-top" *ngIf="current">
 
   <!-- Mobile right menu header -->
-  <button id="menuHeader" class="navbar-toggler navbar-toggler-right" type="button" aria-controls="navbarNavDropdown" aria-expanded="false"
+  <button id="menuHeader"
+    class="navbar-toggler navbar-toggler-right"
+    style="top: 0.5rem"
+    type="button"
+    aria-controls="navbarNavDropdown"
+    aria-expanded="false"
     aria-label="Toggle navigation" (click)="toggleMenu()">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -9,7 +14,12 @@
   <a class="navbar-brand" [routerLink]="['/user']">YS</a>
 
   <!-- Mobile left menu header -->
-  <button id="userHeader" class="navbar-toggler navbar-toggler-left" type="button" aria-controls="navbarNavDropdown" aria-expanded="false"
+  <button id="userHeader"
+    class="navbar-toggler navbar-toggler-left"
+    style="top: 0.5rem"
+    type="button"
+    aria-controls="navbarNavDropdown"
+    aria-expanded="false"
     aria-label="Toggle navigation">
     <app-circle-photo
       *ngIf="current"

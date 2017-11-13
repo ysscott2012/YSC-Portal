@@ -15,7 +15,7 @@
 }
 
 .authentication-div {
-    background-image:url(../../assets/beach.jpg);
+    /* background-image:url(../../assets/beach.jpg); */
     background-repeat: repeat;
     background-size: cover;
     /* background-position: center; */
