@@ -37,13 +37,11 @@ export class HeaderComponent implements OnInit {
         if (event.url === '/' && event.urlAfterRedirects === '/auth/login') {
           this.authenticationService.logout();
           this.current = null;
-        } else {
-          this.preferences = this.userService.getPreferences();
         }
       }
       this.closeMenu();
-
       this.current = this.current || this.userService.getCurrent();
+      this.preferences = this.current ? this.current.preferences : new Preferences();
       if (this.current) {
         this.navigation = this.current.getHeaderDropdown();
       }

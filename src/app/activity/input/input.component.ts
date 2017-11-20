@@ -35,13 +35,13 @@ export class ActivityInputComponent implements OnInit {
     private userService: UserService
   ) {
     this.current = this.userService.getCurrent();
+    this.preferences = this.current ? this.current.preferences : new Preferences();
   }
 
   /**
    * lifecycle
    */
   ngOnInit() {
-    this.preferences = this.userService.getPreferences();
   }
 
   /**

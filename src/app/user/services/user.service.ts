@@ -65,15 +65,6 @@ export class UserService {
   }
 
   /**
-   * Get Current User's Preferences
-   */
-  getPreferences(): Preferences {
-    let user: User = this.getCurrent();
-    let preferences: Preferences = user ? user.preferences : null;
-    return preferences;
-  }
-
-  /**
    * Get user
    * @param params
    */
