@@ -98,7 +98,6 @@ export class ActivityCommentComponent implements OnInit {
    */
   getComments(reload) {
 
-    console.log("get comments");
     var commentIndex = reload ? 0 : this.commentIndex;
 
     var params = {
@@ -110,7 +109,6 @@ export class ActivityCommentComponent implements OnInit {
     this.commentService.getCommentsByActivity(params).subscribe(
       data => {
         if (data.success) {
-          console.log(data.payload)
           // // check if data is ending;
           this.commentEnd = data.payload.length === 0;
 

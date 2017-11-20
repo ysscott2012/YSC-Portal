@@ -1,4 +1,5 @@
 var addressSchema = require('./address');
+var preferenceSchema = require('./preferences');
 var mongoose = require('mongoose');
 
 var userSchema = mongoose.Schema({
@@ -20,7 +21,8 @@ var userSchema = mongoose.Schema({
     className: {type: String, defualt: "User"},
     address: {type: addressSchema.schema, default: new addressSchema()},
     routes: { type: [String], default: ["auth", "user"]},
-    profileImage: {type: String, defualt: "/assets/files/default/user.png"}
+    profileImage: {type: String, defualt: "/assets/files/default/user.png"},
+    preferences: { type: preferenceSchema.schema, default: new preferenceSchema()}
 });
 
 module.exports = mongoose.model('User', userSchema);

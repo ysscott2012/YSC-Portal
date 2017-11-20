@@ -17,6 +17,7 @@
 .comment-input-div {
   width: 100%;
   display: table;
+  padding-bottom: 5px;
 }
 
 .comment-input {

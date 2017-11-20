@@ -5,6 +5,7 @@ import { User } from '../classes/user';
 import { Navigation } from "../classes/navigation";
 import { UserService } from '../user/services/user.service';
 import { AuthenticationService } from "../authentication/services/authentication.service";
+import { Preferences } from '../classes/preferences';
 
 @Component({
   selector: 'app-header',
@@ -18,7 +19,7 @@ export class HeaderComponent implements OnInit {
    */
   public current: User = null;
   public navigation: Navigation = null;
-
+  public preferences: Preferences = null;
 
   /**
    * constructor
@@ -36,6 +37,8 @@ export class HeaderComponent implements OnInit {
         if (event.url === '/' && event.urlAfterRedirects === '/auth/login') {
           this.authenticationService.logout();
           this.current = null;
+        } else {
+          this.preferences = this.userService.getPreferences();
         }
       }
       this.closeMenu();
@@ -52,7 +55,6 @@ export class HeaderComponent implements OnInit {
    * lifecycle
    */
   ngOnInit() {
-
   }
 
   /**

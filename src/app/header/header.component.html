@@ -1,4 +1,6 @@
-<nav id="header" class="navbar navbar-toggleable-md navbar-light sticky-top" *ngIf="current">
+<nav id="header" class="navbar navbar-toggleable-md navbar-light sticky-top"
+    *ngIf="current"
+    [ngStyle]="{'background-color': preferences.theme }">
 
   <!-- Mobile right menu header -->
   <button id="menuHeader"

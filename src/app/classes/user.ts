@@ -1,6 +1,6 @@
 import { Address } from './address';
 import { Navigation } from './navigation';
-
+import { Preferences } from './preferences';
 
 export class User {
 
@@ -20,7 +20,7 @@ export class User {
 
     profileImage: String = '/assets/files/default/user.png';
     address: Address = new Address();
-
+    preferences: Preferences = new Preferences();
 
     /**
      *  constructor
@@ -38,6 +38,7 @@ export class User {
 
         this.profileImage = user.profileImage;
         this.address = new Address(user.address);
+        this.preferences = new Preferences(user.preferences);
       }
     }
 

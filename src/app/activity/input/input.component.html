@@ -26,7 +26,11 @@
   <div class="bottom clearfix">
     <div class="left"></div>
     <div class="right">
-        <button class="post" (click)="post()">Post</button>
+        <button class="post" (click)="post()"
+                [ngStyle]="{'background-color':preferences.theme ,
+                            'border-color':preferences.theme}">
+            Post
+        </button>
     </div>
   </div>
 </div>

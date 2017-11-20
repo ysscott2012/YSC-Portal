@@ -13,6 +13,8 @@ import { Params } from '../../classes/params';
 
 // Services
 import { HttpService } from '../../services/http.service';
+import { Preferences } from '../../classes/preferences';
+import { debug } from 'util';
 
 @Injectable()
 export class UserService {
@@ -60,6 +62,15 @@ export class UserService {
       current = new User(JSON.parse(str));
     }
     return current;
+  }
+
+  /**
+   * Get Current User's Preferences
+   */
+  getPreferences(): Preferences {
+    let user: User = this.getCurrent();
+    let preferences: Preferences = user ? user.preferences : null;
+    return preferences;
   }
 
   /**

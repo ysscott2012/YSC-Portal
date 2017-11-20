@@ -49,7 +49,6 @@ export class ActivityListComponent implements OnInit {
   ngOnInit() {
     var section = $('.section');
     var activityDiv = $('#userHome');
-    console.log(section)
     section.scroll(function() {
       if (activityDiv.height() - section.height() === section.scrollTop()) {
         if (!this.end) {

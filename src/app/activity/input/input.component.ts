@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 
 import { Activity } from '../../classes/activity';
 import { User } from '../../classes/user';
+import { Preferences } from '../../classes/preferences';
 
 import { ActivityService } from '../services/activity.service';
 import { UserService } from '../../user/services/user.service';
@@ -22,6 +23,7 @@ export class ActivityInputComponent implements OnInit {
    * Attributes
    */
   public current: User;
+  public preferences: Preferences;
   @Output() activityPosted = new EventEmitter<any>();
 
   /**
@@ -32,13 +34,14 @@ export class ActivityInputComponent implements OnInit {
     private activityService: ActivityService,
     private userService: UserService
   ) {
-    this.current = userService.getCurrent();
+    this.current = this.userService.getCurrent();
   }
 
   /**
    * lifecycle
    */
   ngOnInit() {
+    this.preferences = this.userService.getPreferences();
   }
 
   /**
