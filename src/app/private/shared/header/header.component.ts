@@ -33,19 +33,15 @@ export class HeaderComponent implements OnInit {
   ) {
 
     this.router.events.subscribe((event) =>{
-      if(event instanceof NavigationEnd) {
+      if (event instanceof NavigationEnd) {
         if (event.url === '/' && event.urlAfterRedirects === '/auth/login') {
           this.authenticationService.logout();
           this.current = null;
+        } else {
+          this.closeMenu();
         }
       }
-      this.closeMenu();
-      this.current = this.current || this.userService.getCurrent();
-      this.preferences = this.current ? this.current.preferences : new Preferences();
-      if (this.current) {
-        this.navigation = this.current.getHeaderDropdown();
-      }
-    })
+    });
 
   }
 
@@ -53,13 +49,18 @@ export class HeaderComponent implements OnInit {
    * lifecycle
    */
   ngOnInit() {
+    this.current = this.current || this.userService.getCurrent();
+    this.preferences = this.current ? this.current.preferences : new Preferences();
+    if (this.current) {
+      this.navigation = this.current.getHeaderDropdown();
+    }
   }
 
   /**
    * force to close menu
    */
   closeMenu() {
-    var element = document.getElementsByClassName('main-page');
+    const element = document.getElementsByClassName('main-page');
     if (element[0].classList.contains('active')) {
       element[0].classList.remove('active');
     }
@@ -69,7 +70,7 @@ export class HeaderComponent implements OnInit {
    * toggle mobile menu
    */
   toggleMenu() {
-    var element = document.getElementsByClassName('main-page');
+    const element = document.getElementsByClassName('main-page');
     if (element[0].classList.contains('active')) {
       element[0].classList.remove('active');
     } else {
