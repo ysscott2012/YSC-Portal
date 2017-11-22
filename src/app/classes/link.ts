@@ -1,8 +1,12 @@
 export class Link {
 
+  /**
+   * Attribute
+   */
   url: String = '';
   name: String = '';
   admin: Boolean = false;
+
   /**
    * constructor
    * @param url
