@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 
-
+// Module
 import { ActivityModule } from '../activity/activity.module';
 import { FilesModule } from '../files/files.module';
 import { SharedModule } from '../shared/shared.module';

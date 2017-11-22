@@ -45,25 +45,11 @@ export class ActivityInputComponent implements OnInit {
   }
 
   /**
-   * on focus
-   */
-  onFocus() {
-    console.log("focus on textarea");
-  }
-
-  /**
-   * on blur
-   */
-  onBlur() {
-    console.log("leave textarea");
-  }
-
-  /**
    * post new activity
    */
   post() {
     const value = $('#activityInput').val().replace(/\n/g, '<br>');
-    var params = {
+    const params = {
       content: value,
       creationDate: new Date().toJSON(),
       owner: this.current
