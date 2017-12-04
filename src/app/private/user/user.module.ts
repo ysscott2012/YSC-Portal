@@ -15,6 +15,7 @@ import { UserService } from './services/user.service';
 import { UserRoutes } from './user.route';
 
 // Components
+import { DashboardComponent } from './dashboard/dashboard.component';
 import { UserComponent } from './user.component';
 import { ProfileComponent } from './profile/profile.component';
 import { TableComponent } from './table/table.component';
@@ -32,6 +33,7 @@ import { UserHomeComponent } from './home/home.component';
     UserRoutes
   ],
   declarations: [
+    DashboardComponent,
     ProfileComponent,
     TableComponent,
     UserComponent,

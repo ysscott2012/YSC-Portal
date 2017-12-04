@@ -77,6 +77,18 @@ export class UserService {
   }
 
   /**
+   * Get user by userID
+   * @param id
+   */
+  getUserByID(id: string) {
+    const body = JSON.stringify({'_id' : id});
+    const headers = new Headers({ 'Content-Type': 'application/json' });
+    return this.http.post(this.URL_FIND_USER, body, { headers: headers })
+      .map((response: Response) => response.json())
+      .catch((error: Response) => Observable.throw(error.json()));
+  }
+
+  /**
    * Get users.
    * @param
    */

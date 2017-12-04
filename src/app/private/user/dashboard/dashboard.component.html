@@ -1,0 +1,18 @@
+<div class="top-frame">
+    {{selectedUser.firstName}}  dashboard works!
+</div>
+
+<div class="container clearfix nopadding">
+  <div class="ys-card-parent clearfix" *ngIf="navigation">
+    <div *ngFor="let link of navigation.links" class="ys-card-children">
+      <div class="ys-1-1 ys-shadow button" (click)="directTo(link.url)">
+        <div>
+          <div>
+              {{link.name}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

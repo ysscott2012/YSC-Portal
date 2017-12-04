@@ -1,0 +1,98 @@
+/*
+ * This style sheet deal with fix box mobile responsiveness
+ */
+
+/*
+ * container fixed width
+ * < 576 width = 100%;
+ * > 576 width = 540px;
+ * > 768 width = 720px;
+ * > 992 width = 960px;
+ * > 1200 width = 1140px;
+ */
+
+.top-frame {
+  position: sticky;
+  top: 0px;
+  font-size: 36px;
+  padding: 0px 15px;
+  border-bottom: 1px solid #dadada;
+  background-color: #e9ebee;
+  z-index: 2;
+}
+
+.ys-card-parent {
+  padding: 15px;
+}
+
+.ys-card-parent .ys-card-children {
+  width: 100%;
+  padding: 0px 0px 15px 0px;
+}
+
+.ys-card-parent .ys-card-children > div {
+  /* background-color: black */
+}
+
+@media ( min-width: 576px ) {
+
+  .ys-card-parent {
+    padding: 40px 15px;
+  }
+
+  .ys-card-parent .ys-card-children {
+    width: 510px;
+    padding: 0px 0px 15px 0px;
+    float: left;
+  }
+
+}
+
+@media ( min-width: 768px ) {
+
+  .top-frame {
+    padding: 0px;
+    background-color: white;
+  }
+
+  .ys-card-parent {
+    padding: 40px 15px;
+  }
+
+  .ys-card-parent .ys-card-children {
+    width: 345px;
+    padding: 15px;
+    float: left;
+  }
+
+}
+
+@media ( min-width: 992px ) {
+
+  .ys-card-parent {
+    padding: 40px 0px;
+  }
+
+  .ys-card-parent .ys-card-children {
+    width: 320px;
+    padding: 15px;
+    float: left;
+  }
+
+}
+
+@media ( min-width: 1200px ) {
+
+  .ys-card-parent {
+    padding: 40px 0px;
+  }
+
+  .ys-card-parent .ys-card-children {
+    width: 285px;
+    padding: 15px;
+    float: left;
+  }
+
+}
+
+

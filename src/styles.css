@@ -16,10 +16,27 @@ body {
   font-size: 14px;
 }
 
+.nopadding {
+  padding: 0px !important;
+}
+
+.nomargin {
+  margin: 0px !important;
+}
+
+div.ys-shadow {
+  box-shadow: 5px 5px 12px #c7b9b9;
+}
+
+div.ys-shadow:hover {
+  box-shadow: 10px 10px 20px #c7b9b9;
+}
+
 div.ys-link {
   color: #4267b2;
   cursor: pointer;
 }
+
 div.ys-link:hover {
   text-decoration: underline;
 }
@@ -122,6 +139,10 @@ div.ys-link:hover {
 /* BUTTON */
 
 button {
+  cursor: pointer;
+}
+
+.button {
   cursor: pointer;
 }
 
