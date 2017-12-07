@@ -12,14 +12,14 @@ export class Navigation {
    * constructor
    */
   constructor(user: User, argument: String) {
-
+    const filePath = '../../assets/files/'
     // Setup links
     // General links
     const profileLink =
       new Link('/user/profile/' + user.id, '<i class="fa fa-cog" aria-hidden="true"></i><span>Settings</span>', 'Settings', '', false);
 
     const activityLink =
-      new Link('/user/activity', '', 'Activity Feed', '',false)
+      new Link('/user/activity', '', 'Activity Feed', filePath + 'default/activity.jpg', false);
     const userLink =
       new Link('/user', '<i class="fa fa-user" aria-hidden="true"></i><span>' + user.firstName + '</span>', user.firstName, '', false);
     const dashboardLink =
@@ -35,7 +35,7 @@ export class Navigation {
       new Link('/', '<i class="fa fa-sign-out" aria-hidden="true"></i><span>Log out</span>', 'Log out', '', false);
 
     // Admin links
-    const usersTableLink = new Link('/user/table', '<i class="fa fa-table" aria-hidden="true"></i><span>Manage</span>', 'Manage', '', true);
+    const usersTableLink = new Link('/user/pending', '<i class="fa fa-table" aria-hidden="true"></i><span>Manage</span>', 'Manage', filePath + 'default/manage.png', true);
 
     if (argument === 'Mobile') {
       this.links.push(userLink);

@@ -49,7 +49,8 @@ export class TableComponent implements OnInit {
   getUsers() {
     const params: Params = new Params();
 
-    if (this.route.snapshot.data.hasOwnProperty('isApproved') && this.route.snapshot.data.hasOwnProperty('isRejected')) {
+    if (this.route.snapshot.data.hasOwnProperty('isApproved') &&
+       this.route.snapshot.data.hasOwnProperty('isRejected')) {
 
       params.conditions = {
         isApproved: this.route.snapshot.data['isApproved'],

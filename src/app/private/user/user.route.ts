@@ -21,7 +21,7 @@ const route: Routes = [
       { path: 'approved', component: TableComponent, data: { title: 'Approved', isApproved: true, isRejected: false} },
       { path: 'rejected', component: TableComponent, data: { title: 'Rejected', isApproved: false, isRejected: true} },
       { path: 'pending', component: TableComponent, data: { title: 'Pending', isApproved: false, isRejected: false} },
-      { path: 'table', component: TableComponent, data: {title: 'All'}},
+      // { path: 'table', component: TableComponent, data: {title: 'All'}},
       { path: 'activity', component: UserHomeComponent },
       // { path: 'activity/:id', component: UserHomeComponent },
       { path: 'profile/:id', component: ProfileComponent },

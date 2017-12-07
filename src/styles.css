@@ -41,6 +41,31 @@ div.ys-link:hover {
   text-decoration: underline;
 }
 
+div.ys-background-image {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+div.ys-background-image {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+div.ys-background-image.zoom {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  transition: 300ms all linear;
+  box-shadow: 1000px 1000px 100000px rgba(255, 255, 255, 0.55) inset;
+}
+
+div.ys-background-image.zoom:hover {
+  transform: scale(1.1);
+}
+
+
 /* Menu  */
 
 .main-page {
@@ -127,6 +152,7 @@ div.ys-link:hover {
 
 .ys-table .vm {
     vertical-align: middle;
+    text-align: center
 }
 
 @media screen and (max-width: 768px) {
