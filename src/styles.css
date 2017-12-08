@@ -155,6 +155,11 @@ div.ys-background-image.zoom:hover {
     text-align: center
 }
 
+.ys-full-size {
+  width: 100%;
+  height: 100%;
+}
+
 @media screen and (max-width: 768px) {
   .section {
     padding: 10px 0px;

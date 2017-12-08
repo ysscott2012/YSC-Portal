@@ -1,3 +1,6 @@
+
+
+
 <div class="board-section">
   <!-- top section -->
   <div class="top">
@@ -5,9 +8,19 @@
   </div>
   <!-- middle section -->
   <div class="middle">
+    <!-- When it is no board for the current user -->
+    <div class="ys-table ys-full-size">
+      <div class="ys-table-cell vm">
+        You don't have any board yet.
+        <div class="ys-link" data-toggle="modal" data-target="#exampleModal">Create One</div>
+      </div>
+    </div>
 
+    <!-- If there is a board, show board content. -->
   </div>
   <!-- bottom section -->
   <div class="bottom">
   </div>
 </div>
+
+<app-create-board></app-create-board>

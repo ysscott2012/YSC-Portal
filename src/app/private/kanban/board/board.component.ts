@@ -12,6 +12,8 @@ import { UserService } from '../../user/services/user.service';
 // const
 import { webconstant } from '../../../classes/webconstant';
 
+import * as $ from 'jquery';
+
 @Component({
   selector: 'app-board',
   templateUrl: './board.component.html',
@@ -37,6 +39,7 @@ export class BoardComponent implements OnInit {
    * lifecycle
    */
   ngOnInit() {
+
   }
 
   /**
