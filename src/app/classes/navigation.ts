@@ -17,9 +17,6 @@ export class Navigation {
     // General links
     const profileLink =
       new Link('/user/profile/' + user.id, '<i class="fa fa-cog" aria-hidden="true"></i><span>Settings</span>', 'Settings', '', false);
-
-    const activityLink =
-      new Link('/user/activity', '', 'Activity Feed', filePath + 'default/activity.jpg', false);
     const userLink =
       new Link('/user', '<i class="fa fa-user" aria-hidden="true"></i><span>' + user.firstName + '</span>', user.firstName, '', false);
     const dashboardLink =
@@ -43,6 +40,14 @@ export class Navigation {
       true
     );
 
+    // Dashboard box link
+    const activityLink =
+      new Link('/user/activity', '', 'Activity Feed', filePath + 'default/activity.jpg', false);
+    const kanbanLink =
+      new Link('/kanban/board', '', 'Kanban Board', filePath + 'default/kanbanboard.png', false);
+
+
+
     if (argument === 'Mobile') {
       this.links.push(userLink);
       // this.links.push(groupLink);
@@ -56,6 +61,7 @@ export class Navigation {
       this.links.push(logoutLink);
     } else if (argument === 'dashboard') {
       this.links.push(activityLink);
+      this.links.push(kanbanLink);
     }
 
     if (user.level === 99) {
