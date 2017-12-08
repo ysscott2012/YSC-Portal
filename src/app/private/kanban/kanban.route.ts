@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { BoardComponent } from './board/board.component';
+import { BoardSampleComponent} from './board-sample/board-sample.component';
 import { KanbanComponent } from './kanban.component';
 
 const route: Routes = [
@@ -13,7 +14,8 @@ const route: Routes = [
         redirectTo: '/kanban/board',
         pathMatch: 'full'
       },
-      { path: 'board', component: BoardComponent }
+      { path: 'board', component: BoardComponent },
+      { path: 'boardSample', component: BoardSampleComponent }
     ]
   }
 ];

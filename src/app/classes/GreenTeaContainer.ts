@@ -7,7 +7,9 @@ export class GreenTeaContainer {
   className: String;
   id: String;
   greenTeaObjects: Array<GreenTeaObject> = [];
+  name: String;
   owner: Object;
+  privacy: String;
   referenceID: String;
   referenceType: String;
 
@@ -24,15 +26,19 @@ export class GreenTeaContainer {
         const greenTeaObject = new GreenTeaObject(element);
         this.greenTeaObjects.push(greenTeaObject);
       });
+      this.name = container.name;
       this.owner = container.owner;
+      this.privacy = container.privacy;
       this.referenceID = container.referenceID;
       this.referenceType = container.referenceType;
     } else {
-      this.creationDate = '';
+      this.creationDate = new Date().toJSON();
       this.className = '';
       this.id = '';
       this.greenTeaObjects = [];
+      this.name = '';
       this.owner = {};
+      this.privacy = 'public';
       this.referenceID = '';
       this.referenceType = '';
     }

@@ -2,7 +2,7 @@ var moment = require('moment');
 var _ = require('lodash');
 
 var greenTeaContainer = require('../models/GreenTea_Container');
-var Schema = greenTeaContainer.Schema;
+var Schema = greenTeaContainer.schema;
 
 var message = require('../models/message');
 var error = require('../models/error');
