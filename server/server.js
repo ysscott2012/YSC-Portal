@@ -19,6 +19,9 @@ var authRoutes = require('./routes/auth.routes');
 var commentRoutes = require('./routes/comment.routes');
 var userRoutes = require('./routes/user.routes');
 var fileRoutes = require('./routes/file.routes');
+var GreenTeaObject = require('./routes/GreenTeaObject.routes');
+var GreenTeaContainer = require('./routes/GreenTeaContainer.routes');
+var GreenTeaScore = require('./routes/GreenTeaScore.routes');
 
 var app = express();
 
@@ -32,6 +35,9 @@ app.use('/auth', authRoutes);
 app.use('/comment', commentRoutes);
 app.use('/user', userRoutes);
 app.use('/file', fileRoutes);
+app.use('/score', GreenTeaScore);
+app.use('/object', GreenTeaObject);
+app.use('/container', GreenTeaContainer);
 
 
 // Uncomment following method when you are using server.js serves static website.

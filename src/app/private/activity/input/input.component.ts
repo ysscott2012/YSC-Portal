@@ -8,8 +8,6 @@ import { Preferences } from '../../../classes/preferences';
 import { ActivityService } from '../services/activity.service';
 import { UserService } from '../../user/services/user.service';
 
-import { YS_REFERENCE } from '../../../global';
-
 import * as $ from 'jquery';
 
 @Component({

@@ -16,13 +16,55 @@ body {
   font-size: 14px;
 }
 
+.nopadding {
+  padding: 0px !important;
+}
+
+.nomargin {
+  margin: 0px !important;
+}
+
+div.ys-shadow {
+  box-shadow: 5px 5px 12px #c7b9b9;
+}
+
+div.ys-shadow:hover {
+  box-shadow: 10px 10px 20px #c7b9b9;
+}
+
 div.ys-link {
   color: #4267b2;
   cursor: pointer;
 }
+
 div.ys-link:hover {
   text-decoration: underline;
 }
+
+div.ys-background-image {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+div.ys-background-image {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+div.ys-background-image.zoom {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  transition: 300ms all linear;
+  box-shadow: 1000px 1000px 100000px rgba(255, 255, 255, 0.55) inset;
+}
+
+div.ys-background-image.zoom:hover {
+  transform: scale(1.1);
+}
+
 
 /* Menu  */
 
@@ -110,6 +152,7 @@ div.ys-link:hover {
 
 .ys-table .vm {
     vertical-align: middle;
+    text-align: center
 }
 
 @media screen and (max-width: 768px) {
@@ -122,6 +165,10 @@ div.ys-link:hover {
 /* BUTTON */
 
 button {
+  cursor: pointer;
+}
+
+.button {
   cursor: pointer;
 }
 
