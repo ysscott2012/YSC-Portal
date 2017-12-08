@@ -13,6 +13,7 @@ import { AuthenticationModule } from './public/authentication/authentication.mod
 import { UserModule } from './private/user/user.module';
 import { ChatModule } from './private/chat/chat.module';
 import { FilesModule } from './private/files/files.module';
+import { KanbanModule } from './private/kanban/kanban.module';
 import { SharedModule } from './private/shared/shared.module';
 
 // Component
@@ -22,8 +23,9 @@ import { AppComponent } from './app.component';
 import { AppRoutes } from './app.route';
 import { AdminRoutes } from './private/admin/admin.route';
 import { AuthenticationRoutes } from './public/authentication/authentication.route';
-import { UserRoutes } from './private/user/user.route';
 import { ChatRoutes } from './private/chat/chat.route';
+import { KanbanRoutes } from './private/kanban/kanban.route';
+import { UserRoutes } from './private/user/user.route';
 
 
 @NgModule({
@@ -41,14 +43,17 @@ import { ChatRoutes } from './private/chat/chat.route';
     // Authentication
     AuthenticationModule,
     AuthenticationRoutes,
-    // User
-    UserModule,
-    UserRoutes,
     // Chat
     ChatModule,
     ChatRoutes,
+    // Knabna
+    KanbanModule,
+    KanbanRoutes,
     // Files
-    FilesModule
+    FilesModule,
+    // User
+    UserModule,
+    UserRoutes,
   ],
   providers: [
     HttpService

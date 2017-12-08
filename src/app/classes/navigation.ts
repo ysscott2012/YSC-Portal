@@ -1,5 +1,5 @@
-import { Link } from "./link";
-import { User } from "./user";
+import { Link } from './link';
+import { User } from './user';
 
 export class Navigation {
 
@@ -12,7 +12,7 @@ export class Navigation {
    * constructor
    */
   constructor(user: User, argument: String) {
-    const filePath = '../../assets/files/'
+    const filePath = '../../assets/files/';
     // Setup links
     // General links
     const profileLink =
@@ -35,7 +35,13 @@ export class Navigation {
       new Link('/', '<i class="fa fa-sign-out" aria-hidden="true"></i><span>Log out</span>', 'Log out', '', false);
 
     // Admin links
-    const usersTableLink = new Link('/user/pending', '<i class="fa fa-table" aria-hidden="true"></i><span>Manage</span>', 'Manage', filePath + 'default/manage.png', true);
+    const usersTableLink =
+      new Link('/user/pending',
+      '<i class="fa fa-table" aria-hidden="true"></i><span>Manage</span>',
+      'Manage',
+      filePath + 'default/manage.png',
+      true
+    );
 
     if (argument === 'Mobile') {
       this.links.push(userLink);
