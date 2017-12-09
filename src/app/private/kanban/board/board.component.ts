@@ -182,8 +182,7 @@ export class BoardComponent implements OnInit {
     if (con) {
       this.containerService.remove(this.selectedBoard).subscribe(
         data => {
-          this.boards = this.boards.filter( d => d.id !== this.selectedBoard.id);
-          this.setSelectedBoard(null);
+          document.location.reload();
         },
         error => console.log(error)
       );
