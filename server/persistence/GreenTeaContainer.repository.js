@@ -36,7 +36,15 @@ class GreenTeaContainerRepository {
    * find one document and update from DB
    */
   findOneAndUpdate(conditions, update, options, callback) {
-
+    Schema.findOneAndUpdate(conditions, update, options, function(err, object) {
+      if (err) {
+        message.setMessage( false, "Update container error", null, []);
+        callback(message);
+      } else {
+        message.setMessage( true, "Update container successfully", object, []);
+        callback(message);
+      }
+    })
   }
 
   /**
@@ -71,6 +79,7 @@ class GreenTeaContainerRepository {
    */
   update(condition, updates, callback) {
   };
+
 }
 
 module.exports = new GreenTeaContainerRepository();

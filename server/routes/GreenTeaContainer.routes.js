@@ -57,5 +57,13 @@ router.post('/remove', function(req, res) {
 })
 
 
+router.post('/updateOne', function(req, res) {
+  console.log(req.body)
+  service.findOneAndUpdate(req.body.condition, req.body.update, req.body.option, function(result) {
+     res.send(result);
+  })
+
+})
+
 
 module.exports = router;

@@ -2,7 +2,8 @@
   <!-- top section -->
   <div class="top">
     <div class="board-title" *ngIf="selectedBoard">
-      {{selectedBoard.name}}
+      <input *ngIf="editToggle" (keydown)="editBaordName($event)" value="{{selectedBoard.name}}"/>
+      <div *ngIf="!editToggle" (click)="editToggle = !editToggle">{{selectedBoard.name}}</div>
     </div>
     <div class="board-action-section padding" *ngIf="boards.length > 0">
       <select id="boardSelections" (change)="changeboard($event)">

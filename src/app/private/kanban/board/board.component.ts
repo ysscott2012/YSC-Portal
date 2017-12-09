@@ -28,11 +28,12 @@ export class BoardComponent implements OnInit {
    * Attribute
    */
   closeResult: string;
+  boards: GreenTeaContainer[] = [];
+  editToggle = false;
   privacy: String[] = [
     webconstant.PRIVACY_PUBLIC,
     webconstant.PRIVACY_PRIVATE
   ];
-  boards: GreenTeaContainer[] = [];
   selectedPrivacy = 'Privacy';
   selectedBoard: GreenTeaContainer;
 
@@ -108,6 +109,28 @@ export class BoardComponent implements OnInit {
     }
   }
 
+  /**
+   * change board name
+   */
+  editBaordName(event) {
+    console.log(event);
+    if (event.currentTarget.value &&
+        event.currentTarget.value !== this.selectedBoard.name &&
+        event.keyCode === 13) {
+      const con = confirm('Are you sure you want to change board name to '+ event.currentTarget.value + '?');
+      if (con) {
+        const condition = { '_id': this.selectedBoard.id };
+        const update = { name: event.currentTarget.value };
+        const option = { new: true };
+        this.updateBoard(condition, update, option);
+      }
+    } else if (event.keyCode === 27) {
+      this.editToggle = false;
+    } else if (event.currentTarget.value &&
+      event.keyCode === 13) {
+      this.editToggle = false;
+    }
+  }
   /**
    * Get Boards under current user
    */
@@ -209,6 +232,28 @@ export class BoardComponent implements OnInit {
    */
   validateBoard() {
     return this.board.name !== '' && this.selectedPrivacy !== 'Privacy';
+  }
+
+  /**
+   * update board
+   * @param condition
+   * @param update
+   * @param option
+   */
+  updateBoard(condition, update, option) {
+    this.containerService.updateOne(condition, update, option).subscribe(
+      data => {
+        if (data.success) {
+          const board = new GreenTeaContainer(data.payload);
+          this.boards = this.boards.filter(d => d.id !== board.id);
+          this.boards.push(board);
+          this.setSelectedBoard(board);
+          this.editToggle = false;
+        }
+        console.log(data);
+      },
+      error => console.log(error)
+    )
   }
 
 
