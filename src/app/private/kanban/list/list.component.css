@@ -1,0 +1,73 @@
+.list-container {
+  padding: 20px 10px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+}
+
+.list-section {
+  width: 200px;
+  height: 100%;
+  border-radius: 5px;
+  background-color: white;
+  border: 1px solid #dddfe2;
+  display: inline-block;
+  margin: 0px 10px;
+}
+
+.list-section.add-list {
+  width: 200px;
+  height: 100%;
+  border-radius: 5px;
+  background-color: white;
+  border: 1px dashed #dddfe2;
+  display: inline-block;
+  margin: 0px 10px;
+}
+
+.list-section .top {
+  width: 100%;
+  height: 41px;
+  padding: 8px 0px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  background-color: #f6f7f9;
+  border-bottom: 1px solid #dddfe2;
+}
+
+.list-section .middle {
+  width: 100%;
+  height: calc(100% - 82px);
+  padding: 12px;
+  display: table;
+}
+
+.list-section.add-list .middle {
+  width: 100%;
+  height: 100%;
+  padding: 12px;
+  display: table;
+}
+
+.list-section .bottom {
+  width: 100%;
+  height: 41px;
+  padding: 8px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  background-color: #f6f7f9;
+  border-top: 1px solid #dddfe2;
+}
+
+.list-title {
+  float: left;
+  padding: 0px 15px;
+}
+
+.list-action-section {
+  float: right;
+}
+
+.list-action-section.padding {
+  padding: 0px 15px;
+}

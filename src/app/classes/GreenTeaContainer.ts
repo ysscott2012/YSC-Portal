@@ -9,6 +9,7 @@ export class GreenTeaContainer {
   greenTeaObjects: Array<GreenTeaObject> = [];
   name: String;
   owner: Object;
+  position: Number;
   privacy: String;
   referenceID: String;
   referenceType: String;
@@ -28,6 +29,7 @@ export class GreenTeaContainer {
       });
       this.name = container.name;
       this.owner = container.owner;
+      this.position = container.position;
       this.privacy = container.privacy;
       this.referenceID = container.referenceID;
       this.referenceType = container.referenceType;
@@ -38,6 +40,7 @@ export class GreenTeaContainer {
       this.greenTeaObjects = [];
       this.name = '';
       this.owner = {};
+      this.position = -1;
       this.privacy = 'public';
       this.referenceID = '';
       this.referenceType = '';

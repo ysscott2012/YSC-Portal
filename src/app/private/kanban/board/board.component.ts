@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
-// Classes
+// classes
 import { GreenTeaContainer } from '../../../classes/GreenTeaContainer';
 import { User } from '../../../classes/user';
 
-// Services
+// services
 import { ContainerService } from '../../services/container.service';
 import { ObjectService } from '../../services/object.service';
 import { UserService } from '../../user/services/user.service';
@@ -12,22 +12,22 @@ import { UserService } from '../../user/services/user.service';
 // const
 import { webconstant } from '../../../classes/webconstant';
 
+// booststrao
 import { NgbModal, ModalDismissReasons, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
 
 import * as $ from 'jquery';
 
 @Component({
-  selector: 'app-board',
+  selector: 'app-kanban-board',
   templateUrl: './board.component.html',
   styleUrls: ['./board.component.css']
 })
-export class BoardComponent implements OnInit {
+export class KanbanBoardComponent implements OnInit {
 
 
   /**
    * Attribute
    */
-  closeResult: string;
   boards: GreenTeaContainer[] = [];
   editToggle = false;
   privacy: String[] = [
@@ -166,11 +166,11 @@ export class BoardComponent implements OnInit {
       windowClass: 'board-modal',
       size: 'lg'
     };
+    this.board = { name: null, validation: false}
+    this.selectedPrivacy = 'Privacy';
     this.modalService.open(content, ngbModalOptions).result.then((result) => {
       this.action(result);
-      this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
-      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
     });
   }
 
@@ -211,7 +211,8 @@ export class BoardComponent implements OnInit {
     container.referenceID = current.id;
     container.referenceType = webconstant.CLASS_NAME_USER;
     container.creationDate = new Date().toJSON();
-    container.privacy = webconstant.PRIVACY_PUBLIC;
+    container.privacy = this.selectedPrivacy;
+    container.position = this.boards.length;
     return container;
   }
 
@@ -253,21 +254,6 @@ export class BoardComponent implements OnInit {
       },
       error => console.log(error)
     )
-  }
-
-
-  /**
-   * Get Reason
-   * @param reason
-   */
-  private getDismissReason(reason: any): string {
-    if (reason === ModalDismissReasons.ESC) {
-      return 'by pressing ESC';
-    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-      return 'by clicking on a backdrop';
-    } else {
-      return  `with: ${reason}`;
-    }
   }
 
 }

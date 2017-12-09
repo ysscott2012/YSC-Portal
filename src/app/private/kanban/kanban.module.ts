@@ -19,7 +19,8 @@ import { KanbanRoutes } from './kanban.route';
 
 // Components
 import { KanbanComponent } from './kanban.component';
-import { BoardComponent } from './board/board.component';
+import { KanbanBoardComponent } from './board/board.component';
+import { KanbanListComponent } from './list/list.component';
 import { BoardSampleComponent } from './board-sample/board-sample.component';
 import { CreateBoardComponent } from './dialogs/create-board/create-board.component';
 
@@ -34,9 +35,10 @@ import { CreateBoardComponent } from './dialogs/create-board/create-board.compon
   ],
   declarations: [
     KanbanComponent,
-    BoardComponent,
+    KanbanBoardComponent,
+    KanbanListComponent,
     BoardSampleComponent,
-    CreateBoardComponent
+    CreateBoardComponent,
   ],
   providers: [
     ContainerService,

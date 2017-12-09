@@ -8,6 +8,7 @@ var ContainerSchema = new Schema({
   greenTeaObjects: { type: [Object], defult: [] },
   owner: { type: Object, defult: {} },
   name: { type: String, defult: ''},
+  position: {type: Number, default: -1},
   privacy: { type: String, default: 'public'},
   referenceID: { type: String, defult: '' },
   referenceType: { type: String, defult: '' },

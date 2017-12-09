@@ -14,8 +14,9 @@ router.use(jwtExpress());
  * find documents based on the filter
  */
 router.post('/find', function(req, res) {
-  console.log(global.current);
   service.find(req.body, function(result){
+    // sort by position
+    result.payload = _.sortBy(result.payload, 'position');
     res.send(result);
   })
 });
@@ -40,14 +41,12 @@ router.post('/save', function(req, res) {
 
 
 router.post('/remove', function(req, res) {
-  console.log(global.current._id);
-  console.log(req.body.owner.id);
   if (global.current._id === req.body.owner.id) {
     var selectedContainer = {
       '_id': req.body.id
     }
     var referenceCondition = {
-      '$and': [ {referenceID: selectedContainer.id}, {referenceType: selectedContainer.className} ]
+      '$and': [ {referenceID: req.body.id}, {referenceType: req.body.className} ]
     }
     // remove all referenced containers
     service.remove(referenceCondition);
@@ -58,7 +57,6 @@ router.post('/remove', function(req, res) {
 
 
 router.post('/updateOne', function(req, res) {
-  console.log(req.body)
   service.findOneAndUpdate(req.body.condition, req.body.update, req.body.option, function(result) {
      res.send(result);
   })
