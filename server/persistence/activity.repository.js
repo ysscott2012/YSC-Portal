@@ -43,7 +43,7 @@ class ActivityRepository {
   /**
    * remove document from DB
    */
-  remove(condition, callback) {
+  remove(condition) {
 
   };
 

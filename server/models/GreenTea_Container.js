@@ -7,6 +7,7 @@ var ContainerSchema = new Schema({
   className: { type: String, defult: '' },
   greenTeaObjects: { type: [Object], defult: [] },
   owner: { type: Object, defult: {} },
+  name: { type: String, defult: ''},
   privacy: { type: String, default: 'public'},
   referenceID: { type: String, defult: '' },
   referenceType: { type: String, defult: '' },

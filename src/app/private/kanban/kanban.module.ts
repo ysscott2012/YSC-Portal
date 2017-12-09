@@ -5,6 +5,7 @@ import { DndModule } from 'ng2-dnd';
 // Module
 import { SharedModule } from '../shared/shared.module';
 import { FormsModule } from '@angular/forms';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 // Services
 import { ContainerService } from '../services/container.service';
@@ -25,6 +26,7 @@ import { CreateBoardComponent } from './dialogs/create-board/create-board.compon
 @NgModule({
   imports: [
     CommonModule,
+    NgbModule,
     DndModule.forRoot(),
     FormsModule,
     KanbanRoutes,

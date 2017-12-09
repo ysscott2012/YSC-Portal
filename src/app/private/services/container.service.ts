@@ -12,6 +12,8 @@ import { HttpService } from './http.service';
 
 // Classes
 import { GreenTeaContainer } from '../../classes/GreenTeaContainer';
+import { User } from '../../classes/user';
+
 
 @Injectable()
 export class ContainerService {
@@ -45,6 +47,34 @@ export class ContainerService {
       .catch((error: Response) => Observable.throw(error.json()));
   }
 
+  /**
+   * find boards by owenr id
+   * @param user
+   */
+  findByReference (referenceID, referenceType) {
+    const condition = {
+      '$and': [
+        {'referenceID' : referenceID},
+        {'referenceType': referenceType}
+      ]
+    };
+    const body = JSON.stringify(condition);
+    const headers = new Headers({ 'Content-Type': 'application/json' });
+    return this.http.post(this.URL_FIND_CONTAINERS, body, { headers: headers })
+      .map((response: Response) => response.json())
+      .catch((error: Response) => Observable.throw(error.json()));
+  }
+
+  /**
+   * create container
+   */
+  remove(container: GreenTeaContainer) {
+    const body = JSON.stringify(container);
+    const headers = new Headers({ 'Content-Type': 'application/json' });
+    return this.http.post(this.URL_REMOVE_CONTAINER, body, { headers: headers })
+      .map((response: Response) => response.json())
+      .catch((error: Response) => Observable.throw(error.json()));
+  }
 
 
 }

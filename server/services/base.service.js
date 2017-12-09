@@ -87,8 +87,8 @@ module.exports = class baseService {
   /**
    * remove document from DB
    */
-  remove (condition, callback) {
-    return this.repository.remove(condition, callback);
+  remove (condition) {
+    return this.repository.remove(condition);
   };
 
   /**

@@ -14,6 +14,7 @@ router.use(jwtExpress());
  * find documents based on the filter
  */
 router.post('/find', function(req, res) {
+  console.log(global.current);
   service.find(req.body, function(result){
     res.send(result);
   })
@@ -23,6 +24,7 @@ router.post('/find', function(req, res) {
  * find documents based on owner;
  */
 router.post('/findByOwner', function(req, res) {
+
 });
 
 /**
@@ -35,6 +37,25 @@ router.post('/save', function(req, res) {
     res.send(result);
   })
 });
+
+
+router.post('/remove', function(req, res) {
+  console.log(global.current._id);
+  console.log(req.body.owner.id);
+  if (global.current._id === req.body.owner.id) {
+    var selectedContainer = {
+      '_id': req.body.id
+    }
+    var referenceCondition = {
+      '$and': [ {referenceID: selectedContainer.id}, {referenceType: selectedContainer.className} ]
+    }
+    // remove all referenced containers
+    service.remove(referenceCondition);
+    service.remove(selectedContainer);
+    res.send({success: true});
+  }
+})
+
 
 
 module.exports = router;

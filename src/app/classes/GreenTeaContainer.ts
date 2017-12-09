@@ -21,7 +21,7 @@ export class GreenTeaContainer {
     if (container) {
       this.creationDate = container.creationDate;
       this.className = container.className;
-      this.id = container.id;
+      this.id = container._id;
       container.greenTeaObjects.forEach(element => {
         const greenTeaObject = new GreenTeaObject(element);
         this.greenTeaObjects.push(greenTeaObject);

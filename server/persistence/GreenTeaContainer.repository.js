@@ -14,7 +14,6 @@ class GreenTeaContainerRepository {
    * find documents from DB
    */
   find(condition, callback) {
-    console.log(condition);
     Schema.find(condition).then((objects) => {
       objects = _.sortBy(objects, function(o) { return new moment(o.date); }).reverse();
       message.setMessage( true, "Get containers successfully", objects, []);
@@ -43,8 +42,11 @@ class GreenTeaContainerRepository {
   /**
    * remove document from DB
    */
-  remove(condition, callback) {
-
+  remove(condition) {
+    Schema.remove(condition, function (err) {
+      if (err) return handleError(err);
+      console.log("removed");
+    })
   };
 
   /**

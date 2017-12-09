@@ -71,17 +71,17 @@ class UserRepository {
   /**
    * remove document from DB
    */
-  remove(condition, callback) {
-    UserSchema.remove(condition, function(err){
-      if (err) {
-        message.setMessage(false, "remove user error", null, []);
-        callback(message);
-      }
-      else {
-        message.setMessage(true, "remove user successfully", null, []);
-        callback(message);
-      }
-    })
+  remove(condition) {
+    // UserSchema.remove(condition, function(err){
+    //   if (err) {
+    //     message.setMessage(false, "remove user error", null, []);
+    //     callback(message);
+    //   }
+    //   else {
+    //     message.setMessage(true, "remove user successfully", null, []);
+    //     callback(message);
+    //   }
+    // })
   };
 
   /**

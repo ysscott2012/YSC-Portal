@@ -32,3 +32,25 @@
   background-color: #f6f7f9;
   border-top: 1px solid #dddfe2;
 }
+
+.board-title {
+  float: left;
+  padding: 0px 15px;
+}
+
+.board-action-section {
+  float: right;
+}
+
+.board-action-section.padding {
+  padding: 0px 15px;
+}
+
+
+@media (max-width: 768px) {
+  .board-section {
+    width: 100vw;
+    height: calc(100vh - 75px);
+  }
+
+}

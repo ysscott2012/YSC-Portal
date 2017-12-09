@@ -39,7 +39,7 @@ class GroupRepository {
   /**
    * remove document from DB
    */
-  remove(condition, callback) {
+  remove(condition) {
 
   };
 

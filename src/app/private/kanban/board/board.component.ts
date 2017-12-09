@@ -12,6 +12,8 @@ import { UserService } from '../../user/services/user.service';
 // const
 import { webconstant } from '../../../classes/webconstant';
 
+import { NgbModal, ModalDismissReasons, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
+
 import * as $ from 'jquery';
 
 @Component({
@@ -25,37 +27,153 @@ export class BoardComponent implements OnInit {
   /**
    * Attribute
    */
+  closeResult: string;
+  privacy: String[] = [
+    webconstant.PRIVACY_PUBLIC,
+    webconstant.PRIVACY_PRIVATE
+  ];
+  boards: GreenTeaContainer[] = [];
+  selectedPrivacy = 'Privacy';
+  selectedBoard: GreenTeaContainer;
 
+  board = {
+    name: null,
+    validation: false
+  }
   /**
    * constructor
    */
   constructor(
     private containerService: ContainerService,
+    private modalService: NgbModal,
     private objectService: ObjectService,
     private userService: UserService
-  ) { }
+  ) {
+  }
 
   /**
    * lifecycle
    */
   ngOnInit() {
-
+    this.getBoards();
   }
 
   /**
-   * listening for the enter key
+   * Call function based on the result
+   * @param result
    */
-  keydown(event) {
-    if (event.keyCode === 13 &&
-        event.currentTarget.value) {
-          const container = this.setUpContainer(event.currentTarget.value);
-          this.containerService.save(container).subscribe(
-            data => {
-              console.log(data);
-            },
-            error => console.log(error)
-          );
+  action(result) {
+    if (result === 'Create Board') {
+      this.createBoard();
     }
+  }
+
+  /**
+   * chagne board selection
+   * @param event
+   */
+  changeboard(event) {
+    const selectedID = event.currentTarget.value;
+    if (selectedID) {
+      const board = this.boards.filter(d => d.id === selectedID)[0];
+      this.setSelectedBoard(board);
+    }
+  }
+
+  /**
+   * Change Privacy
+   * @param privacy
+   */
+  changePrivacy(privacy) {
+    this.selectedPrivacy = privacy;
+  }
+
+  /**
+   * Create Board
+   */
+  createBoard() {
+    if (this.validateBoard()) {
+      const container = this.setUpContainer(this.board.name);
+
+      this.containerService.save(container).subscribe(
+        data => {
+          if (data.success) {
+            const newBoard = new GreenTeaContainer(data.payload);
+            this.boards.push(newBoard);
+            this.setSelectedBoard(newBoard);
+          }
+        },
+        error => console.log(error)
+      );
+    }
+  }
+
+  /**
+   * Get Boards under current user
+   */
+  getBoards() {
+    const current: User = this.userService.getCurrent();
+    this.containerService.findByReference(
+      current.id, // REFERENCE ID
+      webconstant.CLASS_NAME_USER // REFERENCE TYPE
+    ).subscribe(
+      data => {
+        if (data.success) {
+          data.payload.forEach(element => {
+            const container = new GreenTeaContainer(element);
+            this.boards.push(container);
+          });
+
+          if (this.boards.length === 1) {
+            this.setSelectedBoard(this.boards[0]);
+          }
+        }
+        console.log(this.boards);
+      },
+      error => console.log(error)
+    );
+  }
+
+  /**
+   * open a dialog
+   * @param content
+   */
+  open(content) {
+    const ngbModalOptions: NgbModalOptions = {
+      windowClass: 'board-modal',
+      size: 'lg'
+    };
+    this.modalService.open(content, ngbModalOptions).result.then((result) => {
+      this.action(result);
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
+
+  /**
+   * remove board
+   */
+  removeBoard() {
+    const con = confirm('Are you sure you want to delete ' + this.selectedBoard.name + ' ?');
+    if (con) {
+      this.containerService.remove(this.selectedBoard).subscribe(
+        data => {
+          this.boards = this.boards.filter( d => d.id !== this.selectedBoard.id);
+          this.setSelectedBoard(null);
+        },
+        error => console.log(error)
+      );
+    };
+  }
+
+  /**
+   * Set up board name
+   * @param event
+   */
+  setBordName(event) {
+    this.board.name = event.currentTarget.value;
+    console.log(this.board.name);
   }
 
   /**
@@ -73,6 +191,39 @@ export class BoardComponent implements OnInit {
     container.creationDate = new Date().toJSON();
     container.privacy = webconstant.PRIVACY_PUBLIC;
     return container;
+  }
+
+  /**
+   * set up selected board
+   * @param board
+   */
+  setSelectedBoard(board: GreenTeaContainer) {
+    this.selectedBoard = board;
+    if (board) {
+      $('#boardSelections').val(board.id);
+    }
+  }
+
+  /**
+   * validation
+   */
+  validateBoard() {
+    return this.board.name !== '' && this.selectedPrivacy !== 'Privacy';
+  }
+
+
+  /**
+   * Get Reason
+   * @param reason
+   */
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return  `with: ${reason}`;
+    }
   }
 
 }

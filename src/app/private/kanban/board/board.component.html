@@ -1,26 +1,111 @@
-
-
-
 <div class="board-section">
   <!-- top section -->
   <div class="top">
-      <input id="createContainer" placeholder="Create your own board." (keydown)="keydown($event)">
+    <div class="board-title" *ngIf="selectedBoard">
+      {{selectedBoard.name}}
+    </div>
+    <div class="board-action-section padding" *ngIf="boards.length > 0">
+      <select id="boardSelections" (change)="changeboard($event)">
+        <option selected="selected" *ngIf="boards.length > 1">Select board</option>
+        <option *ngFor="let board of boards" value="{{board.id}}">{{board.name}}</option>
+      </select>
+    </div>
+    <div class="board-action-section" *ngIf="boards.length > 0">
+      <div class="ys-link" (click)="open(CreateBoardModal)">
+        Create another board
+      </div>
+    </div>
   </div>
   <!-- middle section -->
   <div class="middle">
     <!-- When it is no board for the current user -->
-    <div class="ys-table ys-full-size">
+    <div class="ys-table ys-full-size" *ngIf="boards.length === 0">
       <div class="ys-table-cell vm">
         You don't have any board yet.
-        <div class="ys-link" data-toggle="modal" data-target="#exampleModal">Create One</div>
+        <div class="ys-link" (click)="open(CreateBoardModal)">Create One</div>
       </div>
     </div>
 
     <!-- If there is a board, show board content. -->
+    <div class="ys-table ys-full-size" *ngIf="boards.length > 1 && !selectedBoard">
+        <div class="ys-table-cell vm">
+          You have {{boards.length}} boards, please select your boards or
+        <div class="ys-link" (click)="open(CreateBoardModal)">create another one</div>
+      </div>
+    </div>
   </div>
   <!-- bottom section -->
-  <div class="bottom">
+  <div class="bottom" >
+      <div class="board-action-section padding" *ngIf="selectedBoard">
+        <div class="ys-link red" (click)="removeBoard()">
+          Delete this board
+        </div>
+      </div>
   </div>
 </div>
 
-<app-create-board></app-create-board>
+<!-- Create Board Dialog -->
+<ng-template #CreateBoardModal let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h5 class="modal-title">Create a board</h5>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div style="padding: 0px 15px 15px 15px;">
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="ys-input-tite">Board Name <sup>*</sup></div>
+          <input class="ys-input" (change)="setBordName($event)">
+        </div>
+        <div class="col-lg-6">
+          <div class="ys-input-tite">Privacy <sup>*</sup></div>
+          <div ngbDropdown class="d-inline-block">
+            <button class="btn btn-outline-primary" id="privacyDropdown" ngbDropdownToggle>{{selectedPrivacy}}</button>
+            <div ngbDropdownMenu aria-labelledby="privacyDropdown">
+              <button class="dropdown-item" *ngFor="let o of privacy" (click)="changePrivacy(o)" >{{o}}</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button class="btn ys background blue" (click)="c('Create Board')" [disabled]="!validateBoard()" >Create</button>
+    <button class="btn ys border blue" (click)="c('Cancel Board')">Cancel</button>
+  </div>
+</ng-template>
+
+<!-- Create List Dialog -->
+<ng-template #createList let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title">Create a List</h4>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p>One fine body&hellip;</p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="c('Close click')">Close</button>
+  </div>
+</ng-template>
+
+<!-- Create List Dialog -->
+<ng-template #createCard let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title">Create a Task</h4>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p>One fine body&hellip;</p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="c('Close click')">Close</button>
+  </div>
+</ng-template>
+
