@@ -18,7 +18,10 @@
     </div>
     <!-- middle section -->
     <div class="middle">
-
+      <app-kanban-card
+        [selectedList]="list"
+        class="ys-full-size">
+      </app-kanban-card>
     </div>
     <!-- bottom section -->
     <div class="bottom">
@@ -45,7 +48,7 @@
 <!-- Create List Dialog -->
 <ng-template #CreateListModal let-c="close" let-d="dismiss">
   <div class="modal-header">
-    <h4 class="modal-title">Create a List</h4>
+    <h5 class="modal-title">Create a List on '{{selectedBoard.name}}'</h5>
     <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
       <span aria-hidden="true">&times;</span>
     </button>

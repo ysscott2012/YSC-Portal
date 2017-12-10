@@ -9,6 +9,7 @@ import 'rxjs/add/operator/map';
 
 // Services
 import { HttpService } from './http.service';
+import { GreenTeaObject } from '../../classes/GreenTeaObject';
 
 @Injectable()
 export class ObjectService {
@@ -30,6 +31,16 @@ export class ObjectService {
     private http: HttpService
   ) { }
 
+  /**
+   * create container
+   */
+  save(newObject: GreenTeaObject) {
+    const body = JSON.stringify(newObject);
+    const headers = new Headers({ 'Content-Type': 'application/json' });
+    return this.http.post(this.URL_SAVE_OBJECT, body, { headers: headers })
+      .map((response: Response) => response.json())
+      .catch((error: Response) => Observable.throw(error.json()));
+  }
 
 
 }

@@ -12,7 +12,7 @@ import { UserService } from '../../user/services/user.service';
 // const
 import { webconstant } from '../../../classes/webconstant';
 
-// booststrao
+// boostrap
 import { NgbModal, ModalDismissReasons, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
 import * as $ from 'jquery';
 
@@ -110,7 +110,7 @@ export class KanbanListComponent implements OnInit {
       windowClass: 'board-modal',
       size: 'lg'
     };
-    this.list = { name: null, validation: false}
+    this.list = { name: null, validation: false }
     this.modalService.open(content, ngbModalOptions).result.then((result) => {
       this.action(result);
     }, (reason) => {

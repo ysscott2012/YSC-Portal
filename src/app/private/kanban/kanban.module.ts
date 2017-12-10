@@ -12,14 +12,13 @@ import { ContainerService } from '../services/container.service';
 import { ObjectService } from '../services/object.service';
 import { UserService } from '../user/services/user.service';
 
-//import { KanbanService } from './services/kanban.service';
-
 // Routes
 import { KanbanRoutes } from './kanban.route';
 
 // Components
 import { KanbanComponent } from './kanban.component';
 import { KanbanBoardComponent } from './board/board.component';
+import { KanbanCardComponent } from './card/card.component';
 import { KanbanListComponent } from './list/list.component';
 import { BoardSampleComponent } from './board-sample/board-sample.component';
 
@@ -35,6 +34,7 @@ import { BoardSampleComponent } from './board-sample/board-sample.component';
   declarations: [
     KanbanComponent,
     KanbanBoardComponent,
+    KanbanCardComponent,
     KanbanListComponent,
     BoardSampleComponent,
   ],

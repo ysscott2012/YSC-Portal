@@ -1,0 +1,69 @@
+
+<div class="card-container" *ngIf="selectedList">
+  <!-- create card -->
+  <div class="create card ys-table">
+    <div class="ys-table-cell vm ys-link" (click)="open(CreateCardModal)">Create a task</div>
+  </div>
+</div>
+
+
+<!-- Create List Dialog -->
+<ng-template #CreateCardModal let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h5 class="modal-title">Create a Task on <span style="text-decoration: italic">{{selectedList.name}}</span></h5>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div style="padding: 0px 15px 15px 15px;">
+      <div class="row">
+        <div class="col-lg-7 col-md-6">
+          <!-- Name -->
+          <div class="ys-input-tite">Task Name <sup>*</sup></div>
+          <input class="ys-input" (keyup)="setCardName($event)">
+          <!-- Description -->
+          <div class="ys-input-tite">Description </div>
+          <textarea class="ys-textarea" (keyup)="setCardDescription($event)"></textarea>
+        </div>
+        <div class="col-lg-5 col-md-6">
+          <!-- Value -->
+          <div class="ys-input-tite">Points <sup>*</sup></div>
+          <input class="ys-input" type="number" (keyup)="setValue($event)">
+          <!-- Start Date -->
+          <div class="ys-input-tite">Start Date <sup>*</sup></div>
+          <form class="form-inline">
+            <div class="form-group ys-full-size">
+              <div class="input-group ys-full-size">
+                <input class="form-control ys-input" placeholder="yyyy-mm-dd"
+                        name="dp" [(ngModel)]="card.startDate" ngbDatepicker #d="ngbDatepicker">
+                <button class="input-group-addon" (click)="d.toggle()" type="button">
+                  <i class="fa fa-calendar" aria-hidden="true"></i>
+                </button>
+              </div>
+            </div>
+          </form>
+          <!-- Due Date -->
+          <div class="ys-input-tite">Due Date <sup>*</sup></div>
+          <form class="form-inline">
+            <div class="form-group ys-full-size">
+              <div class="input-group ys-full-size">
+                <input class="form-control ys-input" placeholder="yyyy-mm-dd"
+                        name="dp" [(ngModel)]="card.endDate" ngbDatepicker #e="ngbDatepicker">
+                <button class="input-group-addon" (click)="e.toggle()" type="button">
+                  <i class="fa fa-calendar" aria-hidden="true"></i>
+                </button>
+              </div>
+            </div>
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button class="btn ys background blue" (click)="c('Create Card')" [disabled]="!validateCard()" >Create</button>
+    <button class="btn ys border blue" (click)="c('Cancel Card')">Cancel</button>
+  </div>
+</ng-template>
+

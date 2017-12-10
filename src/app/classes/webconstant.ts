@@ -11,5 +11,10 @@ export const webconstant = {
   // PRIVACY
   PRIVACY_PUBLIC: 'public',
   PRIVACY_CONNECTION: 'connection',
-  PRIVACY_PRIVATE: 'private'
+  PRIVACY_PRIVATE: 'private',
+
+  // STATUS
+  STATUS_OPEN: 'open',
+  STATUS_CLOSED: 'closed',
+  STATUS_EXPIRED: 'expired'
 };

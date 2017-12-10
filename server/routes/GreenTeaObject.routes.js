@@ -29,6 +29,11 @@ router.post('/findByOwner', function(req, res) {
  * Save a new record
  */
 router.post('/save', function(req, res) {
+  var newObject = req.body;
+  newObject.owner = GreenTeaObject.setOwner(req.body.owner);
+  service.save(newObject, function(result) {
+    res.send(result);
+  })
 });
 
 

@@ -2,7 +2,7 @@ var moment = require('moment');
 var _ = require('lodash');
 
 var greenTeaObject = require('../models/GreenTea_Object');
-var Schema = greenTeaObject.Schema;
+var Schema = greenTeaObject.schema;
 
 var message = require('../models/message');
 var error = require('../models/error');
@@ -54,6 +54,7 @@ class GreenTeaObjectRepository {
     var newObject = new Schema(condition);
     newObject.save(function (err, Schema) {
       if (err) {
+        console.log(err);
         message.setMessage(false, "Create object error in MongoDB", null, []);
         callback(message);
       }
