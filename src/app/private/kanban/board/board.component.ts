@@ -40,7 +40,9 @@ export class KanbanBoardComponent implements OnInit {
   board = {
     name: null,
     validation: false
-  }
+  };
+
+  enableEditList;
   /**
    * constructor
    */
@@ -253,7 +255,7 @@ export class KanbanBoardComponent implements OnInit {
         console.log(data);
       },
       error => console.log(error)
-    )
+    );
   }
 
 }

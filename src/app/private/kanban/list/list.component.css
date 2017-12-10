@@ -5,22 +5,17 @@
   white-space: nowrap;
 }
 
+/*
+list-section when
+editMode is false
+*/
+
 .list-section {
   width: 200px;
   height: 100%;
   border-radius: 5px;
   background-color: white;
   border: 1px solid #dddfe2;
-  display: inline-block;
-  margin: 0px 10px;
-}
-
-.list-section.add-list {
-  width: 200px;
-  height: 100%;
-  border-radius: 5px;
-  background-color: white;
-  border: 1px dashed #dddfe2;
   display: inline-block;
   margin: 0px 10px;
 }
@@ -37,9 +32,60 @@
 
 .list-section .middle {
   width: 100%;
+  height: calc(100% - 41px);
+  padding: 12px;
+  display: table;
+}
+
+.list-section .bottom {
+  display: none;
+}
+
+/*
+list-section when
+editMode is true
+*/
+
+.list-section.edit-list {
+  width: 200px;
+  height: 100%;
+  border-radius: 5px;
+  background-color: white;
+  border: 1px dashed #899197;
+  display: inline-block;
+  margin: 0px 10px;
+}
+
+.list-section.edit-list  .middle {
+  width: 100%;
   height: calc(100% - 82px);
   padding: 12px;
   display: table;
+}
+
+.list-section.edit-list .bottom {
+  display: block;
+  width: 100%;
+  height: 41px;
+  padding: 8px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  background-color: #f6f7f9;
+  border-top: 1px solid #dddfe2;
+}
+
+/*
+list-section for create new list
+*/
+
+.list-section.add-list {
+  width: 200px;
+  height: 100%;
+  border-radius: 5px;
+  background-color: white;
+  border: 1px dashed #dddfe2;
+  display: inline-block;
+  margin: 0px 10px;
 }
 
 .list-section.add-list .middle {
@@ -49,15 +95,6 @@
   display: table;
 }
 
-.list-section .bottom {
-  width: 100%;
-  height: 41px;
-  padding: 8px;
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
-  background-color: #f6f7f9;
-  border-top: 1px solid #dddfe2;
-}
 
 .list-title {
   float: left;

@@ -14,6 +14,8 @@ import { webconstant } from '../../../classes/webconstant';
 
 // booststrao
 import { NgbModal, ModalDismissReasons, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
+import * as $ from 'jquery';
+
 
 @Component({
   selector: 'app-kanban-list',
@@ -26,6 +28,7 @@ export class KanbanListComponent implements OnInit {
    * attributes
    */
   @Input() selectedBoard: GreenTeaContainer;
+  @Input() enableEditList;
 
   lists: GreenTeaContainer[] = [];
   selectedList: GreenTeaContainer;
@@ -33,7 +36,7 @@ export class KanbanListComponent implements OnInit {
   list = {
     name: null,
     validation: false
-  }
+  };
 
 
   /**
@@ -57,7 +60,7 @@ export class KanbanListComponent implements OnInit {
    * lifecycle
    */
   ngOnChanges() {
-    this.getLists();
+    this.updateList();
   }
 
   /**
@@ -89,6 +92,13 @@ export class KanbanListComponent implements OnInit {
         error => console.log(error)
       );
     }
+  }
+
+  /**
+   * edit list name
+   */
+  editListName(event, list) {
+    list.name = event.currentTarget.value;
   }
 
   /**
@@ -144,14 +154,12 @@ export class KanbanListComponent implements OnInit {
     };
   }
 
-
   /**
    * Set up list name
    * @param event
    */
   setListName(event) {
     this.list.name = event.currentTarget.value;
-    console.log(this.list.name);
   }
 
   /**
@@ -180,10 +188,57 @@ export class KanbanListComponent implements OnInit {
   }
 
   /**
+   * save lists
+   */
+  updateList() {
+    if (this.enableEditList === false) {
+      // Update Position and name
+      let i = 0;
+      this.lists.forEach(element => {
+        console.log(element.name);
+        const condition = { '_id': element.id };
+        const update = { position: i, name: element.name };
+        const option = { new: true };
+        i++;
+        this.containerService.updateOne(condition, update, option).subscribe(
+          data => {
+          },
+          error => console.log(error)
+        );
+      });
+    } else {
+      this.getLists();
+    }
+  }
+
+  /**
    * validation
    */
   validateList() {
     return this.list.name;
+  }
+
+  /**
+   * update board
+   * @param condition
+   * @param update
+   * @param option
+   */
+  updateListName(condition, update, option) {
+    this.containerService.updateOne(condition, update, option).subscribe(
+      data => {
+        if (data.success) {
+          const list = new GreenTeaContainer(data.payload);
+          this.lists.forEach(element => {
+            if (element.id === list.id) {
+              element = list;
+              this.setSelectedList(list);
+            }
+          });
+        }
+      },
+      error => console.log(error)
+    );
   }
 
 }

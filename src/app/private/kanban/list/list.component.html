@@ -1,10 +1,19 @@
-<div class="list-container ys-full-size">
+<div class="list-container ys-full-size"
+     dnd-sortable-container
+     [dropZones]="['container-dropZone']"
+     [sortableData]="lists">
 
-  <div class="list-section" *ngFor="let list of lists">
+  <div class="list-section"
+       *ngFor="let list of lists; let i = index"
+       dnd-sortable
+       [dragEnabled]="enableEditList"
+       [sortableIndex]="i"
+       [ngClass]="{'edit-list' : enableEditList}">
     <!-- top section -->
     <div class="top">
       <div class="list-title">
-        {{list.name}}
+        <input *ngIf="enableEditList" (keyup)="editListName($event, list)" style="padding: 0px 8px;" value="{{list.name}}"/>
+        <div *ngIf="!enableEditList" >{{list.name}}</div>
       </div>
     </div>
     <!-- middle section -->
@@ -12,7 +21,7 @@
 
     </div>
     <!-- bottom section -->
-    <div class="bottom" >
+    <div class="bottom">
       <div class="list-action-section padding">
         <div class="ys-link red" (click)="removeList(list)">
           Delete

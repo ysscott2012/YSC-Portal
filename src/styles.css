@@ -32,7 +32,6 @@ div.ys-shadow:hover {
   box-shadow: 10px 10px 20px #c7b9b9;
 }
 
-
 div.ys-link {
   color: #4267b2;
   cursor: pointer;
@@ -70,7 +69,6 @@ div.ys-background-image.zoom {
 div.ys-background-image.zoom:hover {
   transform: scale(1.1);
 }
-
 
 /* Menu  */
 
@@ -249,4 +247,34 @@ button {
   font-size: 24px;
 }
 
+[type=checkbox]:checked + label::before, [type=checkbox]:checked:disabled + label::before {
+  background-image: url('./assets/files/default/checkbox.svg');
+  background-position: 50%;
+  background-repeat: no-repeat;
+}
+
+[type=checkbox]:checked + label::before, [type=radio]:checked + label::before {
+  background-color: #0071bc;
+  box-shadow: 0 0 0 1px #0071bc;
+}
+
+[type=checkbox] + label, [type=radio] + label {
+  cursor: pointer;
+  font-weight: 400;
+  margin-bottom: 0.65em;
+}
+
+[type=checkbox] + label::before, [type=radio] + label::before {
+  background: #ffffff;
+  border-radius: 2px;
+  box-shadow: 0 0 0 1px #757575;
+  content: '\A0';
+  display: inline-block;
+  height: 20px;
+  line-height: 20px;
+  margin-right: 0.6em;
+  text-indent: 0.15em;
+  vertical-align: middle\0;
+  width: 20px;
+}
 

@@ -37,16 +37,23 @@
 
     <!-- Lists -->
     <div *ngIf="selectedBoard" class="ys-full-size">
-      <app-kanban-list [selectedBoard]="selectedBoard" class="ys-full-size"></app-kanban-list>
+      <app-kanban-list
+        [selectedBoard]="selectedBoard"
+        [enableEditList]="enableEditList"
+        class="ys-full-size"></app-kanban-list>
     </div>
   </div>
   <!-- bottom section -->
   <div class="bottom" >
-      <div class="board-action-section padding" *ngIf="selectedBoard">
-        <div class="ys-link red" (click)="removeBoard()">
-          Delete this board
-        </div>
+    <div class="board-title">
+        <input id="enableDrag" type="checkbox" [(ngModel)]="enableEditList" style="display: none"/>
+        <label for="enableDrag">Edit Lists</label>
+    </div>
+    <div class="board-action-section padding" *ngIf="selectedBoard">
+      <div class="ys-link red" (click)="removeBoard()">
+        Delete this board
       </div>
+    </div>
   </div>
 </div>
 

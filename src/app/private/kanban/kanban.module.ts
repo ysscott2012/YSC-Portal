@@ -22,7 +22,6 @@ import { KanbanComponent } from './kanban.component';
 import { KanbanBoardComponent } from './board/board.component';
 import { KanbanListComponent } from './list/list.component';
 import { BoardSampleComponent } from './board-sample/board-sample.component';
-import { CreateBoardComponent } from './dialogs/create-board/create-board.component';
 
 @NgModule({
   imports: [
@@ -38,7 +37,6 @@ import { CreateBoardComponent } from './dialogs/create-board/create-board.compon
     KanbanBoardComponent,
     KanbanListComponent,
     BoardSampleComponent,
-    CreateBoardComponent,
   ],
   providers: [
     ContainerService,
