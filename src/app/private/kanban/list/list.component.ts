@@ -101,6 +101,7 @@ export class KanbanListComponent implements OnInit {
     list.name = event.currentTarget.value;
   }
 
+
   /**
    * open a dialog
    * @param content

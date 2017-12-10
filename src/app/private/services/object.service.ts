@@ -42,5 +42,23 @@ export class ObjectService {
       .catch((error: Response) => Observable.throw(error.json()));
   }
 
+  /**
+   * find boards by owenr id
+   * @param user
+   */
+  findByReference (referenceID, referenceType) {
+    const condition = {
+      '$and': [
+        {'referenceID' : referenceID},
+        {'referenceType': referenceType}
+      ]
+    };
+    const body = JSON.stringify(condition);
+    const headers = new Headers({ 'Content-Type': 'application/json' });
+    return this.http.post(this.URL_FIND_OBJECTS, body, { headers: headers })
+      .map((response: Response) => response.json())
+      .catch((error: Response) => Observable.throw(error.json()));
+  }
+
 
 }

@@ -15,6 +15,8 @@ router.use(jwtExpress());
  */
 router.post('/find', function(req, res) {
   service.find(req.body, function(result){
+    // sort by position
+    result.payload = _.sortBy(result.payload, 'position');
     res.send(result);
   })
 });

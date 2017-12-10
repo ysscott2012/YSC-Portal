@@ -29,7 +29,7 @@ export class KanbanCardComponent implements OnInit {
    * attributes
    */
   @Input() selectedList: GreenTeaContainer;
-
+  @Input() enableEditList;
   card: GreenTeaObject;
   cards: GreenTeaObject[] = [];
   /**
@@ -53,6 +53,16 @@ export class KanbanCardComponent implements OnInit {
    * lifecycle
    */
   ngOnChanges() {
+    if (this.selectedList) {
+      this.getCards();
+    }
+  }
+
+  /**
+   * lifecycle
+   */
+  ngOnDestroy() {
+
   }
 
   /**
@@ -84,15 +94,44 @@ export class KanbanCardComponent implements OnInit {
 
       this.objectService.save(newObject).subscribe(
         data => {
-          debugger
           if (data.success) {
             const newCard = new GreenTeaObject(data.payload);
             this.cards.push(newCard);
+            console.log(this.cards)
           }
         },
         error => console.log(error)
       );
     }
+  }
+
+  /**
+   * get cards
+   */
+  getCards() {
+    this.cards = [];
+    const referenceID = this.selectedList.id;
+    const referenceType = this.selectedList.className;
+
+    this.objectService.findByReference(referenceID, referenceType).subscribe(
+      data => {
+        if (data.success) {
+          data.payload.forEach(element => {
+            this.cards.push(new GreenTeaObject(element));
+          });
+        }
+      },
+      error => console.log(error)
+    )
+  }
+
+  /**
+   * drop Success
+   * @param card
+   * @param index
+   */
+  onDropSuccess() {
+    debugger
   }
 
   /**
@@ -110,6 +149,7 @@ export class KanbanCardComponent implements OnInit {
     }, (reason) => {
     });
   }
+
 
   /**
    * Set up card name
@@ -160,4 +200,5 @@ export class KanbanCardComponent implements OnInit {
   validateCard() {
     return this.card.endDate && this.card.startDate && this.card.name && this.card.value;
   }
+
 }

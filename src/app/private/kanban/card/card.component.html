@@ -1,11 +1,17 @@
 
-<div class="card-container" *ngIf="selectedList">
+<div class="card-container ys-full-size" *ngIf="selectedList"
+    dnd-sortable-container [sortableData]="cards" [dropZones]="['widget-dropZone']">
   <!-- create card -->
   <div class="create card ys-table">
     <div class="ys-table-cell vm ys-link" (click)="open(CreateCardModal)">Create a task</div>
   </div>
+  <div class="card ys-table"
+       *ngFor="let card of cards; let x = index"
+       dnd-sortable [sortableIndex]="x" [dragEnabled]="!enableEditList"
+       [dragData]="card">
+       <div class="ys-table-cell vm ys-link">{{card.name}}</div>
+  </div>
 </div>
-
 
 <!-- Create List Dialog -->
 <ng-template #CreateCardModal let-c="close" let-d="dismiss">
