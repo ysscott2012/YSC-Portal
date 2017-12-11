@@ -59,6 +59,7 @@ export class ActivityCommentComponent implements OnInit {
    * @param activity
    */
   comment(event, activity: Activity) {
+
     if (event.keyCode === 13) {
       let element = $(event.currentTarget);
       let str = element.val();
@@ -68,7 +69,7 @@ export class ActivityCommentComponent implements OnInit {
         let params = {
           comment: comment,
           owner: this.current
-        }
+        };
         this.commentService.saveComment(params).subscribe(
           data => {
             if (data.success) {

@@ -26,7 +26,7 @@ router.post('/findByActivity', function(req, res) {
 
   var activity = req.body.activity;
 
-  if (activity.className === 'Activity') {
+  if (activity.className === 'activity') {
     var query = comment.query.getActivityQuery(activity);
     const currentIndex = req.body.currentIndex;
     const amount = req.body.amount;

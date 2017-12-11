@@ -9,7 +9,7 @@ var commentSchema = mongoose.Schema({
   creationDate: {type: String, default: new Date().toJSON()},
   owner: {type: Object, default: {}},
   tag: {type: [Object], default: []},
-  className: {type: String, default: "Comment"}
+  className: {type: String, default: "comment"}
 });
 
 var comment = {

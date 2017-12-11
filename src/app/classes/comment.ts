@@ -12,7 +12,7 @@ export class Comment {
   public content: String = '';
   public creationDate: String = '';
   public tag: String[] = [];
-  public className: String = 'Comment';
+  public className: String = 'comment';
 
   public owner = {
     id: '',

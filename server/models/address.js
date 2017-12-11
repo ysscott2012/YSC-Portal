@@ -7,7 +7,7 @@ var addressSchema = mongoose.Schema({
   state: {type: String, default: ""},
   city: {type: String, default: ""},
   country: {type: String, default: ""},
-  className: {type: String, defualt: "Address"},
+  className: {type: String, defualt: "address"},
 }, {_id: false});
 
 module.exports = mongoose.model('Address', addressSchema);

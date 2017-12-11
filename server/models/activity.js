@@ -11,7 +11,7 @@ var activitySchema = mongoose.Schema({
   referenceType: {type: String, default: ""},
   privacy: {type: String, default: ""},
   type: {type: String, default: ""},
-  className: {type: String, default: "Activity"}
+  className: {type: String, default: "activity"}
 });
 
 var activity = {
