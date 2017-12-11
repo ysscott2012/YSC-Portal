@@ -103,7 +103,16 @@ class UserRepository {
   /**
    * update doument from DB based on condition
    */
-  update(condition, updates, callback) {
+  update(condition, updates, options, callback) {
+    UserSchema.update(condition, updates, options, function(err, object) {
+      if (err) {
+        message.setMessage( false, "Update users error", null, []);
+        callback(message);
+      } else {
+        message.setMessage( true, "Update users successfully", object, []);
+        callback(message);
+      }
+    })
   };
 
 }

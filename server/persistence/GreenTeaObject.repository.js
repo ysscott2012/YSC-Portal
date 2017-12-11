@@ -77,7 +77,16 @@ class GreenTeaObjectRepository {
   /**
    * update doument from DB based on condition
    */
-  update(condition, updates, callback) {
+  update(condition, updates, options, callback) {
+    Schema.update(condition, updates, options, function(err, object) {
+      if (err) {
+        message.setMessage( false, "Update objects error", null, []);
+        callback(message);
+      } else {
+        message.setMessage( true, "Update objects successfully", object, []);
+        callback(message);
+      }
+    })
   };
 }
 

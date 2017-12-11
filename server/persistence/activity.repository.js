@@ -66,7 +66,16 @@ class ActivityRepository {
   /**
    * update doument from DB based on condition
    */
-  update(condition, updates, callback) {
+  update(condition, updates, options, callback) {
+    ActivitySchema.update(condition, updates, options, function(err, object) {
+      if (err) {
+        message.setMessage( false, "Update activities error", null, []);
+        callback(message);
+      } else {
+        message.setMessage( true, "Update activities successfully", object, []);
+        callback(message);
+      }
+    })
   };
 }
 

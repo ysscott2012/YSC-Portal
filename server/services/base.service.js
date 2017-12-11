@@ -101,8 +101,8 @@ module.exports = class baseService {
   /**
    * update doument from DB based on condition
    */
-  update (condition, updates, callback) {
-    return this.repository.update(condition, updates, callback);
+  update (condition, updates, options, callback) {
+    return this.repository.update(condition, updates, options, callback);
   };
 
   /**
