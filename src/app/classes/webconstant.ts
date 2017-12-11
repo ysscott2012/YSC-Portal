@@ -2,11 +2,14 @@
 
 export const webconstant = {
   // CLASS NAME
-  CLASS_NAME_BOARD: 'board',
-  CLASS_NAME_CARD: 'card',
-  CLASS_NAME_COMMENT: 'comment',
-  CLASS_NAME_LIST: 'list',
-  CLASS_NAME_USER: 'user',
+  CLASS_NAME_BOARD: 'board', // GreenTeaContainer
+  CLASS_NAME_CARD: 'card', // GreenTeaObject
+  CLASS_NAME_COMMENT: 'comment', // comment
+  // CLASS_NAME_INGREDIENT: 'ingredient', // GreenTeaObject
+  // CLASS_NAME_RECIPE: 'recipe', // GreenTeaContainer
+  // CLASS_NAME_RECIPES: 'recipes', // GreenTeaContainer
+  CLASS_NAME_LIST: 'list', // GreenTeaContainer
+  CLASS_NAME_USER: 'user', // user
 
   // PRIVACY
   PRIVACY_PUBLIC: 'public',
@@ -18,3 +21,22 @@ export const webconstant = {
   STATUS_CLOSED: 'closed',
   STATUS_EXPIRED: 'expired'
 };
+
+//
+// Reference Designs
+//
+// Kanban Board
+// - Board (GreenTeaContainer)
+//   - Activity
+//   - List (GreenTeaContainer)
+//     - Activity
+//     - Card (GreenTeaObject)
+//     - Activity
+//
+// Activity Feed
+// - Activiry
+//   - Comment
+//
+// Recipes (GreenTeaContainer)
+//   - Recipe (GreenTeaContainer)
+//     - ingredient (GreenTeaObject)
