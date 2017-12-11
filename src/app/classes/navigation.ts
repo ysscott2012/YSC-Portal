@@ -42,10 +42,11 @@ export class Navigation {
 
     // Dashboard box link
     const activityLink =
-      new Link('/user/activity', '', 'System Tracking Activity - Activity Feed', filePath + 'default/activity.jpg', false);
+      new Link('/user/activity', '', 'System Tracking Activity<br/> <br/> <b>Activity Feed</b>', filePath + 'default/activity.jpg', false);
     const kanbanLink =
-      new Link('/kanban/board', '', 'Agile Methodology - Kanban Board', filePath + 'default/kanbanboard.png', false);
-
+      new Link('/kanban/board', '', 'Agile Methodology <br/> <br/> <b>Kanban Board</b>', filePath + 'default/kanbanboard.png', false);
+    const manageUserAccessLink =
+      new Link('/user/pending', '', 'Security <br/> <br/> <b>Manage User Access</b>', '', true);
 
 
     if (argument === 'Mobile') {
@@ -62,12 +63,11 @@ export class Navigation {
     } else if (argument === 'dashboard') {
       this.links.push(activityLink);
       this.links.push(kanbanLink);
+      this.links.push(manageUserAccessLink);
     }
 
-    if (user.level === 99) {
+    if (user.level === 99 && argument !== 'dashboard') {
       this.links.push(usersTableLink);
-      // this.links.push(usersTableLink);
-      // this.links.push(usersTableLink);
     }
 
   }

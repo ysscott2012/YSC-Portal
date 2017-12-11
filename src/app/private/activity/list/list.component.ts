@@ -61,7 +61,7 @@ export class ActivityListComponent implements OnInit {
   /**
    * lifecycle
    */
-  ngOnChanges() {
+  ngOnChanges () {
     if (this.newPostedActivity) {
       this.activities.unshift(this.newPostedActivity);
     }
@@ -78,7 +78,7 @@ export class ActivityListComponent implements OnInit {
       owner: this.current,
       currentIndex: activityIndex,
       amount: this.activityAmount
-    }
+    };
 
     this.activityService.getActivitiesByOwner(params).subscribe(
       data => {

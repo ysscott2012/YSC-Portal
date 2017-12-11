@@ -8,7 +8,7 @@
         <div class="ys-1-1 ys-shadow button" (click)="directTo(link.url)">
           <div>
             <div class="ys-table">
-              <div class="ys-table-cell vm" style="font-size: 16px">{{link.name}}</div>
+              <div class="ys-table-cell vm" style="font-size: 16px" [innerHTML]="link.name"></div>
             </div>
           </div>
         </div>
