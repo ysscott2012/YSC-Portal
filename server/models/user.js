@@ -18,7 +18,7 @@ var userSchema = mongoose.Schema({
     isApproved: {type: Boolean, default: false},
     isRejected: {type: Boolean, default: false},
     since: {type: String, default: ""},
-    className: {type: String, defualt: "User"},
+    className: {type: String, defualt: "user"},
     address: {type: addressSchema.schema, default: new addressSchema()},
     routes: { type: [String], default: ["auth", "user"]},
     profileImage: {type: String, defualt: "/assets/files/default/user.png"},

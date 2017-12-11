@@ -5,7 +5,7 @@ var relationshipSchema = mongoose.Schema({
   fromClass:  {type: String, default: ""},
   toID: {type: String, default: ""},
   toClass: {type: String, default: ""},
-  className: {type: String, defualt: "Relationship"},
+  className: {type: String, defualt: "relationship"},
 }, {_id: false});
 
 module.exports = mongoose.model('relationship', relationshipSchema);

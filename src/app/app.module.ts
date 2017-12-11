@@ -10,6 +10,7 @@ import { HttpService } from './private/services/http.service';
 // Moduless
 import { AdminModule } from './private/admin/admin.module';
 import { AuthenticationModule } from './public/authentication/authentication.module';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { UserModule } from './private/user/user.module';
 import { ChatModule } from './private/chat/chat.module';
 import { FilesModule } from './private/files/files.module';
@@ -34,6 +35,7 @@ import { UserRoutes } from './private/user/user.route';
   ],
   imports: [
     BrowserModule,
+    NgbModule.forRoot(),
     FormsModule,
     HttpModule,
     AppRoutes,

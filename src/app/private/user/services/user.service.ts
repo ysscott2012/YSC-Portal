@@ -10,11 +10,10 @@ import 'rxjs/add/operator/map';
 // classes
 import { User } from '../../../classes/user';
 import { Params } from '../../../classes/params';
+import { Preferences } from '../../../classes/preferences';
 
 // Services
 import { HttpService } from '../../services/http.service';
-import { Preferences } from '../../../classes/preferences';
-import { debug } from 'util';
 
 @Injectable()
 export class UserService {

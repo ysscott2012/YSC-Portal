@@ -14,7 +14,6 @@ class CommentRepository {
    * find documents from DB
    */
   find(condition, callback) {
-    console.log(condition);
     CommentSchema.find(condition).then((objects) => {
       objects = _.sortBy(objects, function(o) { return new moment(o.date); }).reverse();
       message.setMessage( true, "Get comments successfully", objects, []);
@@ -43,7 +42,7 @@ class CommentRepository {
   /**
    * remove document from DB
    */
-  remove(condition, callback) {
+  remove(condition) {
 
   };
 
@@ -67,7 +66,16 @@ class CommentRepository {
   /**
    * update doument from DB based on condition
    */
-  update(condition, updates, callback) {
+  update(condition, updates, options, callback) {
+    CommentSchema.update(condition, updates, options, function(err, object) {
+      if (err) {
+        message.setMessage( false, "Update comments error", null, []);
+        callback(message);
+      } else {
+        message.setMessage( true, "Update comments successfully", object, []);
+        callback(message);
+      }
+    })
   };
 }
 

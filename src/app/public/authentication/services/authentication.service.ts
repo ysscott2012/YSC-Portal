@@ -64,7 +64,7 @@ export class AuthenticationService {
    */
   logout() {
     localStorage.clear();
-    alert('Logout sucessfully');
+    // alert('Logout sucessfully');
     this.router.navigate(['/auth/login']);
   }
 

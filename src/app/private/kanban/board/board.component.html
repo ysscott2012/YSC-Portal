@@ -1,3 +1,97 @@
-<p>
-  board works!
-</p>
+<div class="board-section">
+  <!-- top section -->
+  <div class="top">
+    <!-- board name -->
+    <div class="board-title d-none d-md-block" *ngIf="selectedBoard">
+      <input *ngIf="editToggle" (keydown)="editBaordName($event)" style="width: 250px" value="{{selectedBoard.name}}"/>
+      <div *ngIf="!editToggle" (click)="editToggle = !editToggle">{{selectedBoard.name}}</div>
+    </div>
+    <!-- board selection -->
+    <div class="board-action-section padding" *ngIf="boards.length > 0">
+      <select id="boardSelections" (change)="changeboard($event)">
+        <option selected="selected" *ngIf="boards.length > 1">Select board</option>
+        <option *ngFor="let board of boards" value="{{board.id}}">{{board.name}}</option>
+      </select>
+    </div>
+    <!-- create a new board -->
+    <div class="board-action-section" *ngIf="boards.length > 0">
+      <div class="ys-link" (click)="open(CreateBoardModal)">
+        <span class="d-none d-md-block">Create another board</span>
+        <span class="d-sm-block d-md-none">Create board</span>
+      </div>
+    </div>
+  </div>
+  <!-- middle section -->
+  <div class="middle">
+    <!-- When it is no board for the current user -->
+    <div class="ys-table ys-full-size" *ngIf="boards.length === 0">
+      <div class="ys-table-cell vm">
+        You don't have any board yet.
+        <div class="ys-link" (click)="open(CreateBoardModal)">Create One</div>
+      </div>
+    </div>
+
+    <!-- If there is a board, show board content. -->
+    <div class="ys-table ys-full-size" *ngIf="boards.length > 1 && !selectedBoard">
+        <div class="ys-table-cell vm">
+          You have {{boards.length}} boards, please select your boards or
+        <div class="ys-link" (click)="open(CreateBoardModal)">create another one</div>
+      </div>
+    </div>
+
+    <!-- Lists -->
+    <div *ngIf="selectedBoard" class="ys-full-size">
+      <app-kanban-list
+        [selectedBoard]="selectedBoard"
+        [enableEditList]="enableEditList"
+        class="ys-full-size"></app-kanban-list>
+    </div>
+  </div>
+  <!-- bottom section -->
+  <div class="bottom" >
+    <!-- enable edit list -->
+    <div class="board-title">
+        <input id="enableDrag" type="checkbox" [(ngModel)]="enableEditList" style="display: none"/>
+        <label for="enableDrag">Edit Lists</label>
+    </div>
+    <!-- delete board -->
+    <div class="board-action-section padding" *ngIf="selectedBoard">
+      <div class="ys-link red" (click)="removeBoard()">
+        Delete this board
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Create Board Dialog -->
+<ng-template #CreateBoardModal let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h5 class="modal-title">Create a board</h5>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div style="padding: 0px 15px 15px 15px;">
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="ys-input-tite">Board Name <sup>*</sup></div>
+          <input class="ys-input" (change)="setBordName($event)">
+        </div>
+        <div class="col-lg-6">
+          <div class="ys-input-tite">Privacy <sup>*</sup></div>
+          <div ngbDropdown class="d-inline-block">
+            <button class="btn btn-outline-primary" id="privacyDropdown" ngbDropdownToggle>{{selectedPrivacy}}</button>
+            <div ngbDropdownMenu aria-labelledby="privacyDropdown">
+              <button class="dropdown-item" *ngFor="let o of privacy" (click)="changePrivacy(o)" >{{o}}</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button class="btn ys background blue" (click)="c('Create Board')" [disabled]="!validateBoard()" >Create</button>
+    <button class="btn ys border blue" (click)="d('Cancel Board')">Cancel</button>
+  </div>
+</ng-template>

@@ -17,9 +17,6 @@ export class Navigation {
     // General links
     const profileLink =
       new Link('/user/profile/' + user.id, '<i class="fa fa-cog" aria-hidden="true"></i><span>Settings</span>', 'Settings', '', false);
-
-    const activityLink =
-      new Link('/user/activity', '', 'Activity Feed', filePath + 'default/activity.jpg', false);
     const userLink =
       new Link('/user', '<i class="fa fa-user" aria-hidden="true"></i><span>' + user.firstName + '</span>', user.firstName, '', false);
     const dashboardLink =
@@ -43,6 +40,15 @@ export class Navigation {
       true
     );
 
+    // Dashboard box link
+    const activityLink =
+      new Link('/user/activity', '', 'System Tracking Activity<br/> <br/> <b>Activity Feed</b>', filePath + 'default/activity.jpg', false);
+    const kanbanLink =
+      new Link('/kanban/board', '', 'Agile Methodology <br/> <br/> <b>Kanban Board</b>', filePath + 'default/kanbanboard.png', false);
+    const manageUserAccessLink =
+      new Link('/user/pending', '', 'Security <br/> <br/> <b>Manage User Access</b>', '', true);
+
+
     if (argument === 'Mobile') {
       this.links.push(userLink);
       // this.links.push(groupLink);
@@ -56,12 +62,15 @@ export class Navigation {
       this.links.push(logoutLink);
     } else if (argument === 'dashboard') {
       this.links.push(activityLink);
+      this.links.push(kanbanLink);
     }
 
-    if (user.level === 99) {
+    if (user.level === 99 && argument !== 'dashboard') {
       this.links.push(usersTableLink);
-      // this.links.push(usersTableLink);
-      // this.links.push(usersTableLink);
+    }
+
+    if (user.level === 99 && argument === 'dashboard') {
+      this.links.push(manageUserAccessLink);
     }
 
   }

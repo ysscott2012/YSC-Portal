@@ -59,27 +59,27 @@ export class ActivityCommentComponent implements OnInit {
    * @param activity
    */
   comment(event, activity: Activity) {
+
     if (event.keyCode === 13) {
-      var element = $(event.currentTarget);
-      var str = element.val();
+      let element = $(event.currentTarget);
+      let str = element.val();
       if (str) {
-        var comment = new Comment();
+        let comment = new Comment();
         comment.setUpCommentByActivity(activity, str, new Date().toJSON());
-        var params = {
+        let params = {
           comment: comment,
           owner: this.current
-        }
+        };
         this.commentService.saveComment(params).subscribe(
           data => {
             if (data.success) {
-              var newComment = new Comment(data.payload);
+              const newComment = new Comment(data.payload);
               this.comments.unshift(newComment);
-              debugger
-              element.val("");
+              element.val('');
             }
           },
           error => console.log(error)
-        )
+        );
       }
     }
   }
@@ -89,7 +89,7 @@ export class ActivityCommentComponent implements OnInit {
    * like
    */
   like() {
-    debugger
+
   }
 
 

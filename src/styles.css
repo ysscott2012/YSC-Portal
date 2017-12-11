@@ -37,6 +37,11 @@ div.ys-link {
   cursor: pointer;
 }
 
+div.ys-link.red {
+  color: red;
+  cursor: pointer;
+}
+
 div.ys-link:hover {
   text-decoration: underline;
 }
@@ -64,7 +69,6 @@ div.ys-background-image.zoom {
 div.ys-background-image.zoom:hover {
   transform: scale(1.1);
 }
-
 
 /* Menu  */
 
@@ -155,6 +159,11 @@ div.ys-background-image.zoom:hover {
     text-align: center
 }
 
+.ys-full-size {
+  width: 100% !important;
+  height: 100% !important;
+}
+
 @media screen and (max-width: 768px) {
   .section {
     padding: 10px 0px;
@@ -200,10 +209,98 @@ button {
   color: #f7f7f7;
 }
 
+/* override bootstrap button */
+
+.ys.btn {
+  cursor: pointer;
+}
+
+.ys.btn:disabled,
+.ys.btn[disabled] {
+  cursor: not-allowed;
+}
+
+.ys.btn.border.blue {
+  border-color: #5d84b3;
+  color: #5d84b3;
+}
+
+.ys.btn.border.red {
+  border-color: rgb(179, 3, 3);
+  color: rgb(179, 3, 3);
+}
+
+.ys.btn.background.blue {
+  background: #5d84b3;
+  color: white;
+}
+
+.ys-input {
+  width: 100%;
+  height: 38px;
+  padding: 0px 8px;
+}
+
+.ys-input-tite {
+  font-size: 13px;
+  padding: 8px 0px;
+}
+
+.ys-inline {
+  display: inline-block;
+  vertical-align: middle
+}
+
+.ys-inline.width-100 {
+  width: 100px;
+}
+
 /* FONT */
 
 .page-title {
   font-size: 24px;
 }
 
+
+/* CHECKBOX */
+
+[type=checkbox]:checked + label::before, [type=checkbox]:checked:disabled + label::before {
+  background-image: url('./assets/files/default/checkbox.svg');
+  background-position: 50%;
+  background-repeat: no-repeat;
+}
+
+[type=checkbox]:checked + label::before, [type=radio]:checked + label::before {
+  background-color: #0071bc;
+  box-shadow: 0 0 0 1px #0071bc;
+}
+
+[type=checkbox] + label, [type=radio] + label {
+  cursor: pointer;
+  font-weight: 400;
+  margin-bottom: 0.65em;
+}
+
+[type=checkbox] + label::before, [type=radio] + label::before {
+  background: #ffffff;
+  border-radius: 2px;
+  box-shadow: 0 0 0 1px #757575;
+  content: '\A0';
+  display: inline-block;
+  height: 20px;
+  line-height: 20px;
+  margin-right: 0.6em;
+  text-indent: 0.15em;
+  vertical-align: middle\0;
+  width: 20px;
+}
+
+/* TEXTAREA */
+
+textarea.ys-textarea {
+  min-height: 300px;
+  resize: none;
+  width: 100%;
+  border-color: rgba(238, 238, 238, 1);
+}
 

@@ -48,7 +48,6 @@ class UserRepository {
    */
   findOneAndUpdate(conditions, update, options, callback) {
     UserSchema.findOneAndUpdate(conditions, update, options, function(err, doc, res) {
-      //console.log(doc)
       if (err) {
         error.setError(101);
         message.setMessage(false, "Update user error in MongoDB", null, [error] )
@@ -71,17 +70,17 @@ class UserRepository {
   /**
    * remove document from DB
    */
-  remove(condition, callback) {
-    UserSchema.remove(condition, function(err){
-      if (err) {
-        message.setMessage(false, "remove user error", null, []);
-        callback(message);
-      }
-      else {
-        message.setMessage(true, "remove user successfully", null, []);
-        callback(message);
-      }
-    })
+  remove(condition) {
+    // UserSchema.remove(condition, function(err){
+    //   if (err) {
+    //     message.setMessage(false, "remove user error", null, []);
+    //     callback(message);
+    //   }
+    //   else {
+    //     message.setMessage(true, "remove user successfully", null, []);
+    //     callback(message);
+    //   }
+    // })
   };
 
   /**
@@ -104,7 +103,16 @@ class UserRepository {
   /**
    * update doument from DB based on condition
    */
-  update(condition, updates, callback) {
+  update(condition, updates, options, callback) {
+    UserSchema.update(condition, updates, options, function(err, object) {
+      if (err) {
+        message.setMessage( false, "Update users error", null, []);
+        callback(message);
+      } else {
+        message.setMessage( true, "Update users successfully", object, []);
+        callback(message);
+      }
+    })
   };
 
 }

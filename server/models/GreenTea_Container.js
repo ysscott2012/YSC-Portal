@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+var Owner = require('./owner');
 var Schema = mongoose.Schema;
 
 var ContainerSchema = new Schema({
@@ -6,6 +7,9 @@ var ContainerSchema = new Schema({
   className: { type: String, defult: '' },
   greenTeaObjects: { type: [Object], defult: [] },
   owner: { type: Object, defult: {} },
+  name: { type: String, defult: ''},
+  position: {type: Number, default: -1},
+  privacy: { type: String, default: 'public'},
   referenceID: { type: String, defult: '' },
   referenceType: { type: String, defult: '' },
 
@@ -14,7 +18,10 @@ var ContainerSchema = new Schema({
 var schemaModel = mongoose.model('GreenTeaContainer', ContainerSchema);
 
 var GreenTeaContainer = {
-  Schema: schemaModel
+  schema: schemaModel,
+  setOwner: function (user) {
+    return new Owner(user);
+  }
 }
 
 module.exports = GreenTeaContainer;

@@ -60,9 +60,12 @@ export class HeaderComponent implements OnInit {
    * force to close menu
    */
   closeMenu() {
+    debugger
     const element = document.getElementsByClassName('main-page');
-    if (element[0].classList.contains('active')) {
-      element[0].classList.remove('active');
+    if (element[0]) {
+      if (element[0].classList.contains('active')) {
+        element[0].classList.remove('active');
+      }
     }
   }
 
@@ -70,11 +73,14 @@ export class HeaderComponent implements OnInit {
    * toggle mobile menu
    */
   toggleMenu() {
+    debugger
     const element = document.getElementsByClassName('main-page');
-    if (element[0].classList.contains('active')) {
-      element[0].classList.remove('active');
-    } else {
-      element[0].classList.add('active');
+    if (element[0]) {
+      if (element[0].classList.contains('active')) {
+        element[0].classList.remove('active');
+      } else {
+        element[0].classList.add('active');
+      }
     }
   }
 }

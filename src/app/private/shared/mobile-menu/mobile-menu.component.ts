@@ -49,10 +49,12 @@ export class MobileMenuComponent implements OnInit {
    */
   toggleMenu() {
     var element = document.getElementsByClassName('main-page');
-    if (element[0].classList.contains('active')) {
-      element[0].classList.remove('active');
-    } else {
-      element[0].classList.add('active');
+    if (element[0]) {
+      if (element[0].classList.contains('active')) {
+        element[0].classList.remove('active');
+      } else {
+        element[0].classList.add('active');
+      }
     }
   }
 

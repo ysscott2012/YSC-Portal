@@ -14,6 +14,9 @@ export class GreenTeaObject {
   status: String;
   name: String;
   owner: Object;
+  position: Number;
+  referenceID: String;
+  referenceType: String;
   value: Number;
 
   /**
@@ -32,6 +35,9 @@ export class GreenTeaObject {
       this.status = object.status;
       this.name = object.name;
       this.owner = object.owner;
+      this.position = object.position;
+      this.referenceID = object.referenceID;
+      this.referenceType = object.referenceType;
       this.value = object.value;
     } else {
       this.amount = -1;
@@ -44,6 +50,9 @@ export class GreenTeaObject {
       this.status = '';
       this.name = '';
       this.owner = {};
+      this.position = -1;
+      this.referenceID = '';
+      this.referenceType = '';
       this.value = -1;
     }
   }

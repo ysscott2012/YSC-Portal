@@ -9,7 +9,7 @@ var historySchema = mongoose.Schema({
     email: {type: String, default: ""}
   },
   action: {type: String, default: ""},
-  className: {type: String, defualt: "History"},
+  className: {type: String, defualt: "history"},
 });
 
 module.exports = mongoose.model('History', historySchema);

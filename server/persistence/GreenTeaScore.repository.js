@@ -43,7 +43,7 @@ class GreenTeaScoreRepository {
   /**
    * remove document from DB
    */
-  remove(condition, callback) {
+  remove(condition) {
 
   };
 
@@ -67,7 +67,7 @@ class GreenTeaScoreRepository {
   /**
    * update doument from DB based on condition
    */
-  update(condition, updates, callback) {
+  update(condition, updates, options, callback) {
   };
 }
 

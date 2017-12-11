@@ -1,0 +1,52 @@
+<div (click)="open(ViewCardModal)">{{selectedCard.name}}</div>
+
+
+<!-- Create List Dialog -->
+<ng-template #ViewCardModal let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h5 *ngIf="!editMode" class="modal-title">{{selectedCard.name}}</h5>
+    <input *ngIf="editMode" class="ys-input" value="{{selectedCard.name}}" (keyup)="setData($event, 'name')">
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div style="padding: 0px 15px 15px 15px;">
+      <div class="row">
+        <div class="col-lg-8 col-md-6">
+          <!-- Start Date -->
+          <div>
+            <div class="ys-inline width-100" style="padding: 4px 0px">Start Date:</div>
+            <div *ngIf="!editMode" class="ys-inline width-100">{{selectedCard.startDate | date:"MM/dd/yy"}}</div>
+            <div *ngIf="editMode" class="ys-inline width-100"><input readonly value="{{selectedCard.startDate | date:'MM/dd/yy'}}"  (keyup)="setData($event, 'startDate')" /></div>
+          </div>
+          <!-- Due Date -->
+          <div>
+            <div class="ys-inline width-100" style="padding: 4px 0px">End Date:</div>
+            <div *ngIf="!editMode" class="ys-inline width-100">{{selectedCard.endDate | date:"MM/dd/yy"}}</div>
+            <div *ngIf="editMode" class="ys-inline width-100"><input readonly value="{{selectedCard.endDate | date:'MM/dd/yy'}}" (keyup)="setData($event, 'endDate')" /></div>
+          </div>
+          <!-- Values -->
+          <div>
+            <div class="ys-inline width-100" style="padding: 4px 0px">Points:</div>
+            <div *ngIf="!editMode" class="ys-inline width-100">{{selectedCard.value}}</div>
+            <div *ngIf="editMode" class="ys-inline width-100"><input value="{{selectedCard.value}}" (keyup)="setData($event, 'value')"/></div>
+          </div>
+          <!-- Description -->
+          <div>
+            <div style="padding: 4px 0px">Description:</div>
+            <div *ngIf="!editMode">{{selectedCard.description}}</div>
+            <textarea *ngIf="editMode" class="ys-textarea" value="{{selectedCard.description}}" (keyup)="setData($event, 'description')"></textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button *ngIf="!editMode" class="btn ys border blue" (click)="action('Edit Card')">Edit</button>
+    <button *ngIf="!editMode" class="btn ys border red" (click)="action('Delete Card')">Delete</button>
+    <button *ngIf="editMode" class="btn ys border blue" (click)="action('Save Card')">Save</button>
+    <button *ngIf="editMode" class="btn ys border red" (click)="action('Discard Card')">Discard</button>
+    <button *ngIf="!editMode" class="btn ys border blue" (click)="d('Cancel Card')">Cancel</button>
+  </div>
+</ng-template>

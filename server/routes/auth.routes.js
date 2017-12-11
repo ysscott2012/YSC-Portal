@@ -13,8 +13,6 @@ var HistorySchema = require('../models/history.js')
 router.post('/login', function(req, res) {
   var model = { message: "", user: "", success: false, error: "", token: "" }
   var newhistory = new HistorySchema();
-  // console.log(req.headers)
-  // console.log(Object.keys(req.body).length);
   if (Object.keys(req.body).length != 0)
   {
     var SQL = {email: req.body.email};

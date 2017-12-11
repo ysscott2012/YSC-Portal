@@ -1,0 +1,71 @@
+<div class="list-container ys-full-size"
+     dnd-sortable-container
+     [dropZones]="['container-dropZone']"
+     [sortableData]="lists">
+
+  <div class="list-section"
+       *ngFor="let list of lists; let i = index"
+       dnd-sortable
+       [dragEnabled]="enableEditList"
+       [sortableIndex]="i"
+       [ngClass]="{'edit-list' : enableEditList}">
+    <!-- top section -->
+    <div class="top">
+      <div class="list-title">
+        <input *ngIf="enableEditList" (keyup)="editListName($event, list)" style="padding: 0px 8px;" value="{{list.name}}"/>
+        <div *ngIf="!enableEditList" >{{list.name}}</div>
+      </div>
+    </div>
+    <!-- middle section -->
+    <div class="middle">
+      <app-kanban-card
+        [selectedList]="list"
+        [enableEditList]="enableEditList"
+        class="ys-table ys-full-size">
+      </app-kanban-card>
+    </div>
+    <!-- bottom section -->
+    <div class="bottom">
+      <div class="list-action-section padding">
+        <div class="ys-link red" (click)="removeList(list)">
+          Delete
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- create list div -->
+  <div class="list-section add-list">
+    <div class="middle">
+      <div class="ys-table ys-full-size">
+        <div class="ys-table-cell ys-link vm" (click)="open(CreateListModal)">Create New List</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Create List Dialog -->
+<ng-template #CreateListModal let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h5 class="modal-title">Create a List on '{{selectedBoard.name}}'</h5>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div style="padding: 0px 15px 15px 15px;">
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="ys-input-tite">List Name <sup>*</sup></div>
+          <input class="ys-input" (keyup)="setListName($event)">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button class="btn ys background blue" (click)="c('Create List')" [disabled]="!validateList()" >Create</button>
+    <button class="btn ys border blue" (click)="d('Cancel List')">Cancel</button>
+  </div>
+</ng-template>

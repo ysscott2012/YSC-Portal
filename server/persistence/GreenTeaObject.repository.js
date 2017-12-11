@@ -2,7 +2,7 @@ var moment = require('moment');
 var _ = require('lodash');
 
 var greenTeaObject = require('../models/GreenTea_Object');
-var Schema = greenTeaObject.Schema;
+var Schema = greenTeaObject.schema;
 
 var message = require('../models/message');
 var error = require('../models/error');
@@ -14,7 +14,6 @@ class GreenTeaObjectRepository {
    * find documents from DB
    */
   find(condition, callback) {
-    console.log(condition);
     Schema.find(condition).then((objects) => {
       objects = _.sortBy(objects, function(o) { return new moment(o.date); }).reverse();
       message.setMessage( true, "Get objects successfully", objects, []);
@@ -37,14 +36,24 @@ class GreenTeaObjectRepository {
    * find one document and update from DB
    */
   findOneAndUpdate(conditions, update, options, callback) {
-
+    Schema.findOneAndUpdate(conditions, update, options, function(err, object) {
+      if (err) {
+        message.setMessage( false, "Update container error", null, []);
+        callback(message);
+      } else {
+        message.setMessage( true, "Update container successfully", object, []);
+        callback(message);
+      }
+    })
   }
 
   /**
    * remove document from DB
    */
-  remove(condition, callback) {
-
+  remove(condition) {
+    Schema.remove(condition, function (err) {
+      if (err) return handleError(err);
+    })
   };
 
   /**
@@ -54,6 +63,7 @@ class GreenTeaObjectRepository {
     var newObject = new Schema(condition);
     newObject.save(function (err, Schema) {
       if (err) {
+        console.log(err);
         message.setMessage(false, "Create object error in MongoDB", null, []);
         callback(message);
       }
@@ -67,7 +77,16 @@ class GreenTeaObjectRepository {
   /**
    * update doument from DB based on condition
    */
-  update(condition, updates, callback) {
+  update(condition, updates, options, callback) {
+    Schema.update(condition, updates, options, function(err, object) {
+      if (err) {
+        message.setMessage( false, "Update objects error", null, []);
+        callback(message);
+      } else {
+        message.setMessage( true, "Update objects successfully", object, []);
+        callback(message);
+      }
+    })
   };
 }
 

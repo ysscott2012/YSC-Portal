@@ -14,7 +14,6 @@ router.use(jwtExpress());
  * find documents based on the filter
  */
 router.post('/find', function(req, res) {
-  console.log("find all comments");
   service.find(req.body, function(result){
     res.send(result);
   })
@@ -27,7 +26,7 @@ router.post('/findByActivity', function(req, res) {
 
   var activity = req.body.activity;
 
-  if (activity.className === 'Activity') {
+  if (activity.className === 'activity') {
     var query = comment.query.getActivityQuery(activity);
     const currentIndex = req.body.currentIndex;
     const amount = req.body.amount;
