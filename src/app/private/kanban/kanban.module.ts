@@ -21,7 +21,6 @@ import { KanbanBoardComponent } from './board/board.component';
 import { KanbanCardComponent } from './card/card.component';
 import { KanbanCardInfoComponent } from './card-info/card-info.component';
 import { KanbanListComponent } from './list/list.component';
-import { BoardSampleComponent } from './board-sample/board-sample.component';
 
 @NgModule({
   imports: [
@@ -38,7 +37,6 @@ import { BoardSampleComponent } from './board-sample/board-sample.component';
     KanbanCardComponent,
     KanbanCardInfoComponent,
     KanbanListComponent,
-    BoardSampleComponent,
   ],
   providers: [
     ContainerService,
