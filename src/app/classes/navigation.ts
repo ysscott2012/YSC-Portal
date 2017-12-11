@@ -63,11 +63,14 @@ export class Navigation {
     } else if (argument === 'dashboard') {
       this.links.push(activityLink);
       this.links.push(kanbanLink);
-      this.links.push(manageUserAccessLink);
     }
 
     if (user.level === 99 && argument !== 'dashboard') {
       this.links.push(usersTableLink);
+    }
+
+    if (user.level === 99 && argument === 'dashboard') {
+      this.links.push(manageUserAccessLink);
     }
 
   }

@@ -12,6 +12,8 @@ var mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 mongoose.connect(process.env.MONGODB_URI, { useMongoClient: true});
 
+
+
 // declare routers
 var activityRoutes = require('./routes/activity.routes');
 var adminRoutes = require('./routes/admin.routes');
@@ -28,6 +30,16 @@ var app = express();
 app.use(bodyParser.json());
 app.use(cors());
 
+//**** Uncomment following method when you are using server.js serves static website.
+// Point static path to dist
+app.use(express.static(path.join(__dirname, '../dist')));
+
+//**** link to static website
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../dist/index.html'));
+});
+
+
 // define routers
 app.use('/activity', activityRoutes);
 app.use('/admin', adminRoutes);
@@ -39,21 +51,6 @@ app.use('/score', GreenTeaScore);
 app.use('/object', GreenTeaObject);
 app.use('/container', GreenTeaContainer);
 
-
-// Uncomment following method when you are using server.js serves static website.
-// Point static path to dist
-// app.use(express.static(path.join(__dirname, '../dist')));
-
-// link to static website
-// app.get('*', (req, res) => {
-//     res.sendFile(path.join(__dirname, '../dist/index.html'));
-// });
-
-// need to modify a bit
-// app.get('/assets*', (req, res) => {
-//   var file = path.join(__dirname, '../../src/' + req.path);
-//   res.sendFile(file);
-// });
 
 /**
  * Get port from environment and store in Express.
