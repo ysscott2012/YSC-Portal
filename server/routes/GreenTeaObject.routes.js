@@ -2,9 +2,15 @@ var express = require('express');
 var router = express.Router();
 var bcrypt = require('bcryptjs');
 var jwtExpress = require('../middlewares/jwt-express');
-var service = require('../services/GreenTeaObject.service');
 
+// services
+var service = require('../services/GreenTeaObject.service');
+var activityService = require('../services/activity.service');
+
+// classes
 var GreenTeaObject = require('../models/GreenTea_Object');
+var activity = require('../models/activity');
+
 var _ = require('lodash');
 
 // Token Check before using API
@@ -34,6 +40,19 @@ router.post('/save', function(req, res) {
   var newObject = req.body;
   newObject.owner = GreenTeaObject.setOwner(req.body.owner);
   service.save(newObject, function(result) {
+    if (result.success) {
+      // Add activity to the activities collection
+      // when container is saved sucessfully
+      var action = newObject.owner.firstName + ' create a ' +
+                   newObject.className + ' - ' +
+                   newObject.name + '.'
+      var newActivity = activity.activity(newObject, action, true);
+      activityService.save(newActivity, function(activityResult) {
+        if (activityResult.success) {
+          console.log('system create an activity in GreenTeaObject - create a ' + newObject.className);
+        }
+      })
+    }
     res.send(result);
   })
 });
@@ -48,7 +67,18 @@ router.post('/remove', function(req, res) {
     }
     // remove all referenced containers
     service.remove(selectedObject);
-    res.send({success: true});
+
+    // Add a record
+    var action = req.body.owner.firstName + ' remove a ' +
+                 req.body.className + ' - ' +
+                 req.body.name + '.'
+    var newActivity = activity.activity(req.body, action, false);
+    activityService.save(newActivity, function(activityResult) {
+    if (activityResult.success) {
+        console.log('system create an activity in GreenTeaObject - remove a ' + req.body.className);
+        res.send({success: true});
+      }
+    })
   }
 })
 

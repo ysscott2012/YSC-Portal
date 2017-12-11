@@ -42,7 +42,7 @@ export class Navigation {
 
     // Dashboard box link
     const activityLink =
-      new Link('/user/activity', '', 'Activity Feed', filePath + 'default/activity.jpg', false);
+      new Link('/user/activity', '', 'System Tracking Activity - Activity Feed', filePath + 'default/activity.jpg', false);
     const kanbanLink =
       new Link('/kanban/board', '', 'Agile Methodology - Kanban Board', filePath + 'default/kanbanboard.png', false);
 

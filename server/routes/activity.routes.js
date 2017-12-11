@@ -24,7 +24,6 @@ router.post('/find', function(req, res) {
  * find documents based on owner;
  */
 router.post('/findByOwner', function(req, res) {
-  console.log("find activities by owner");
   const query = activity.query.getOwnerQuery(req.body.owner);
   const currentIndex = req.body.currentIndex;
   const amount = req.body.amount;
