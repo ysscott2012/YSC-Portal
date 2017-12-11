@@ -22,7 +22,6 @@ var storage = multer.diskStorage({
   destination: function(req, file, callback) {
     var folderName = req.headers['authorization'].split(' ')[0]
     var folderPath = path.join(__dirname, DIR + folderName);
-    console.log(folderPath);
     if(fs.existsSync(folderPath)) {
       callback(null, folderPath);
     }
@@ -45,11 +44,9 @@ router.post('/user/profile/upload', function (req, res) {
 
   var filePath = req.headers.authorization.split(' ')[0];
   if (filePath) {
-    console.log('filePath: ' + filePath);
     var userID = filePath.split('/')[1];
 
     if (userID) {
-      console.log('user ID: ' + userID);
       // find user
       service.findOne({'_id' : userID}, null, function(result) {
         if (result.success) {
@@ -57,13 +54,11 @@ router.post('/user/profile/upload', function (req, res) {
 
           upload(req, res, function (err) {
             if (err) {
-              console.log(err)
               return res.send(err.toString());
             }
             var file = req.files[0];
             user.profileImage = '/assets/files/' + filePath + '/' + file.filename;
             user.save();
-            console.log('File is uploaded')
             res.send(result);
           });
 

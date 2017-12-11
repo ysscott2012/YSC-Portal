@@ -134,7 +134,6 @@ export class KanbanListComponent implements OnInit {
             this.lists.push(container);
           });
         }
-        console.log(this.lists);
       },
       error => console.log(error)
     );
@@ -196,7 +195,6 @@ export class KanbanListComponent implements OnInit {
       // Update Position and name
       let i = 0;
       this.lists.forEach(element => {
-        console.log(element.name);
         const condition = { '_id': element.id };
         const update = { position: i, name: element.name };
         const option = { new: true };

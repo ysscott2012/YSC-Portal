@@ -14,7 +14,6 @@ class CommentRepository {
    * find documents from DB
    */
   find(condition, callback) {
-    console.log(condition);
     CommentSchema.find(condition).then((objects) => {
       objects = _.sortBy(objects, function(o) { return new moment(o.date); }).reverse();
       message.setMessage( true, "Get comments successfully", objects, []);

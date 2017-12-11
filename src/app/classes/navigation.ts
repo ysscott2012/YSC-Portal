@@ -44,7 +44,7 @@ export class Navigation {
     const activityLink =
       new Link('/user/activity', '', 'Activity Feed', filePath + 'default/activity.jpg', false);
     const kanbanLink =
-      new Link('/kanban/board', '', 'Kanban Board', filePath + 'default/kanbanboard.png', false);
+      new Link('/kanban/board', '', 'Agile Methodology - Kanban Board', filePath + 'default/kanbanboard.png', false);
 
 
 

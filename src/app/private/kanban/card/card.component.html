@@ -9,7 +9,13 @@
        *ngFor="let card of cards; let x = index"
        dnd-sortable [sortableIndex]="x" [dragEnabled]="!enableEditList"
        [dragData]="card">
-       <div class="ys-table-cell vm ys-link">{{card.name}}</div>
+        <app-kanban-card-info
+          [selectedCard]="card"
+          [selectedList]="SelectedList"
+          [position]="x"
+          class="ys-table-cell vm ys-link">
+        </app-kanban-card-info>
+       <!-- <div class="ys-table-cell vm ys-link">{{card.name}}</div> -->
   </div>
 </div>
 
@@ -17,7 +23,7 @@
 <ng-template #CreateCardModal let-c="close" let-d="dismiss">
   <div class="modal-header">
     <h5 class="modal-title">Create a Task on <span style="text-decoration: italic">{{selectedList.name}}</span></h5>
-    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+    <button type="button" class="close" aria-label="Close" (click)="c('Cross click')">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>

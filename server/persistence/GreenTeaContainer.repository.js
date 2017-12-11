@@ -53,7 +53,6 @@ class GreenTeaContainerRepository {
   remove(condition) {
     Schema.remove(condition, function (err) {
       if (err) return handleError(err);
-      console.log("removed");
     })
   };
 

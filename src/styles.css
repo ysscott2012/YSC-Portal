@@ -225,6 +225,11 @@ button {
   color: #5d84b3;
 }
 
+.ys.btn.border.red {
+  border-color: rgb(179, 3, 3);
+  color: rgb(179, 3, 3);
+}
+
 .ys.btn.background.blue {
   background: #5d84b3;
   color: white;
@@ -239,6 +244,15 @@ button {
 .ys-input-tite {
   font-size: 13px;
   padding: 8px 0px;
+}
+
+.ys-inline {
+  display: inline-block;
+  vertical-align: middle
+}
+
+.ys-inline.width-100 {
+  width: 100px;
 }
 
 /* FONT */

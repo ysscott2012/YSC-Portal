@@ -14,7 +14,6 @@ class ActivityRepository {
    * find documents from DB
    */
   find(condition, callback) {
-    console.log(condition);
     ActivitySchema.find(condition).then((objects) => {
       objects = _.sortBy(objects, function(o) { return new moment(o.date); }).reverse();
       message.setMessage( true, "Get activitys successfully", objects, []);

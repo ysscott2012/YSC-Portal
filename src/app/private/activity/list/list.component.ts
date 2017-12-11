@@ -72,10 +72,9 @@ export class ActivityListComponent implements OnInit {
    */
   getActivitiesByOwner(reload) {
 
-    console.log("get activities");
-    var activityIndex = reload ? 0 : this.activityIndex;
+    const activityIndex = reload ? 0 : this.activityIndex;
 
-    var params = {
+    const params = {
       owner: this.current,
       currentIndex: activityIndex,
       amount: this.activityAmount

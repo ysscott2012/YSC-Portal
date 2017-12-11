@@ -32,6 +32,7 @@ export class KanbanCardComponent implements OnInit {
   @Input() enableEditList;
   card: GreenTeaObject;
   cards: GreenTeaObject[] = [];
+  SelectedList: GreenTeaContainer;
   /**
    * constructor
    */
@@ -55,14 +56,8 @@ export class KanbanCardComponent implements OnInit {
   ngOnChanges() {
     if (this.selectedList) {
       this.getCards();
+      this.SelectedList = this.selectedList;
     }
-  }
-
-  /**
-   * lifecycle
-   */
-  ngOnDestroy() {
-
   }
 
   /**
@@ -81,7 +76,11 @@ export class KanbanCardComponent implements OnInit {
    * @param date
    */
   convertDatePicker(date: any) {
-    return moment([date.year, date.month, date.day]).toJSON();
+    const m = moment();
+    m.set('year', date.year);
+    m.set('month', date.month - 1);
+    m.set('date', date.day);
+    return m.toJSON();
   }
 
   /**
@@ -97,7 +96,6 @@ export class KanbanCardComponent implements OnInit {
           if (data.success) {
             const newCard = new GreenTeaObject(data.payload);
             this.cards.push(newCard);
-            console.log(this.cards)
           }
         },
         error => console.log(error)
@@ -122,16 +120,7 @@ export class KanbanCardComponent implements OnInit {
         }
       },
       error => console.log(error)
-    )
-  }
-
-  /**
-   * drop Success
-   * @param card
-   * @param index
-   */
-  onDropSuccess() {
-    debugger
+    );
   }
 
   /**
@@ -189,8 +178,6 @@ export class KanbanCardComponent implements OnInit {
     newObject.referenceID = this.selectedList.id;
     newObject.referenceType = webconstant.CLASS_NAME_LIST;
     newObject.status = webconstant.STATUS_OPEN;
-    console.log(newObject);
-
     return newObject;
   }
 

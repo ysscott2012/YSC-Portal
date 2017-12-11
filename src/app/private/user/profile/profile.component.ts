@@ -56,7 +56,6 @@ export class ProfileComponent implements OnInit {
     this.userService.getUser(params).subscribe(
       data => {
         this.user = new User(data.payload);
-        console.log(this.user);
       },
       error => console.log(error)
     );

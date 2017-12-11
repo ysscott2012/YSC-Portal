@@ -60,5 +60,30 @@ export class ObjectService {
       .catch((error: Response) => Observable.throw(error.json()));
   }
 
+  /**
+   * create container
+   */
+  remove(object: GreenTeaObject) {
+    const body = JSON.stringify(object);
+    const headers = new Headers({ 'Content-Type': 'application/json' });
+    return this.http.post(this.URL_REMOVE_OBJECT, body, { headers: headers })
+      .map((response: Response) => response.json())
+      .catch((error: Response) => Observable.throw(error.json()));
+  }
+
+ /**
+   * find one and updatw
+   * @param condition
+   * @param update
+   * @param option
+   */
+  updateOne(condition, update, option) {
+    const body = JSON.stringify({condition: condition, update: update, option: option});
+    const headers = new Headers({ 'Content-Type': 'application/json' });
+    return this.http.post(this.URL_UPDATE_OBJECT, body, { headers: headers })
+      .map((response: Response) => response.json())
+      .catch((error: Response) => Observable.throw(error.json()));
+  }
+
 
 }

@@ -115,7 +115,6 @@ export class KanbanBoardComponent implements OnInit {
    * change board name
    */
   editBaordName(event) {
-    console.log(event);
     if (event.currentTarget.value &&
         event.currentTarget.value !== this.selectedBoard.name &&
         event.keyCode === 13) {
@@ -153,7 +152,6 @@ export class KanbanBoardComponent implements OnInit {
             this.setSelectedBoard(this.boards[0]);
           }
         }
-        console.log(this.boards);
       },
       error => console.log(error)
     );
@@ -197,7 +195,6 @@ export class KanbanBoardComponent implements OnInit {
    */
   setBordName(event) {
     this.board.name = event.currentTarget.value;
-    console.log(this.board.name);
   }
 
   /**
@@ -252,7 +249,6 @@ export class KanbanBoardComponent implements OnInit {
           this.setSelectedBoard(board);
           this.editToggle = false;
         }
-        console.log(data);
       },
       error => console.log(error)
     );

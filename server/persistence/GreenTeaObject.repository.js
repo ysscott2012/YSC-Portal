@@ -14,7 +14,6 @@ class GreenTeaObjectRepository {
    * find documents from DB
    */
   find(condition, callback) {
-    console.log(condition);
     Schema.find(condition).then((objects) => {
       objects = _.sortBy(objects, function(o) { return new moment(o.date); }).reverse();
       message.setMessage( true, "Get objects successfully", objects, []);
@@ -37,14 +36,24 @@ class GreenTeaObjectRepository {
    * find one document and update from DB
    */
   findOneAndUpdate(conditions, update, options, callback) {
-
+    Schema.findOneAndUpdate(conditions, update, options, function(err, object) {
+      if (err) {
+        message.setMessage( false, "Update container error", null, []);
+        callback(message);
+      } else {
+        message.setMessage( true, "Update container successfully", object, []);
+        callback(message);
+      }
+    })
   }
 
   /**
    * remove document from DB
    */
   remove(condition) {
-
+    Schema.remove(condition, function (err) {
+      if (err) return handleError(err);
+    })
   };
 
   /**

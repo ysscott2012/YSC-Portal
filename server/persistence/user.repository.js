@@ -48,7 +48,6 @@ class UserRepository {
    */
   findOneAndUpdate(conditions, update, options, callback) {
     UserSchema.findOneAndUpdate(conditions, update, options, function(err, doc, res) {
-      //console.log(doc)
       if (err) {
         error.setError(101);
         message.setMessage(false, "Update user error in MongoDB", null, [error] )

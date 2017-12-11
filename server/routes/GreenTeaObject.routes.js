@@ -38,5 +38,28 @@ router.post('/save', function(req, res) {
   })
 });
 
+/**
+ * Remove
+ */
+router.post('/remove', function(req, res) {
+  if (global.current._id === req.body.owner.id) {
+    var selectedObject = {
+      '_id': req.body.id
+    }
+    // remove all referenced containers
+    service.remove(selectedObject);
+    res.send({success: true});
+  }
+})
+
+/**
+ * Update one
+ */
+router.post('/updateOne', function(req, res) {
+  service.findOneAndUpdate(req.body.condition, req.body.update, req.body.option, function(result) {
+     res.send(result);
+  })
+})
+
 
 module.exports = router;

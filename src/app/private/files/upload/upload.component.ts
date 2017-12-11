@@ -70,8 +70,7 @@ export class UploadComponent implements OnInit {
     };
 
     this.uploader.onCompleteItem = (item: any, response: any, status: any, headers: any) => {
-      console.log('ImageUpload:uploaded:', item, status, response);
-      var data = JSON.parse(response);
+      const data = JSON.parse(response);
 
       if (data.success) {
         localStorage.setItem('current', JSON.stringify(data.payload));

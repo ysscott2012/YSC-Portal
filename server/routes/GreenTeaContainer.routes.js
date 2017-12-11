@@ -3,6 +3,7 @@ var router = express.Router();
 var bcrypt = require('bcryptjs');
 var jwtExpress = require('../middlewares/jwt-express');
 var service = require('../services/GreenTeaContainer.service');
+var objectService = require('../services/GreenTeaObject.service');
 
 var GreenTeaContainer = require('../models/GreenTea_Container');
 var _ = require('lodash');
@@ -39,7 +40,9 @@ router.post('/save', function(req, res) {
   })
 });
 
-
+/**
+ * Remove
+ */
 router.post('/remove', function(req, res) {
   if (global.current._id === req.body.owner.id) {
     var selectedContainer = {
@@ -50,17 +53,21 @@ router.post('/remove', function(req, res) {
     }
     // remove all referenced containers
     service.remove(referenceCondition);
+    // remove all referenced objects
+    objectService.remove(referenceCondition);
+    // remove selected container
     service.remove(selectedContainer);
     res.send({success: true});
   }
 })
 
-
+/**
+ * Update one
+ */
 router.post('/updateOne', function(req, res) {
   service.findOneAndUpdate(req.body.condition, req.body.update, req.body.option, function(result) {
      res.send(result);
   })
-
 })
 
 

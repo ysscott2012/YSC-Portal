@@ -2,7 +2,7 @@
   <!-- top section -->
   <div class="top">
     <!-- board name -->
-    <div class="board-title" *ngIf="selectedBoard">
+    <div class="board-title d-none d-md-block" *ngIf="selectedBoard">
       <input *ngIf="editToggle" (keydown)="editBaordName($event)" style="width: 250px" value="{{selectedBoard.name}}"/>
       <div *ngIf="!editToggle" (click)="editToggle = !editToggle">{{selectedBoard.name}}</div>
     </div>
@@ -16,7 +16,8 @@
     <!-- create a new board -->
     <div class="board-action-section" *ngIf="boards.length > 0">
       <div class="ys-link" (click)="open(CreateBoardModal)">
-        Create another board
+        <span class="d-none d-md-block">Create another board</span>
+        <span class="d-sm-block d-md-none">Create board</span>
       </div>
     </div>
   </div>
@@ -91,6 +92,6 @@
   </div>
   <div class="modal-footer">
     <button class="btn ys background blue" (click)="c('Create Board')" [disabled]="!validateBoard()" >Create</button>
-    <button class="btn ys border blue" (click)="c('Cancel Board')">Cancel</button>
+    <button class="btn ys border blue" (click)="d('Cancel Board')">Cancel</button>
   </div>
 </ng-template>
