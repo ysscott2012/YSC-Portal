@@ -60,7 +60,6 @@ export class HeaderComponent implements OnInit {
    * force to close menu
    */
   closeMenu() {
-    debugger
     const element = document.getElementsByClassName('main-page');
     if (element[0]) {
       if (element[0].classList.contains('active')) {
@@ -73,7 +72,6 @@ export class HeaderComponent implements OnInit {
    * toggle mobile menu
    */
   toggleMenu() {
-    debugger
     const element = document.getElementsByClassName('main-page');
     if (element[0]) {
       if (element[0].classList.contains('active')) {
