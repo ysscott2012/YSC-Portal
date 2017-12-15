@@ -105,7 +105,7 @@ export class KanbanCardInfoComponent implements OnInit {
     if (con) {
       this.objectService.remove(this.selectedCard).subscribe(
         data => {
-          console.log(data);
+          this.userService.token(data);
           document.location.reload();
         },
         error => console.log(error)
@@ -150,6 +150,7 @@ export class KanbanCardInfoComponent implements OnInit {
 
     this.objectService.updateOne(condition, update, option).subscribe(
       data => {
+        this.userService.token(data);
       },
       error => console.log(error)
     );

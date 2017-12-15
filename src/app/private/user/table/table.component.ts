@@ -59,6 +59,7 @@ export class TableComponent implements OnInit {
 
       this.userService.getUsers(params).subscribe(
         data => {
+          this.userService.token(data);
           data.payload.forEach(element => {
             this.users.push(new User(element));
           });
@@ -103,6 +104,7 @@ export class TableComponent implements OnInit {
       params.options
     ).subscribe(
       data => {
+        this.userService.token(data);
         this.users = this.users.filter(d => d.email !== data.payload.email);
       },
       error => console.log(error)

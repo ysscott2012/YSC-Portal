@@ -100,6 +100,7 @@ export class KanbanBoardComponent implements OnInit {
 
       this.containerService.save(container).subscribe(
         data => {
+          this.userService.token(data);
           if (data.success) {
             const newBoard = new GreenTeaContainer(data.payload);
             this.boards.push(newBoard);
@@ -142,6 +143,7 @@ export class KanbanBoardComponent implements OnInit {
       webconstant.CLASS_NAME_USER // REFERENCE TYPE
     ).subscribe(
       data => {
+        this.userService.token(data);
         if (data.success) {
           data.payload.forEach(element => {
             const container = new GreenTeaContainer(element);
@@ -182,6 +184,7 @@ export class KanbanBoardComponent implements OnInit {
     if (con) {
       this.containerService.remove(this.selectedBoard).subscribe(
         data => {
+          this.userService.token(data);
           document.location.reload();
         },
         error => console.log(error)
@@ -242,6 +245,7 @@ export class KanbanBoardComponent implements OnInit {
   updateBoard(condition, update, option) {
     this.containerService.updateOne(condition, update, option).subscribe(
       data => {
+        this.userService.token(data);
         if (data.success) {
           const board = new GreenTeaContainer(data.payload);
           this.boards = this.boards.filter(d => d.id !== board.id);

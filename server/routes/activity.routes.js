@@ -1,14 +1,10 @@
 var express = require('express');
 var router = express.Router();
 var bcrypt = require('bcryptjs');
-var jwtExpress = require('../middlewares/jwt-express');
 var service = require('../services/activity.service');
 
 var activity = require('../models/activity');
 var _ = require('lodash');
-
-// Token Check before using API
-router.use(jwtExpress());
 
 /**
  * find documents based on the filter
@@ -40,7 +36,6 @@ router.post('/findByOwner', function(req, res) {
  * Save a new record
  */
 router.post('/save', function(req, res) {
-  console.log(req.body)
   req.body.owner = activity.setOwner(req.body.owner);
   service.save(req.body, function(result) {
     res.send(result);

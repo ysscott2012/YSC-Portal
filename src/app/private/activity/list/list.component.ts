@@ -82,8 +82,8 @@ export class ActivityListComponent implements OnInit {
 
     this.activityService.getActivitiesByOwner(params).subscribe(
       data => {
+        this.userService.token(data);
         if (data.success) {
-
           // check if data is ending;
           this.activityEnd = data.payload.length === 0;
 
@@ -97,7 +97,7 @@ export class ActivityListComponent implements OnInit {
         }
       },
       error => console.log(error)
-    )
+    );
   }
 
 

@@ -35,6 +35,7 @@ export class DashboardComponent implements OnInit {
     if (id) {
       this.userService.getUserByID(id).subscribe(
         data => {
+          this.userService.token(data);
           this.selectedUser = new User(data.user);
           this.GetDashboard(this.selectedUser);
         },

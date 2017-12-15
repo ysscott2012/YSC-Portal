@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AdminService } from '../services/admin.service';
 
+import { UserService } from '../../user/services/user.service';
+
 @Component({
   selector: 'app-database-menu',
   templateUrl: './database-menu.component.html',
@@ -18,7 +20,8 @@ export class DatabaseMenuComponent implements OnInit {
    * @param adminService
    */
   constructor(
-    private adminService: AdminService
+    private adminService: AdminService,
+    private userService: UserService
   ) { }
 
   /**
@@ -34,6 +37,7 @@ export class DatabaseMenuComponent implements OnInit {
   GetCollectionList () {
     this.adminService.GetCollectionList().subscribe(
       data => {
+        this.userService.token(data);
         this.collections = data;
       },
       error => console.log(error)

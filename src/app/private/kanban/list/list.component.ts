@@ -83,6 +83,7 @@ export class KanbanListComponent implements OnInit {
 
       this.containerService.save(container).subscribe(
         data => {
+          this.userService.token(data);
           if (data.success) {
             const newList = new GreenTeaContainer(data.payload);
             this.lists.push(newList);
@@ -128,6 +129,7 @@ export class KanbanListComponent implements OnInit {
       webconstant.CLASS_NAME_BOARD // REFERENCE TYPE
     ).subscribe(
       data => {
+        this.userService.token(data);
         if (data.success) {
           data.payload.forEach(element => {
             const container = new GreenTeaContainer(element);
@@ -147,11 +149,12 @@ export class KanbanListComponent implements OnInit {
     if (con) {
       this.containerService.remove(list).subscribe(
         data => {
+          this.userService.token(data);
           this.lists = this.lists.filter(d => d.id !== list.id);
         },
         error => console.log(error)
       );
-    };
+    }
   }
 
   /**
@@ -201,6 +204,7 @@ export class KanbanListComponent implements OnInit {
         i++;
         this.containerService.updateOne(condition, update, option).subscribe(
           data => {
+            this.userService.token(data);
           },
           error => console.log(error)
         );
@@ -226,6 +230,7 @@ export class KanbanListComponent implements OnInit {
   updateListName(condition, update, option) {
     this.containerService.updateOne(condition, update, option).subscribe(
       data => {
+        this.userService.token(data);
         if (data.success) {
           const list = new GreenTeaContainer(data.payload);
           this.lists.forEach(element => {

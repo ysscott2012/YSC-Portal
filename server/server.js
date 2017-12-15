@@ -12,7 +12,8 @@ var mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 mongoose.connect(process.env.MONGODB_URI, { useMongoClient: true});
 
-
+// router controller
+var routerController = require('./middlewares/router.controller');
 
 // declare routers
 var activityRoutes = require('./routes/activity.routes');
@@ -39,6 +40,8 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../dist/index.html'));
 });
 
+// router controller
+app.use(routerController);
 
 // define routers
 app.use('/activity', activityRoutes);

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Headers, Http, Response } from '@angular/http';
+import { Router } from '@angular/router';
 
 import { environment } from '../../../../environments/environment';
 
@@ -14,6 +15,7 @@ import { Preferences } from '../../../classes/preferences';
 
 // Services
 import { HttpService } from '../../services/http.service';
+import { webconstant } from '../../../classes/webconstant';
 
 @Injectable()
 export class UserService {
@@ -33,7 +35,8 @@ export class UserService {
    * @param http
    */
   constructor(
-    private http: HttpService
+    private http: HttpService,
+    private router: Router
   ) { }
 
   /**
@@ -105,6 +108,17 @@ export class UserService {
    */
   isCurrent(id: String) {
     return id === this.getCurrent().id;
+  }
+
+  /**
+   * check token
+   * @param data
+   */
+  token(data) {
+    if (!data.success && data.activity.toLowerCase() === webconstant.ERROR_TOKEN_EXPIRED) {
+      alert('Your logged in session is out, please re-login');
+      this.router.navigate(['/auth/login']);
+    }
   }
 
   /**

@@ -1,10 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var bcrypt = require('bcryptjs');
-var jwtExpress = require('../middlewares/jwt-express');
 var service = require('../services/user.service');
-
-router.use(jwtExpress());
 
 /**
  * find multiple records

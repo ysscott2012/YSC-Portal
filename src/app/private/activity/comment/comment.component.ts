@@ -61,12 +61,12 @@ export class ActivityCommentComponent implements OnInit {
   comment(event, activity: Activity) {
 
     if (event.keyCode === 13) {
-      let element = $(event.currentTarget);
-      let str = element.val();
+      const element = $(event.currentTarget);
+      const str = element.val();
       if (str) {
-        let comment = new Comment();
+        const comment = new Comment();
         comment.setUpCommentByActivity(activity, str, new Date().toJSON());
-        let params = {
+        const params = {
           comment: comment,
           owner: this.current
         };
@@ -98,16 +98,17 @@ export class ActivityCommentComponent implements OnInit {
    */
   getComments(reload) {
 
-    var commentIndex = reload ? 0 : this.commentIndex;
+    const commentIndex = reload ? 0 : this.commentIndex;
 
-    var params = {
+    const params = {
       activity: this.activity,
       currentIndex: commentIndex,
       amount: this.commentAmount
-    }
+    };
 
     this.commentService.getCommentsByActivity(params).subscribe(
       data => {
+        this.userService.token(data);
         if (data.success) {
           // // check if data is ending;
           this.commentEnd = data.payload.length === 0;
@@ -122,7 +123,7 @@ export class ActivityCommentComponent implements OnInit {
         }
       },
       error => console.log(error)
-    )
+    );
 
   }
 

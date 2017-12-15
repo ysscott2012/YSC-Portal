@@ -93,6 +93,7 @@ export class KanbanCardComponent implements OnInit {
 
       this.objectService.save(newObject).subscribe(
         data => {
+          this.userService.token(data);
           if (data.success) {
             const newCard = new GreenTeaObject(data.payload);
             this.cards.push(newCard);
@@ -113,6 +114,7 @@ export class KanbanCardComponent implements OnInit {
 
     this.objectService.findByReference(referenceID, referenceType).subscribe(
       data => {
+        this.userService.token(data);
         if (data.success) {
           data.payload.forEach(element => {
             this.cards.push(new GreenTeaObject(element));

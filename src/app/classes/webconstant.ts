@@ -19,7 +19,10 @@ export const webconstant = {
   // STATUS
   STATUS_OPEN: 'open',
   STATUS_CLOSED: 'closed',
-  STATUS_EXPIRED: 'expired'
+  STATUS_EXPIRED: 'expired',
+
+  // ERROR
+  ERROR_TOKEN_EXPIRED: 'token expired',
 };
 
 //

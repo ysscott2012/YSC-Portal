@@ -1,7 +1,6 @@
 var express = require('express');
 var router = express.Router();
 var bcrypt = require('bcryptjs');
-var jwtExpress = require('../middlewares/jwt-express');
 
 // services
 var service = require('../services/GreenTeaContainer.service');
@@ -12,9 +11,6 @@ var objectService = require('../services/GreenTeaObject.service');
 var GreenTeaContainer = require('../models/GreenTea_Container');
 var activity = require('../models/activity');
 var _ = require('lodash');
-
-// Token Check before using API
-router.use(jwtExpress());
 
 /**
  * find documents based on the filter
