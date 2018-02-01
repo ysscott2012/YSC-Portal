@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { RouterModule, Router } from '@angular/router';
+import { Meta, Title } from '@angular/platform-browser';
 
 // import services
 import { AuthenticationService } from '../services/authentication.service';
@@ -27,8 +28,15 @@ export class LoginComponent implements OnInit {
    */
   constructor(
     private authenticationService: AuthenticationService,
-    private router: Router
-  ) { }
+    private router: Router,
+    private meta: Meta,
+    private title: Title
+  ) {
+    this.title.setTitle('YS Portfolio');
+    this.meta.addTags([
+      { name: 'description', content: 'This is Yung Sheng\'s portfolio.'}
+    ]);
+  }
 
   /**
    * lifecycle
