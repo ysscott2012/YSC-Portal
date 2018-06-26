@@ -14,7 +14,7 @@ import { HttpService } from '../../services/http.service';
 @Injectable()
 export class FilesService {
 
-  private URL_UPLOAD_FILE = environment.API_URL + '/file/user/profile/upload';
+  private URL_UPLOAD_FILE = environment.API_ENDPOINT + '/file/user/profile/upload';
 
   /**
   * Contructor.

@@ -9,6 +9,7 @@ import { HttpService } from './private/services/http.service';
 
 // Moduless
 import { AdminModule } from './private/admin/admin.module';
+import { AlgorithmModule } from './private/algorithm/algorithm.module';
 import { AuthenticationModule } from './public/authentication/authentication.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { UserModule } from './private/user/user.module';
@@ -23,6 +24,7 @@ import { AppComponent } from './app.component';
 // Routes
 import { AppRoutes } from './app.route';
 import { AdminRoutes } from './private/admin/admin.route';
+import { AlgorithmRoute } from './private/algorithm/algorithm.route';
 import { AuthenticationRoutes } from './public/authentication/authentication.route';
 import { ChatRoutes } from './private/chat/chat.route';
 import { KanbanRoutes } from './private/kanban/kanban.route';
@@ -45,6 +47,9 @@ import { UserRoutes } from './private/user/user.route';
     // Authentication
     AuthenticationModule,
     AuthenticationRoutes,
+    // Algorithms
+    AlgorithmModule,
+    AlgorithmRoute,
     // Chat
     ChatModule,
     ChatRoutes,

@@ -41,6 +41,9 @@ export class Navigation {
     );
 
     // Dashboard box link
+    const algorithmLink =
+      new Link('/algorithm', '<i class="fas fa-less-than"></i><span>Algorithm</span>', 'Algorithm<br/><br/><b>Online Learning</b>', '', false);
+
     const activityLink =
       new Link('/user/activity', '', 'System Tracking Activity<br/> <br/> <b>Activity Feed</b>', filePath + 'default/activity.jpg', false);
     const kanbanLink =
@@ -50,6 +53,7 @@ export class Navigation {
 
 
     if (argument === 'Mobile') {
+      this.links.push(algorithmLink);
       this.links.push(userLink);
       // this.links.push(groupLink);
       // this.links.push(messageLink);
@@ -57,12 +61,14 @@ export class Navigation {
       this.links.push(profileLink);
       this.links.push(logoutLink);
     } else if (argument === 'HeaderDropdown') {
+      this.links.push(algorithmLink);
       this.links.push(dashboardLink);
       this.links.push(profileLink);
       this.links.push(logoutLink);
     } else if (argument === 'dashboard') {
       this.links.push(activityLink);
       this.links.push(kanbanLink);
+      this.links.push(algorithmLink);
     }
 
     if (user.level === 99 && argument !== 'dashboard') {
