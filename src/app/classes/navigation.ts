@@ -61,7 +61,6 @@ export class Navigation {
       this.links.push(profileLink);
       this.links.push(logoutLink);
     } else if (argument === 'HeaderDropdown') {
-      this.links.push(algorithmLink);
       this.links.push(dashboardLink);
       this.links.push(profileLink);
       this.links.push(logoutLink);

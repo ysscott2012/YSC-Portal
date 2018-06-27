@@ -1,0 +1,45 @@
+<p>
+  leetcode-dashboard works!
+</p>
+
+<div class="ys-link" (click)="open(CreateLeetcode)">Create note</div>
+
+
+<!-- Create Board Dialog -->
+<ng-template #CreateLeetcode let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h5 class="modal-title">Create a Note</h5>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div style="padding: 0px 15px 15px 15px;">
+      <div class="row">
+        <div class="col-lg-7 col-md-6">
+          <!-- Name -->
+          <div class="ys-input-tite">Task Name <sup>*</sup></div>
+          <input class="ys-input" (keyup)="setLeetcodeName($event)">
+          <!-- Description -->
+          <div class="ys-input-tite">Description: </div>
+          <textarea class="ys-textarea" (keyup)="setLeetcodeDescription($event)"></textarea>
+          <!-- Note -->
+          <div class="ys-input-tite">Note: </div>
+          <textarea class="ys-textarea" (keyup)="setLeetcodeNote($event)"></textarea>
+        </div>
+        <div class="col-lg-5 col-md-6">
+          <!-- Value -->
+          <!--<div class="ys-input-tite">Points <sup>*</sup></div>-->
+          <!--<input class="ys-input" type="number" (keyup)="setValue($event)">-->
+          <!-- Start Date -->
+
+          <!-- Due Date -->
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button class="btn ys background blue" (click)="c('Create Board')" [disabled]="!validate()" >Create</button>
+    <button class="btn ys border blue" (click)="d('Cancel Board')">Cancel</button>
+  </div>
+</ng-template>

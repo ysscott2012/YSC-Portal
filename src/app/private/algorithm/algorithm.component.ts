@@ -13,9 +13,8 @@ export class AlgorithmComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.algorithmService.getLeetcode().subscribe(data => {
-      console.log(data);
-    })
+
   }
+
 
 }
