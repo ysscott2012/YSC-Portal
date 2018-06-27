@@ -16,9 +16,9 @@ export class ActivityService {
   /**
    * constants
    */
-  private URL_SAVE_ACTIVITY = environment.API_ENDPOINT + '/activity/save';
-  private URL_FIND_ACTIVITIES = environment.API_ENDPOINT + '/activity/find';
-  private URL_FIND_ACTIVITIES_BY_OWNER = environment.API_ENDPOINT + '/activity/findByOwner';
+  private URL_SAVE_ACTIVITY = environment.NODE_ENDPOINT + '/activity/save';
+  private URL_FIND_ACTIVITIES = environment.NODE_ENDPOINT + '/activity/find';
+  private URL_FIND_ACTIVITIES_BY_OWNER = environment.NODE_ENDPOINT + '/activity/findByOwner';
 
   /**
    * Contructor.

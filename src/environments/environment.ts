@@ -5,7 +5,8 @@
 
 export const environment = {
   production: false,
-  API_ENDPOINT: 'http://localhost:3000',
+  NODE_ENDPOINT: 'http://localhost:3000/v1/n',
+  DOTNET_ENDPOINT: 'http://localhost:3000/v1/d',
   FILE_CREDENTIALS: false,
   FILE_UPLOAD_API: 'http://localhost:3000/file/user/profile/upload'
 };

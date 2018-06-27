@@ -23,12 +23,12 @@ export class UserService {
   /**
    * constants
    */
-  private URL_FIND_USERS = environment.API_ENDPOINT + '/user/find';
-  private URL_FIND_USER = environment.API_ENDPOINT + '/user/findOne';
-  private URL_REMOVE_USER = environment.API_ENDPOINT + '/user/remove';
-  private URL_SAVE_USER = environment.API_ENDPOINT + '/user/save';
-  private URL_UPDATE_USERS = environment.API_ENDPOINT + '/user/update';
-  private URL_UPDATE_USER = environment.API_ENDPOINT + '/user/updateOne';
+  private URL_FIND_USERS = environment.NODE_ENDPOINT + '/user/find';
+  private URL_FIND_USER = environment.NODE_ENDPOINT + '/user/findOne';
+  private URL_REMOVE_USER = environment.NODE_ENDPOINT + '/user/remove';
+  private URL_SAVE_USER = environment.NODE_ENDPOINT + '/user/save';
+  private URL_UPDATE_USERS = environment.NODE_ENDPOINT + '/user/update';
+  private URL_UPDATE_USER = environment.NODE_ENDPOINT + '/user/updateOne';
 
   /**
    * Contructor.

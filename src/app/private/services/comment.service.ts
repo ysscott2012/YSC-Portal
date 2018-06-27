@@ -20,10 +20,10 @@ export class CommentService {
   /**
    * constants
    */
-  private URL_SAVE_COMMENT = environment.API_ENDPOINT + '/comment/save';
-  private URL_FIND_COMMENTS = environment.API_ENDPOINT + '/comment/find';
-  private URL_FIND_COMMENTS_BY_ACTIVITY = environment.API_ENDPOINT + '/comment/findByActivity';
-  private URL_FIND_COMMENT = environment.API_ENDPOINT + '/comment/findOne';
+  private URL_SAVE_COMMENT = environment.NODE_ENDPOINT + '/comment/save';
+  private URL_FIND_COMMENTS = environment.NODE_ENDPOINT + '/comment/find';
+  private URL_FIND_COMMENTS_BY_ACTIVITY = environment.NODE_ENDPOINT + '/comment/findByActivity';
+  private URL_FIND_COMMENT = environment.NODE_ENDPOINT + '/comment/findOne';
 
   /**
    * Contructor.

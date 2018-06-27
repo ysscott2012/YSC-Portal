@@ -8,7 +8,7 @@ import {Observable} from 'rxjs/Observable';
 @Injectable()
 export class AlgorithmService {
 
-  private URL_FIND_LEETCODE = environment.API_ENDPOINT + '/v1/algorithms/leetcode';
+  private URL_FIND_LEETCODE = environment.NODE_ENDPOINT + '/v1/algorithms/leetcode';
 
   constructor(
     private http: HttpService,

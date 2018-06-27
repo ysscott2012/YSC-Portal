@@ -23,8 +23,8 @@ export class AuthenticationService {
   public static TOKEN = 'token';
   public static CURRENT_USER = 'current';
 
-  private URL_SIGN_UP = environment.API_ENDPOINT + '/auth/signup';
-  private URL_LOGIN = environment.API_ENDPOINT + '/auth/login';
+  private URL_SIGN_UP = environment.NODE_ENDPOINT + '/auth/signup';
+  private URL_LOGIN = environment.NODE_ENDPOINT + '/auth/login';
 
   /**
    * contructor.

@@ -16,12 +16,12 @@ export class ObjectService {
  /**
    * constants
    */
-  private URL_FIND_OBJECTS = environment.API_ENDPOINT + '/object/find';
-  private URL_FIND_OBJECT = environment.API_ENDPOINT + '/object/findOne';
-  private URL_REMOVE_OBJECT = environment.API_ENDPOINT + '/object/remove';
-  private URL_SAVE_OBJECT = environment.API_ENDPOINT + '/object/save';
-  private URL_UPDATE_OBJECTS = environment.API_ENDPOINT + '/object/update';
-  private URL_UPDATE_OBJECT = environment.API_ENDPOINT + '/object/updateOne';
+  private URL_FIND_OBJECTS = environment.NODE_ENDPOINT + '/object/find';
+  private URL_FIND_OBJECT = environment.NODE_ENDPOINT + '/object/findOne';
+  private URL_REMOVE_OBJECT = environment.NODE_ENDPOINT + '/object/remove';
+  private URL_SAVE_OBJECT = environment.NODE_ENDPOINT + '/object/save';
+  private URL_UPDATE_OBJECTS = environment.NODE_ENDPOINT + '/object/update';
+  private URL_UPDATE_OBJECT = environment.NODE_ENDPOINT + '/object/updateOne';
 
   /**
    * Contructor.

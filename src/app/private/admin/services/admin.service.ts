@@ -20,7 +20,7 @@ export class AdminService {
   /**
    * constants
    */
-  private URL_GET_COLLECTION_LIST = environment.API_ENDPOINT + '/admin/collections';
+  private URL_GET_COLLECTION_LIST = environment.NODE_ENDPOINT + '/admin/collections';
 
   /**
    * Contructor.

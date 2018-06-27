@@ -21,12 +21,12 @@ export class ContainerService {
   /**
    * constants
    */
-  private URL_FIND_CONTAINERS = environment.API_ENDPOINT + '/container/find';
-  private URL_FIND_CONTAINER = environment.API_ENDPOINT + '/container/findOne';
-  private URL_REMOVE_CONTAINER = environment.API_ENDPOINT + '/container/remove';
-  private URL_SAVE_CONTAINER = environment.API_ENDPOINT + '/container/save';
-  private URL_UPDATE_CONTAINERS = environment.API_ENDPOINT + '/container/update';
-  private URL_UPDATE_CONTAINER = environment.API_ENDPOINT + '/container/updateOne';
+  private URL_FIND_CONTAINERS = environment.NODE_ENDPOINT + '/container/find';
+  private URL_FIND_CONTAINER = environment.NODE_ENDPOINT + '/container/findOne';
+  private URL_REMOVE_CONTAINER = environment.NODE_ENDPOINT + '/container/remove';
+  private URL_SAVE_CONTAINER = environment.NODE_ENDPOINT + '/container/save';
+  private URL_UPDATE_CONTAINERS = environment.NODE_ENDPOINT + '/container/update';
+  private URL_UPDATE_CONTAINER = environment.NODE_ENDPOINT + '/container/updateOne';
 
   /**
    * Contructor.
